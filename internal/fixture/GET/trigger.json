@@ -1,0 +1,72 @@
+{
+  "trigger": {
+    "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586006881303.json",
+    "id": 8586006881303,
+    "title": "[Assignment] [Transfer] from Services to D1 (messaging)",
+    "active": true,
+    "updated_at": "2023-03-17T04:10:03Z",
+    "created_at": "2022-09-01T17:30:08Z",
+    "default": false,
+    "actions": [
+      {
+        "field": "custom_fields_4612925021719",
+        "value": "ps"
+      }
+    ],
+    "conditions": {
+      "all": [
+        {
+          "field": "update_type",
+          "operator": "is",
+          "value": "Change"
+        },
+        {
+          "field": "via_id",
+          "operator": "is",
+          "value": "75"
+        },
+        {
+          "field": "group_id",
+          "operator": "value_previous",
+          "value": "1500006053682"
+        }
+      ],
+      "any": [
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1900001029865"
+        },
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1900001030225"
+        },
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1500006053502"
+        },
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1500006046261"
+        },
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1500006053522"
+        },
+        {
+          "field": "group_id",
+          "operator": "value",
+          "value": "1900001030285"
+        }
+      ]
+    },
+    "description": "Defaults transferring from Services to D1 to PS team.",
+    "position": 10,
+    "raw_title": "[Assignment] [Transfer] from Services to D1 (messaging)",
+    "category_id": "1900000250685"
+  }
+}

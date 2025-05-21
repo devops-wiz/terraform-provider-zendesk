@@ -1,0 +1,44 @@
+{
+  "macro": {
+    "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250641.json",
+    "id": 1500033250641,
+    "title": "Assignment & Routing...::Handoff::APAC TSE",
+    "active": true,
+    "updated_at": "2023-01-25T20:18:22Z",
+    "created_at": "2021-10-01T18:58:22Z",
+    "default": false,
+    "position": 30,
+    "description": "Initiates handoff to APAC TSE team and templates private handoff comment.",
+    "actions": [
+      {
+        "field": "comment_mode_is_public",
+        "value": "false"
+      },
+      {
+        "field": "comment_value_html",
+        "value": "<p><b>Handover to APAC</b><br><br><b>Reason(s) for a handover:</b></p><p><b><br></b></p><p><b>Troubleshooting performed:</b></p><p><b><br></b></p><p><b>Troubleshooting results:</b></p><p><b><br></b></p><p><b>Requested action(s):</b></p><p><b><br></b></p><p><b>Call summary? </b>(if applicable)</p>"
+      },
+      {
+        "field": "custom_fields_1500011100762",
+        "value": "handover_apac"
+      },
+      {
+        "field": "current_tags",
+        "value": "handover_apac"
+      },
+      {
+        "field": "remove_tags",
+        "value": "handover_emea handover_noram follow_the_sun"
+      }
+    ],
+    "restriction": {
+      "type": "Group",
+      "id": 1900001030265,
+      "ids": [
+        1900001030265,
+        1500006046241
+      ]
+    },
+    "raw_title": "Assignment & Routing...::Handoff::APAC TSE"
+  }
+}
