@@ -1,0 +1,5281 @@
+{
+  "triggers": [
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/7659296790679.json",
+      "id": 7659296790679,
+      "title": "Sparkly > Proactive Bulk Tickets > Solve Related Ticket",
+      "active": true,
+      "updated_at": "2023-03-16T23:55:56Z",
+      "created_at": "2022-07-22T20:27:57Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "solved"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "proactive_solved_by_agent"
+          }
+        ],
+        "any": []
+      },
+      "description": "Solve Tickets flagged by Proactive Bulk Ticket's Review Related Tickets functionality.",
+      "position": 1,
+      "raw_title": "Sparkly > Proactive Bulk Tickets > Solve Related Ticket",
+      "category_id": "1900001575345"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/14298524033687.json",
+      "id": 14298524033687,
+      "title": "Conversation Tracker - Remove inactive_chat when status changed",
+      "active": true,
+      "updated_at": "2023-05-17T12:45:28Z",
+      "created_at": "2023-05-02T11:05:38Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "inactive_chat"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "inactive_chat"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          }
+        ],
+        "any": [
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "pending"
+          },
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "hold"
+          },
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "solved"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "hold"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "solved"
+          }
+        ]
+      },
+      "description": "Remove inactive_chat tag when conversation moves to pending, on-hold, or solved",
+      "position": 3,
+      "raw_title": "Conversation Tracker - Remove inactive_chat when status changed",
+      "category_id": "1900001575345"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900022398545.json",
+      "id": 1900022398545,
+      "title": "Test Demo Trigger",
+      "active": false,
+      "updated_at": "2023-03-16T23:55:56Z",
+      "created_at": "2022-01-10T19:28:36Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "pending"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011100762",
+            "operator": "is",
+            "value": "handover_noram"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 3,
+      "raw_title": "Test Demo Trigger",
+      "category_id": "1900001575345"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/22816069634199.json",
+      "id": 22816069634199,
+      "title": "[Run First] [Slack & Ticket Update] to TSE pushback",
+      "active": true,
+      "updated_at": "2024-06-25T18:19:33Z",
+      "created_at": "2024-04-15T15:44:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01FNY4MTZK49ANDVV3CPYK71P3",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"Ticket {{ticket.id}} has been assigned back to you due to an incorrect Product Area, Reason for Contact, or Subject. Please update the Product Area, Reason for Contact, and Subject with the appropriate values and re-run the PS to TSE handover macro. Product Area cannot be set to blank or 'Exclude from Reporting'. Reason for Contact cannot be set to 'Exclude from Reporting'. Subject cannot be 'Conversation # ...'.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC09GAM80MX83KYVXEXSZZYH",
+            "{\n  \"assigneeEmail\":\"{{ticket.assignee.email}}\",\n  \"body\":\"Ticket {{ticket.id}} has been assigned back to you due to an incorrect Product Area, Reason for Contact, or Subject. Please update the Product Area, Reason for Contact, and Subject with the appropriate values and re-run the PS to TSE handover macro. Product Area cannot be set to blank or 'Exclude from Reporting'. Reason for Contact cannot be set to 'Exclude from Reporting'. Subject cannot be 'Conversation # ...'.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        },
+        {
+          "field": "remove_tags",
+          "value": "handoff_to_tse_sla public_ps_to_tse"
+        },
+        {
+          "field": "status",
+          "value": "open"
+        },
+        {
+          "field": "current_tags",
+          "value": "prevent_auto_snooze to_tse_pushback"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps_to_tse_handoff"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1900002752685",
+            "operator": "is",
+            "value": "product_exclude"
+          },
+          {
+            "field": "custom_fields_1900002752725",
+            "operator": "is",
+            "value": "reason_exclude"
+          },
+          {
+            "field": "subject_includes_word",
+            "operator": "is",
+            "value": "Conversation #"
+          },
+          {
+            "field": "custom_fields_1900002752685",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Pushes to TSE transfer back to PS team due to \"Exclude from Reporting\" Product Area or Reason for Contact.  Or for having a default \"Subject\" value.  ",
+      "position": 1,
+      "raw_title": "[Run First] [Slack & Ticket Update] to TSE pushback",
+      "category_id": "23669058656535"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522082.json",
+      "id": 1500033522082,
+      "title": "Assignment: FedRAMP",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053502"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_fedramp"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are approved for FedRAMP handling",
+      "position": 1,
+      "raw_title": "Assignment: FedRAMP",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5694699084311.json",
+      "id": 5694699084311,
+      "title": "[Assignment] [New] to Preview Program",
+      "active": true,
+      "updated_at": "2024-03-06T21:37:55Z",
+      "created_at": "2022-04-26T14:44:03Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "5694468584343"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21868420704663"
+          }
+        ],
+        "any": []
+      },
+      "description": "Assigns tickets from Preview Program to the Preview team.",
+      "position": 1,
+      "raw_title": "[Assignment] [New] to Preview Program",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008676925.json",
+      "id": 1900008676925,
+      "title": "Assignment: EU only",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030225"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_eu_residents_only"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members within the EU",
+      "position": 2,
+      "raw_title": "Assignment: EU only",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522162.json",
+      "id": 1500033522162,
+      "title": "[Assignment] [New] to Licensing",
+      "active": true,
+      "updated_at": "2024-03-06T20:47:09Z",
+      "created_at": "2021-10-01T18:57:50Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053602"
+        },
+        {
+          "field": "assignee_id",
+          "value": ""
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798065240471"
+          }
+        ],
+        "any": []
+      },
+      "description": "Assigns tickets from Licensing to the Licensing team.",
+      "position": 2,
+      "raw_title": "[Assignment] [New] to Licensing",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249861.json",
+      "id": 1500033249861,
+      "title": "Assignment: US Only",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030285"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_us_citizens_residents_only"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members within the EU",
+      "position": 3,
+      "raw_title": "Assignment: US Only",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586078703255.json",
+      "id": 8586078703255,
+      "title": "[Assignment] [Transfer] from Licensing to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-03-17T04:08:12Z",
+      "created_at": "2022-09-01T17:33:11Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053602"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Licensing to D1 to TSE team.",
+      "position": 3,
+      "raw_title": "[Assignment] [Transfer] from Licensing to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249881.json",
+      "id": 1500033249881,
+      "title": "Assignment: Non-US",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:44Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053522"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_non_us_citizens_only"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are outside of the United States",
+      "position": 4,
+      "raw_title": "Assignment: Non-US",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500047201381.json",
+      "id": 1500047201381,
+      "title": "This is a test new",
+      "active": false,
+      "updated_at": "2022-12-06T17:39:18Z",
+      "created_at": "2022-01-10T18:06:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "low_-_4"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "closed"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 4,
+      "raw_title": "This is a test new",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586042078743.json",
+      "id": 8586042078743,
+      "title": "[Assignment] [Transfer] from Insights to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-03-17T04:08:22Z",
+      "created_at": "2022-09-01T17:32:32Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1900001030305"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Insights to D1 to TSE team.",
+      "position": 4,
+      "raw_title": "[Assignment] [Transfer] from Insights to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008676945.json",
+      "id": 1900008676945,
+      "title": "Assignment: Non-China",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:44Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006046261"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_non_chinese_residents"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are outside of the United States",
+      "position": 5,
+      "raw_title": "Assignment: Non-China",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008677045.json",
+      "id": 1900008677045,
+      "title": "[Assignment] [New] to University",
+      "active": true,
+      "updated_at": "2024-03-06T20:47:41Z",
+      "created_at": "2021-10-01T18:57:51Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006046381"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": ""
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21797802327063"
+          }
+        ],
+        "any": []
+      },
+      "description": "Assigns tickets from University to the University team.",
+      "position": 5,
+      "raw_title": "[Assignment] [New] to University",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522102.json",
+      "id": 1500033522102,
+      "title": "Assignment: Dynatrace ONE(Non special handling)",
+      "active": false,
+      "updated_at": "2022-12-09T16:29:55Z",
+      "created_at": "2021-10-01T18:57:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "sh_eu_residents_only sh_fedramp sh_non_us_citizens_only sh_non_chinese_residents sh_us_citizens_residents_only"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "For tickets that do not meet any special handling conditions.",
+      "position": 6,
+      "raw_title": "Assignment: Dynatrace ONE(Non special handling)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5322113278999.json",
+      "id": 5322113278999,
+      "title": "[Assignment] [New] to Services",
+      "active": true,
+      "updated_at": "2024-03-06T21:48:58Z",
+      "created_at": "2022-04-08T16:04:53Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053682"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": ""
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21868714215191"
+          }
+        ],
+        "any": []
+      },
+      "description": "Assigns tickets from Services Portal to the Services team.",
+      "position": 6,
+      "raw_title": "[Assignment] [New] to Services",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500037378842.json",
+      "id": 1500037378842,
+      "title": "[Assignment] [New] to Insights ",
+      "active": true,
+      "updated_at": "2024-03-06T20:48:17Z",
+      "created_at": "2021-11-09T15:17:28Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030305"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": ""
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ],
+        "any": []
+      },
+      "description": "Assigns tickets from Business Insights to the Insights team.",
+      "position": 7,
+      "raw_title": "[Assignment] [New] to Insights ",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/4446615522711.json",
+      "id": 4446615522711,
+      "title": "Test Omnichannel Routing Messaging",
+      "active": false,
+      "updated_at": "2022-04-12T15:53:05Z",
+      "created_at": "2022-02-18T16:21:38Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        },
+        {
+          "field": "priority",
+          "value": "normal"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 8,
+      "raw_title": "Test Omnichannel Routing Messaging",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5918833677975.json",
+      "id": 5918833677975,
+      "title": "[Assignment] [Transfer] from University to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-03-17T04:09:46Z",
+      "created_at": "2022-05-06T16:51:26Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006046381"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from University to D1 to PS team.",
+      "position": 8,
+      "raw_title": "[Assignment] [Transfer] from University to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/4446634766743.json",
+      "id": 4446634766743,
+      "title": "Test Omnichannel Routing Messaging email",
+      "active": false,
+      "updated_at": "2022-04-05T21:04:49Z",
+      "created_at": "2022-02-18T16:22:47Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        },
+        {
+          "field": "priority",
+          "value": "normal"
+        },
+        {
+          "field": "current_tags",
+          "value": "auto_route"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 9,
+      "raw_title": "Test Omnichannel Routing Messaging email",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5923355641879.json",
+      "id": 5923355641879,
+      "title": "[Assignment] [New] to Pre-Sales",
+      "active": true,
+      "updated_at": "2023-03-17T04:09:54Z",
+      "created_at": "2022-05-06T19:52:58Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030325"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_5454790585879",
+            "operator": "is",
+            "value": "account_type_free_trial"
+          },
+          {
+            "field": "organization.custom_fields.account_type",
+            "operator": "is",
+            "value": "5454500173079"
+          }
+        ]
+      },
+      "description": "Assigns tickets from Trials to the Pre-Sales Engineers team.",
+      "position": 9,
+      "raw_title": "[Assignment] [New] to Pre-Sales",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586006881303.json",
+      "id": 8586006881303,
+      "title": "[Assignment] [Transfer] from Services to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-03-17T04:10:03Z",
+      "created_at": "2022-09-01T17:30:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053682"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Services to D1 to PS team.",
+      "position": 10,
+      "raw_title": "[Assignment] [Transfer] from Services to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8585948523287.json",
+      "id": 8585948523287,
+      "title": "[Assignment] [Transfer] from Preview to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:28:35Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "5694468584343"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Preview to D1 to PS team.",
+      "position": 11,
+      "raw_title": "[Assignment] [Transfer] from Preview to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8585965495959.json",
+      "id": 8585965495959,
+      "title": "[Assignment] [Transfer] from Proscripting to D1 (messaging)",
+      "active": false,
+      "updated_at": "2023-05-05T15:17:11Z",
+      "created_at": "2022-09-01T17:29:32Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053662"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Proscripting to D1 to PS team.",
+      "position": 11,
+      "raw_title": "[Assignment] [Transfer] from Proscripting to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8585944412311.json",
+      "id": 8585944412311,
+      "title": "[Assignment] [Transfer] from Pre-Sales to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:27:48Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1900001030325"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Pre-Sales to D1 to PS team.",
+      "position": 12,
+      "raw_title": "[Assignment] [Transfer] from Pre-Sales to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8585920234647.json",
+      "id": 8585920234647,
+      "title": "[Assignment] [Transfer] from Licensing to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:27:03Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053602"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Licensing to D1 to PS team.",
+      "position": 13,
+      "raw_title": "[Assignment] [Transfer] from Licensing to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8585889644695.json",
+      "id": 8585889644695,
+      "title": "[Assignment] [Transfer] from Insights to D1 (messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:26:33Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1900001030305"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transferring from Insights to D1 to PS team.",
+      "position": 14,
+      "raw_title": "[Assignment] [Transfer] from Insights to D1 (messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5918893224087.json",
+      "id": 5918893224087,
+      "title": "[Assignment] [Transfer] from University to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-05-06T16:52:15Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006046381"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from University to D1 to TSE team.",
+      "position": 15,
+      "raw_title": "[Assignment] [Transfer] from University to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586185334551.json",
+      "id": 8586185334551,
+      "title": "[Assignment] [Transfer] from Services to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:35:52Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053682"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Services to D1 to TSE team.",
+      "position": 16,
+      "raw_title": "[Assignment] [Transfer] from Services to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500044316282.json",
+      "id": 1500044316282,
+      "title": "Assignment: Apply Support Values if created from Slack",
+      "active": false,
+      "updated_at": "2023-03-15T20:30:05Z",
+      "created_at": "2021-12-22T18:00:51Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011100802",
+          "value": "support"
+        },
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "moderate_-_3"
+        },
+        {
+          "field": "priority",
+          "value": "normal"
+        },
+        {
+          "field": "type",
+          "value": "incident"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "5"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "created_from_slack"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 17,
+      "raw_title": "Assignment: Apply Support Values if created from Slack",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586113333655.json",
+      "id": 8586113333655,
+      "title": "[Assignment] [Transfer] from Preview to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:34:14Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "5694468584343"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Preview to D1 to TSE team.",
+      "position": 17,
+      "raw_title": "[Assignment] [Transfer] from Preview to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586091391127.json",
+      "id": 8586091391127,
+      "title": "[Assignment] [Transfer] from Pre-Sales to D1 (non-messaging)",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-09-01T17:33:37Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1900001030325"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Pre-Sales to D1 to TSE team.",
+      "position": 18,
+      "raw_title": "[Assignment] [Transfer] from Pre-Sales to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/8586100686103.json",
+      "id": 8586100686103,
+      "title": "[Assignment] [Transfer] from Proscripting to D1 (non-messaging)",
+      "active": false,
+      "updated_at": "2023-05-05T15:17:15Z",
+      "created_at": "2022-09-01T17:35:20Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "group_id",
+            "operator": "value_previous",
+            "value": "1500006053662"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "value",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Defaults transfering from Proscripting to D1 to TSE team.",
+      "position": 18,
+      "raw_title": "[Assignment] [Transfer] from Proscripting to D1 (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/4612977422103.json",
+      "id": 4612977422103,
+      "title": "[Assignment] [New] to PS (messaging) ",
+      "active": true,
+      "updated_at": "2023-06-14T14:21:08Z",
+      "created_at": "2022-03-07T14:51:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Routes messaging tickets to PS group",
+      "position": 19,
+      "raw_title": "[Assignment] [New] to PS (messaging) ",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/4613002346263.json",
+      "id": 4613002346263,
+      "title": "[Assignment] [New] to TSE (non-messaging)",
+      "active": true,
+      "updated_at": "2023-10-12T17:17:30Z",
+      "created_at": "2022-03-07T14:52:21Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "4"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "route_followups_to_playlist proactive_notifications"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001029865"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030225"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006053502"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006046261"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1500006053522"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030285"
+          }
+        ]
+      },
+      "description": "Routes the non-messaging tickets to TSE group",
+      "position": 20,
+      "raw_title": "[Assignment] [New] to TSE (non-messaging)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/13124946517015.json",
+      "id": 13124946517015,
+      "title": "[Assignment] [New] Email ticket to D1 PS",
+      "active": true,
+      "updated_at": "2023-07-25T22:18:47Z",
+      "created_at": "2023-03-16T01:28:31Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "moderate_-_3"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "4"
+          }
+        ],
+        "any": []
+      },
+      "description": "Routes the email tickets to PS group",
+      "position": 21,
+      "raw_title": "[Assignment] [New] Email ticket to D1 PS",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16535641973143.json",
+      "id": 16535641973143,
+      "title": "[Assignment] [Transfer] Shell Tickets to Will Agodu",
+      "active": true,
+      "updated_at": "2024-03-14T20:02:15Z",
+      "created_at": "2023-08-04T15:56:55Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "assignee_id",
+          "value": "1905894150725"
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "1905894150725",
+            "A Shell Ticket Has Been Assigned ",
+            "Will and Luke,\n\nA Shell support ticket has been transferred from the TSE group and assigned to you:  {{ticket.id}}"
+          ]
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "21743267085847",
+            "A Shell Ticket Has Been Assigned ",
+            "Will and Luke,\n\nA Shell support ticket has been transferred from the TSE group and assigned to you:  {{ticket.id}}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "organization_id",
+            "operator": "is",
+            "value": "21741587265815"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "assignee_id",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 22,
+      "raw_title": "[Assignment] [Transfer] Shell Tickets to Will Agodu",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/21741815795095.json",
+      "id": 21741815795095,
+      "title": "[Assignment] [Transfer] Dell Tickets to Jordyn Corenman",
+      "active": true,
+      "updated_at": "2024-03-01T19:15:52Z",
+      "created_at": "2024-03-01T18:39:49Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "assignee_id",
+          "value": "17721639954071"
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "17721639954071",
+            "A Dell Ticket Has Been Assigned ",
+            "Jordyn and Coleen,\n\nA Dell support ticket has been transferred from the TSE group and assigned to you:  {{ticket.id}}"
+          ]
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "1905895064885",
+            "A Dell Ticket Has Been Assigned ",
+            "Jordyn and Coleen,\n\nA Dell support ticket has been transferred from the TSE group and assigned to you:  {{ticket.id}}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "organization_id",
+            "operator": "is",
+            "value": "1500554304041"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "assignee_id",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 23,
+      "raw_title": "[Assignment] [Transfer] Dell Tickets to Jordyn Corenman",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16949287660695.json",
+      "id": 16949287660695,
+      "title": "[Test] Form to security group only",
+      "active": true,
+      "updated_at": "2024-03-01T18:39:49Z",
+      "created_at": "2023-08-22T17:45:45Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "16949277797015"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "16948718465431"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 24,
+      "raw_title": "[Test] Form to security group only",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008677065.json",
+      "id": 1900008677065,
+      "title": "Assignment: Remove Default fields for Support ticket",
+      "active": false,
+      "updated_at": "2023-03-16T15:08:48Z",
+      "created_at": "2021-10-01T18:57:52Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011047321",
+          "value": ""
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 25,
+      "raw_title": "Assignment: Remove Default fields for Support ticket",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17481424337431.json",
+      "id": 17481424337431,
+      "title": "[Assignment] [New] Routing Priority One - ESS and Premium",
+      "active": true,
+      "updated_at": "2024-03-01T18:39:49Z",
+      "created_at": "2023-09-13T00:43:46Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_17481352675991",
+          "value": "1"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "ps"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "ess"
+          },
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "premium"
+          }
+        ]
+      },
+      "description": "Applies routing priority of 1 to ESS and Premium customers",
+      "position": 25,
+      "raw_title": "[Assignment] [New] Routing Priority One - ESS and Premium",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17481430688279.json",
+      "id": 17481430688279,
+      "title": "[Assignment] [New] Routing Priority Two - Strategic",
+      "active": true,
+      "updated_at": "2024-03-01T18:39:49Z",
+      "created_at": "2023-09-13T00:46:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_17481352675991",
+          "value": "2"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is_not",
+            "value": "ess"
+          },
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is_not",
+            "value": "premium"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "ps"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is",
+            "value": "h_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is",
+            "value": "i_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is",
+            "value": "j_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is",
+            "value": "k_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is",
+            "value": "l_arr"
+          }
+        ]
+      },
+      "description": "Applies routing priority of 2 to non ESS and non Premium customers that are Strategic (ARR 1M+)",
+      "position": 26,
+      "raw_title": "[Assignment] [New] Routing Priority Two - Strategic",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/6769179344535.json",
+      "id": 6769179344535,
+      "title": "[Assignment] [New] Email ticket to D1 PS",
+      "active": false,
+      "updated_at": "2023-03-16T15:21:09Z",
+      "created_at": "2022-06-14T17:01:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "moderate_-_3"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "4"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 27,
+      "raw_title": "[Assignment] [New] Email ticket to D1 PS",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17481523534487.json",
+      "id": 17481523534487,
+      "title": "[Assignment] [New] Routing Priority Three - Other",
+      "active": true,
+      "updated_at": "2024-03-01T18:39:49Z",
+      "created_at": "2023-09-13T00:50:04Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_17481352675991",
+          "value": "3"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is_not",
+            "value": "ess"
+          },
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is_not",
+            "value": "premium"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is_not",
+            "value": "h_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is_not",
+            "value": "i_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is_not",
+            "value": "j_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is_not",
+            "value": "k_arr"
+          },
+          {
+            "field": "custom_fields_1500011887202",
+            "operator": "is_not",
+            "value": "l_arr"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Applies routing priority of 3 to non ESS and non Premium customers that are not Strategic (ARR 1M+)",
+      "position": 27,
+      "raw_title": "[Assignment] [New] Routing Priority Three - Other",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249981.json",
+      "id": 1500033249981,
+      "title": "Assignment: Move to Dynatrace ONE(Non special handling)",
+      "active": false,
+      "updated_at": "2023-03-16T02:43:16Z",
+      "created_at": "2021-10-01T18:57:48Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "sh_eu_residents_only sh_fedramp sh_non_us_citizens_only sh_us_citizens_residents_only sh_non_chinese_residents"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "For tickets that do not meet any special handling conditions.",
+      "position": 28,
+      "raw_title": "Assignment: Move to Dynatrace ONE(Non special handling)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/7598610523543.json",
+      "id": 7598610523543,
+      "title": "Child Ticket - FedRAMP Group setting",
+      "active": false,
+      "updated_at": "2023-03-16T14:59:33Z",
+      "created_at": "2022-07-20T14:28:19Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "sh_fedramp"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "69"
+          },
+          {
+            "field": "comment_includes_word",
+            "operator": "is",
+            "value": "FedRAMP"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 28,
+      "raw_title": "Child Ticket - FedRAMP Group setting",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/7604632171799.json",
+      "id": 7604632171799,
+      "title": "Child Ticket - FedRAMP Group setting (copy)",
+      "active": false,
+      "updated_at": "2023-03-16T14:59:39Z",
+      "created_at": "2022-07-20T18:00:45Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "moderate_-_3"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "69"
+          },
+          {
+            "field": "comment_includes_word",
+            "operator": "is",
+            "value": "Severity: Moderate - 3"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 29,
+      "raw_title": "Child Ticket - FedRAMP Group setting (copy)",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249921.json",
+      "id": 1500033249921,
+      "title": "Assignment: Move to EU only",
+      "active": false,
+      "updated_at": "2023-03-16T02:42:42Z",
+      "created_at": "2021-10-01T18:57:45Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030225"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_eu_residents_only"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030225"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members within the EU",
+      "position": 30,
+      "raw_title": "Assignment: Move to EU only",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249901.json",
+      "id": 1500033249901,
+      "title": "Assignment: Move to FedRAMP",
+      "active": false,
+      "updated_at": "2023-03-16T02:42:39Z",
+      "created_at": "2021-10-01T18:57:45Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053502"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_fedramp"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1500006053502"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are approved for FedRAMP handling",
+      "position": 31,
+      "raw_title": "Assignment: Move to FedRAMP",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008676965.json",
+      "id": 1900008676965,
+      "title": "Assignment: Move to Non-China",
+      "active": false,
+      "updated_at": "2023-03-16T02:42:35Z",
+      "created_at": "2021-10-01T18:57:47Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006046261"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_non_chinese_residents"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1500006053522"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are outside of the United States",
+      "position": 32,
+      "raw_title": "Assignment: Move to Non-China",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249961.json",
+      "id": 1500033249961,
+      "title": "Assignment: Move to Non-US",
+      "active": false,
+      "updated_at": "2023-03-16T02:42:27Z",
+      "created_at": "2021-10-01T18:57:46Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053522"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_non_us_citizens_only"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1500006053522"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members that are outside of the United States",
+      "position": 33,
+      "raw_title": "Assignment: Move to Non-US",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249941.json",
+      "id": 1500033249941,
+      "title": "Assignment: Move to US Only",
+      "active": false,
+      "updated_at": "2023-03-16T02:42:24Z",
+      "created_at": "2021-10-01T18:57:46Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030285"
+        },
+        {
+          "field": "remove_tags",
+          "value": "movedtosupport"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "sh_us_citizens_residents_only"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "movedtosupport"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030225"
+          }
+        ],
+        "any": [
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": "support"
+          },
+          {
+            "field": "custom_fields_1500011100802",
+            "operator": "is",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Tickets to only be handled by members within the EU",
+      "position": 34,
+      "raw_title": "Assignment: Move to US Only",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/5475801505047.json",
+      "id": 5475801505047,
+      "title": "[TEST] Playlist Non-messaging",
+      "active": false,
+      "updated_at": "2022-04-15T20:33:37Z",
+      "created_at": "2022-04-15T18:15:07Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G0Q6JXP1J5YAGR2XCQCNDYQZ",
+            []
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "assignee_id",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001029865"
+          }
+        ]
+      },
+      "description": null,
+      "position": 36,
+      "raw_title": "[TEST] Playlist Non-messaging",
+      "category_id": "1900000250685"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/21163180070679.json",
+      "id": 21163180070679,
+      "title": "[Schedule] [Customer APAC] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2024-02-06T17:39:24Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029397740439"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "customer_apac"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in Customer APAC to the APAC Standard Chats schedule.",
+      "position": 1,
+      "raw_title": "[Schedule] [Customer APAC] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/21163212379159.json",
+      "id": 21163212379159,
+      "title": "[Schedule] [Customer EMEA] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2024-02-06T17:40:03Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029409080471"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "customer_emea"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in Customer EMEA to the EMEA Standard Chats schedule.",
+      "position": 2,
+      "raw_title": "[Schedule] [Customer EMEA] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/21163216144023.json",
+      "id": 21163216144023,
+      "title": "[Schedule] [Customer NASA] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2024-02-06T17:40:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029348207255"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "customer_nasa"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in Customer NASA to the NASA Standard Chats schedule.",
+      "position": 3,
+      "raw_title": "[Schedule] [Customer NASA] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/15643054659991.json",
+      "id": 15643054659991,
+      "title": "[Schedule] [Account APAC / Fallback] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-06-28T17:40:41Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029397740439"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emea latam noram"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_21129969029527",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in APAC or have no geo to the APAC Standard Chats schedule.",
+      "position": 4,
+      "raw_title": "[Schedule] [Account APAC / Fallback] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/15643192085143.json",
+      "id": 15643192085143,
+      "title": "[Schedule] [Account EMEA] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-06-28T17:46:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029409080471"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "emea"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_21129969029527",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in EMEA geo to the EMEA Standard Chats schedule.",
+      "position": 5,
+      "raw_title": "[Schedule] [Account EMEA] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/15643260998807.json",
+      "id": 15643260998807,
+      "title": "[Schedule] [Account NASA] Standard Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-06-28T17:48:16Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15029348207255"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_1500011047241",
+            "operator": "is",
+            "value": "standard"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "latam noram"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_21129969029527",
+            "operator": "is",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and in LATAM or NORAM to the NASA Standard Chats schedule.",
+      "position": 6,
+      "raw_title": "[Schedule] [Account NASA] Standard Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16011391648919.json",
+      "id": 16011391648919,
+      "title": "[Schedule] [APAC / Fallback] Trial Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-07-13T21:30:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "16011111671191"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030325"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emea latam noram"
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Trial and in APAC or have no geo to the APAC SE Chats schedule.",
+      "position": 7,
+      "raw_title": "[Schedule] [APAC / Fallback] Trial Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16011467748887.json",
+      "id": 16011467748887,
+      "title": "[Schedule] [EMEA] Trial Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-07-13T21:32:26Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "16011155028503"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030325"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "emea"
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Trial and in EMEA to the EMEA SE Chats schedule.",
+      "position": 8,
+      "raw_title": "[Schedule] [EMEA] Trial Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16011365922199.json",
+      "id": 16011365922199,
+      "title": "[Schedule] [NASA] Trial Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-07-13T21:29:10Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "16011045048343"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030325"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "latam noram"
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Trial and in LATAM or NORAM to the NASA SE Chats schedule.",
+      "position": 9,
+      "raw_title": "[Schedule] [NASA] Trial Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/15643359011991.json",
+      "id": 15643359011991,
+      "title": "[Schedule] [Global] ESS / Premium Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-06-28T17:51:51Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "15643355773079"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "premium ess"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are ESS / Premium Support Level to the ESS / Premium Tickets schedule.",
+      "position": 10,
+      "raw_title": "[Schedule] [Global] ESS / Premium Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16252741658007.json",
+      "id": 16252741658007,
+      "title": "[Schedule] [Global] Standard Support Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-07-24T18:20:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "1500001042282"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "standard"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "group_id",
+            "operator": "is_not",
+            "value": "1900001030325"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are Standard Support Level and belong to TSE team to the Standard Support Tickets schedule.",
+      "position": 11,
+      "raw_title": "[Schedule] [Global] Standard Support Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16491792222103.json",
+      "id": 16491792222103,
+      "title": "[Schedule] [Global] TSE ESS / Premium Ticket",
+      "active": true,
+      "updated_at": "2024-02-07T21:02:04Z",
+      "created_at": "2023-08-02T21:52:18Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "1500001042282"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "ess premium"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets tickets that are ESS / Premium Support Level to the ESS / Standard Support Tickets schedule.  This is to avoid alerting on weekends.  SLAs are still Calendar hours.",
+      "position": 12,
+      "raw_title": "[Schedule] [Global] TSE ESS / Premium Ticket",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/19973851576215.json",
+      "id": 19973851576215,
+      "title": "[Schedule] [Global] Chat AutoSolve",
+      "active": true,
+      "updated_at": "2024-02-07T21:21:17Z",
+      "created_at": "2023-12-19T17:21:24Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "set_schedule",
+          "value": "19973701941399"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_chat_reminder public_workaround"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets the schedule for Product Specialist chats and tickets to be standard M-F business hours, even if ESS or Premium, for AutoSolve purposes.  ",
+      "position": 13,
+      "raw_title": "[Schedule] [Global] Chat AutoSolve",
+      "category_id": "15642857863319"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17477505939607.json",
+      "id": 17477505939607,
+      "title": "[Child Ticket Management] Close Child Ticket and Remove Parent Link",
+      "active": false,
+      "updated_at": "2023-12-04T18:39:17Z",
+      "created_at": "2023-09-12T21:25:36Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H69890WTY1YEVT7KVW8H566N",
+            "{\n\t\"ticket\": {\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 16304724723095,\n\t\t\t\t\"value\": \"\"\n\t\t\t}\n\t\t]\n\t}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_child"
+          },
+          {
+            "field": "custom_fields_16304725457431",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          }
+        ],
+        "any": []
+      },
+      "description": "Temporary trigger until all Child Tickets are cleaned up.",
+      "position": 1,
+      "raw_title": "[Child Ticket Management] Close Child Ticket and Remove Parent Link",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305286208407.json",
+      "id": 16305286208407,
+      "title": "[Child Ticket Management] Create Child Ticket",
+      "active": true,
+      "updated_at": "2024-05-22T17:03:41Z",
+      "created_at": "2023-07-26T14:11:38Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "{{ticket.title}} - SLA_Tracking",
+            "<p>{{ticket.id}}<br></p>",
+            "SupportAssignable:support_assignable/group/1900001029865",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "messaging_sla_tracker_parent"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "messaging_sla_tracker_parent to_tse_pushback"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": ""
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          }
+        ],
+        "any": []
+      },
+      "description": "Messaging tickets with TSE team get a side-conversation child ticket created.  ",
+      "position": 1,
+      "raw_title": "[Child Ticket Management] Create Child Ticket",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305403869079.json",
+      "id": 16305403869079,
+      "title": "[Child Ticket Management] Add Parent ID to Child",
+      "active": true,
+      "updated_at": "2024-03-06T22:10:05Z",
+      "created_at": "2023-07-26T14:15:40Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "messaging_sla_tracker_child messaging_sla_tracker_part1"
+        },
+        {
+          "field": "custom_fields_15279369602839",
+          "value": "1_stage_intake"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n\t\"ticket\": {\n\t    \"requester_id\": 1905893852465,\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 16304725457431,\n\t\t\t\t\"value\": \"{{ticket.latest_public_comment}}\"\n\t\t\t}\n\t\t]\n\t}\n}"
+          ]
+        },
+        {
+          "field": "custom_fields_1500011047301",
+          "value": "child ticket"
+        },
+        {
+          "field": "custom_fields_1500011047201",
+          "value": "moderate_-_3"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "1500002895221"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "subject_includes_word",
+            "operator": "is",
+            "value": "SLA_Tracking"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "messaging_sla_tracker_child messaging_sla_tracker_part1"
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets initial ticket fields for Child Ticket.",
+      "position": 2,
+      "raw_title": "[Child Ticket Management] Add Parent ID to Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17477769809047.json",
+      "id": 17477769809047,
+      "title": "[Child Ticket Management] Remove Parent Ticket Tag",
+      "active": false,
+      "updated_at": "2023-12-04T18:39:17Z",
+      "created_at": "2023-09-12T21:36:29Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "messaging_sla_tracker_parent"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "not_present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          }
+        ],
+        "any": []
+      },
+      "description": "Temporary trigger until all Child Tickets are cleaned up.",
+      "position": 2,
+      "raw_title": "[Child Ticket Management] Remove Parent Ticket Tag",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305472052887.json",
+      "id": 16305472052887,
+      "title": "[Child Ticket Management] Add Child ID to Parent",
+      "active": true,
+      "updated_at": "2023-12-04T18:40:51Z",
+      "created_at": "2023-07-26T14:18:41Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H69890WTY1YEVT7KVW8H566N",
+            "{\n\t\"ticket\": {\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 16304724723095,\n\t\t\t\t\"value\": \"{{ticket.id}}\"\n\t\t\t}\n\t\t]\n\t}\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "messaging_sla_tracker_part2"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_part1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "messaging_sla_tracker_part2"
+          },
+          {
+            "field": "custom_fields_16304725457431",
+            "operator": "present",
+            "value": ""
+          }
+        ],
+        "any": []
+      },
+      "description": "Sets initial ticket fields for Parent Ticket.",
+      "position": 3,
+      "raw_title": "[Child Ticket Management] Add Child ID to Parent",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/17478207442455.json",
+      "id": 17478207442455,
+      "title": "[Child Ticket Management] Clean Parent Ticket on Re-opened Ticket",
+      "active": false,
+      "updated_at": "2023-12-04T18:39:17Z",
+      "created_at": "2023-09-12T21:54:28Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "messaging_sla_tracker_parent"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "value_previous",
+            "value": "solved"
+          },
+          {
+            "field": "status",
+            "operator": "is_not",
+            "value": "closed"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          }
+        ],
+        "any": []
+      },
+      "description": "Temporary trigger until all Child Tickets are cleaned up.",
+      "position": 3,
+      "raw_title": "[Child Ticket Management] Clean Parent Ticket on Re-opened Ticket",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305614070807.json",
+      "id": 16305614070807,
+      "title": "[Child Ticket Management] Propagate assignee comment from parent ticket to child ticket",
+      "active": true,
+      "updated_at": "2024-04-22T21:30:14Z",
+      "created_at": "2023-07-26T14:24:04Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"{{ticket.latest_public_comment}}\",\n            \"author_id\": \"{{ticket.assignee.id}}\",\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "comment_is_public",
+            "operator": "is",
+            "value": "true"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "assignee_id",
+            "operator": "is",
+            "value": "current_user"
+          }
+        ],
+        "any": []
+      },
+      "description": "Moves public comments from the Assignee to the child ticket.  ",
+      "position": 4,
+      "raw_title": "[Child Ticket Management] Propagate assignee comment from parent ticket to child ticket",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16845436158615.json",
+      "id": 16845436158615,
+      "title": "[Child Ticket Management] Propagate customer comment from parent ticket to child ticket",
+      "active": false,
+      "updated_at": "2023-12-04T19:02:20Z",
+      "created_at": "2023-08-17T19:57:49Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"{{ticket.latest_public_comment}}\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "comment_is_public",
+            "operator": "is",
+            "value": "true"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "assignee_id",
+            "operator": "is_not",
+            "value": "current_user"
+          }
+        ],
+        "any": []
+      },
+      "description": "Moves public comments from the Requester / end-user to the child ticket as private comment.  ",
+      "position": 5,
+      "raw_title": "[Child Ticket Management] Propagate customer comment from parent ticket to child ticket",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305748415511.json",
+      "id": 16305748415511,
+      "title": "[Child Ticket Management] Propagate Fields",
+      "active": true,
+      "updated_at": "2024-05-24T20:59:28Z",
+      "created_at": "2023-07-26T14:28:31Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"assignee_id\": \"{{ticket.assignee.id}}\",\n\t\t\"group_id\": \"{{ticket.group.id}}\",\n\t\t\"subject\": \"{{ticket.title}} - SLA_Tracking\",\n\t\t\"status\": \"{{ticket.status | downcase | remove:'on-' }}\",\n        \"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 15279369602839,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_15279369602839}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4612925021719,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_4612925021719}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752725,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752725}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752685,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752685}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011047201,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011047201}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 16260018264087,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_16260018264087}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011047241,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011047241}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100762,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100762}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 16429302580759,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_16429302580759}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100722,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100722}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752765,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752765}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100742,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100742}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 16845534299031,\n\t\t\t\t\"value\": \"{{ticket.organization.name}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011835901,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011835901}}\"\n\t\t\t}\n\t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Copies Assignee, Subject, Stage, Support Level, Dynatrace ONE Support Team, Account Geography, Reason for Contact, Product Area, Severity, Handover, OOO, and SLA Override to child ticket.",
+      "position": 5,
+      "raw_title": "[Child Ticket Management] Propagate Fields",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305813289111.json",
+      "id": 16305813289111,
+      "title": "[Child Ticket Management] Add handover SLA if handover",
+      "active": true,
+      "updated_at": "2023-12-04T19:02:55Z",
+      "created_at": "2023-07-26T14:30:29Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "handoff_to_tse_sla"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304725457431",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_child"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "handoff_to_tse_sla"
+          }
+        ],
+        "any": []
+      },
+      "description": "Makes sure there is \"handoff_to_tse_sla\" tag present on child when in PS to TSE Handoff status.",
+      "position": 6,
+      "raw_title": "[Child Ticket Management] Add handover SLA if handover",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16342133849879.json",
+      "id": 16342133849879,
+      "title": "[Child Ticket Management] Remove handover SLA if handover finished",
+      "active": true,
+      "updated_at": "2023-12-04T19:02:55Z",
+      "created_at": "2023-07-27T16:48:07Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "handoff_to_tse_sla"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304725457431",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_child"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "handoff_to_tse_sla"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          }
+        ],
+        "any": []
+      },
+      "description": "Makes sure there is no \"handoff_to_tse_sla\" tag present on child when in Technical Support Engineer status.",
+      "position": 7,
+      "raw_title": "[Child Ticket Management] Remove handover SLA if handover finished",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305851659031.json",
+      "id": 16305851659031,
+      "title": "[Child Ticket Management] Pending Child",
+      "active": false,
+      "updated_at": "2023-08-17T18:55:04Z",
+      "created_at": "2023-07-26T14:32:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"status\": \"pending\",\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 1500011100722,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100722}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752765,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752765}}\"\n\t\t\t}\n\t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "pending"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates Pending Status to child ticket, with Current Summary and Next Steps.",
+      "position": 8,
+      "raw_title": "[Child Ticket Management] Pending Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16312079013271.json",
+      "id": 16312079013271,
+      "title": "[Child Ticket Management] Solved Child when transferred from TSE",
+      "active": true,
+      "updated_at": "2023-12-04T19:02:55Z",
+      "created_at": "2023-07-26T17:51:25Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"status\": \"solved\",\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 1900002752685,\n\t\t\t\t\"value\": \"product_exclude\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752725,\n\t\t\t\t\"value\": \"reason_exclude\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100742,\n\t\t\t\t\"value\": \"other\"\n\t\t\t}\n\t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps_to_tse_handoff"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates Solved Status to child ticket on tickets transferred out of TSE.",
+      "position": 8,
+      "raw_title": "[Child Ticket Management] Solved Child when transferred from TSE",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16312837989783.json",
+      "id": 16312837989783,
+      "title": "[Child Ticket Management] Initiate Field Propagation",
+      "active": true,
+      "updated_at": "2024-04-25T01:19:11Z",
+      "created_at": "2023-07-26T18:10:28Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "message_sla_tracker_propagate"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"Initial comment for SLA.\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "message_sla_tracker_propagate"
+          }
+        ],
+        "any": []
+      },
+      "description": "When parent-child tickets are first made, we need to cause an initial propagation of data.",
+      "position": 9,
+      "raw_title": "[Child Ticket Management] Initiate Field Propagation",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305896035351.json",
+      "id": 16305896035351,
+      "title": "[Child Ticket Management] On-hold Child",
+      "active": false,
+      "updated_at": "2023-08-17T18:55:04Z",
+      "created_at": "2023-07-26T14:33:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"status\": \"hold\",\n        \"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 15279369602839,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_15279369602839}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4612925021719,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_4612925021719}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752725,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752725}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752685,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752685}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011047201,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011047201}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 16260018264087,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_16260018264087}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011047241,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011047241}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100762,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100762}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 16429302580759,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_16429302580759}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1500011100722,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100722}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 1900002752765,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1900002752765}}\"\n\t\t\t}\n\t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          }
+        ],
+        "any": [
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "hold"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps_to_tse_handoff"
+          }
+        ]
+      },
+      "description": "Propagates On-hold Status to child ticket.",
+      "position": 9,
+      "raw_title": "[Child Ticket Management] On-hold Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305964964759.json",
+      "id": 16305964964759,
+      "title": "[Child Ticket Management] Open Child",
+      "active": false,
+      "updated_at": "2023-08-17T18:55:04Z",
+      "created_at": "2023-07-26T14:34:46Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"status\": \"open\"\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "open"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates Open Status to child ticket.",
+      "position": 10,
+      "raw_title": "[Child Ticket Management] Open Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/19674265706775.json",
+      "id": 19674265706775,
+      "title": "[Child Ticket Management] Propagate Prevent AutoSolve",
+      "active": true,
+      "updated_at": "2023-12-08T18:19:46Z",
+      "created_at": "2023-12-08T17:58:37Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"no_autosolve\" ], \n\t\t \"comment\": {\n            \"body\": \"Prevent AutoSolve propagated from parent.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "no_autosolve_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "allow_autosolve_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_autosolve_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the tag for preventing AutoSolve to the child ticket.",
+      "position": 10,
+      "raw_title": "[Child Ticket Management] Propagate Prevent AutoSolve",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16845784278423.json",
+      "id": 16845784278423,
+      "title": "[Child Ticket Management] Populate Organization Name",
+      "active": false,
+      "updated_at": "2023-12-04T19:02:20Z",
+      "created_at": "2023-08-17T20:07:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 16845534299031,\n\t\t\t\t\"value\": \"{{ticket.organization.name}}\"\n\t\t\t}\n\t\t]\n\t}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "messaging_sla_tracker_child"
+          },
+          {
+            "field": "organization_id",
+            "operator": "is_not",
+            "value": ""
+          },
+          {
+            "field": "ticket_is_public",
+            "operator": "is",
+            "value": "public"
+          }
+        ],
+        "any": [
+          {
+            "field": "organization_id",
+            "operator": "changed",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_16845534299031",
+            "operator": "not_present",
+            "value": ""
+          }
+        ]
+      },
+      "description": "Populate the \"Org\" field on the ticket with the current assigned Organization for all non-child tickets.",
+      "position": 11,
+      "raw_title": "[Child Ticket Management] Populate Organization Name",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/19674389400983.json",
+      "id": 19674389400983,
+      "title": "[Child Ticket Management] Propagate Allow AutoSolve",
+      "active": true,
+      "updated_at": "2023-12-08T18:20:06Z",
+      "created_at": "2023-12-08T18:02:49Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"allow_autosolve\" ],\n\t\t\"remove_tags\": [ \"no_autosolve\", \"reminder_1\", \"reminder_2\", \"reminder_3\", \"reminder_4\", \"track_reminder_1\", \"track_reminder_2\", \"track_reminder_3\", \"track_reminder_4\" ],\n\t\t\"comment\": {\n            \"body\": \"Allow AutoSolve propagated from parent.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "allow_autosolve_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "no_autosolve_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "allow_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "allow_autosolve_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the tag for allowing AutoSolve to the child ticket.",
+      "position": 11,
+      "raw_title": "[Child Ticket Management] Propagate Allow AutoSolve",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16305985365271.json",
+      "id": 16305985365271,
+      "title": "[Child Ticket Management] Solved Child",
+      "active": false,
+      "updated_at": "2023-08-17T18:55:04Z",
+      "created_at": "2023-07-26T14:36:09Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n\t\t\"status\": \"solved\",\n\t\t\"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 1500011100742,\n\t\t\t\t\"value\": \"{{ticket.ticket_field_1500011100742}}\"\n\t\t\t}\n\t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "status",
+            "operator": "value",
+            "value": "solved"
+          },
+          {
+            "field": "custom_fields_1500011100742",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates Solved Status to child ticket, with Resolution Action. ",
+      "position": 11,
+      "raw_title": "[Child Ticket Management] Solved Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16946288937239.json",
+      "id": 16946288937239,
+      "title": "[Child Ticket Management] Clear Populate Organization Tag",
+      "active": false,
+      "updated_at": "2023-08-22T16:21:37Z",
+      "created_at": "2023-08-22T16:13:57Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "propagating_org"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16845534299031",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "propagating_org"
+          }
+        ],
+        "any": []
+      },
+      "description": null,
+      "position": 12,
+      "raw_title": "[Child Ticket Management] Clear Populate Organization Tag",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/16845876591767.json",
+      "id": 16845876591767,
+      "title": "[Child Ticket Management] Populate Organization Name on Child",
+      "active": false,
+      "updated_at": "2023-08-17T20:45:28Z",
+      "created_at": "2023-08-17T20:09:10Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01H6986MNY10VP5B5P5K3MCMZD",
+            "{\n    \"ticket\": {\n        \"custom_fields\": [\n\t\t\t{\n\t\t\t\t\"id\": 16845534299031,\n\t\t\t\t\"value\": \"{{ticket.organization.name}}\"\n\t\t\t}\n\t\t]\n\t}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "organization_id",
+            "operator": "changed",
+            "value": ""
+          },
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_child"
+          }
+        ],
+        "any": []
+      },
+      "description": "Populate the \"Organization\" field on the child ticket.",
+      "position": 12,
+      "raw_title": "[Child Ticket Management] Populate Organization Name on Child",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/23638292603287.json",
+      "id": 23638292603287,
+      "title": "[Child Ticket Management] Restart SLA with public comment",
+      "active": true,
+      "updated_at": "2024-05-22T17:58:25Z",
+      "created_at": "2024-05-21T16:51:07Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"Public comment to restart SLA after leaving 'Solved' status.\",\n            \"author_id\": 1905893852265,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_child"
+          },
+          {
+            "field": "status",
+            "operator": "value_previous",
+            "value": "solved"
+          },
+          {
+            "field": "status",
+            "operator": "is_not",
+            "value": "closed"
+          }
+        ],
+        "any": []
+      },
+      "description": "When ticket leaves Solved and into a non-Closed status, a public comment is needed to restart the Periodic Update SLA.  ",
+      "position": 12,
+      "raw_title": "[Child Ticket Management] Restart SLA with public comment",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/23727809081367.json",
+      "id": 23727809081367,
+      "title": "[Child Ticket Management] Propagate APAC Geo",
+      "active": false,
+      "updated_at": "2024-05-24T20:59:36Z",
+      "created_at": "2024-05-24T20:48:53Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"apac\" ],\n\t\t\"remove_tags\": [ \"emea\", \"latam\", \"noram\" ]\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "apac_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "emea_propagated latam_propagated noram_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "apac"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "apac_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the \"apac\" tag.",
+      "position": 13,
+      "raw_title": "[Child Ticket Management] Propagate APAC Geo",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/23727830396183.json",
+      "id": 23727830396183,
+      "title": "[Child Ticket Management] Propagate EMEA Geo",
+      "active": false,
+      "updated_at": "2024-05-24T20:59:36Z",
+      "created_at": "2024-05-24T20:50:57Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"emea\" ],\n\t\t\"remove_tags\": [ \"apac\", \"latam\", \"noram\" ]\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "emea_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "apac_propagated latam_propagated noram_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "emea"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emea_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the \"emea\" tag.",
+      "position": 14,
+      "raw_title": "[Child Ticket Management] Propagate EMEA Geo",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/23727861425431.json",
+      "id": 23727861425431,
+      "title": "[Child Ticket Management] Propagate LATAM Geo",
+      "active": false,
+      "updated_at": "2024-05-24T20:59:36Z",
+      "created_at": "2024-05-24T20:52:02Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"latam\" ],\n\t\t\"remove_tags\": [ \"apac\", \"emea\", \"noram\" ]\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "latam_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "apac_propagated emea_propagated noram_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "latam"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "latam_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the \"latam\" tag.",
+      "position": 15,
+      "raw_title": "[Child Ticket Management] Propagate LATAM Geo",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/23727787977495.json",
+      "id": 23727787977495,
+      "title": "[Child Ticket Management] Propagate NORAM Geo",
+      "active": false,
+      "updated_at": "2024-05-24T20:59:36Z",
+      "created_at": "2024-05-24T20:47:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HH5A10GJS1487Q7DPPC5Z1CC",
+            "{\n    \"ticket\": {\n\t\t\"additional_tags\": [ \"noram\" ],\n\t\t\"remove_tags\": [ \"apac\", \"emea\", \"latam\" ]\n    }\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "noram_propagated"
+        },
+        {
+          "field": "remove_tags",
+          "value": "apac_propagated emea_propagated latam_propagated"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "custom_fields_16304724723095",
+            "operator": "present",
+            "value": ""
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "messaging_sla_tracker_parent"
+          },
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "ps"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is_not",
+            "value": "tse_to_ps_handoff"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "noram"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "noram_propagated"
+          }
+        ],
+        "any": []
+      },
+      "description": "Propagates the \"noram\" tag.",
+      "position": 16,
+      "raw_title": "[Child Ticket Management] Propagate NORAM Geo",
+      "category_id": "16305179346711"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033249781.json",
+      "id": 1500033249781,
+      "title": "[SLA] [New] Sev-1 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-15T20:31:03Z",
+      "created_at": "2021-10-01T18:57:36Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "urgent"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "critical_-_1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "proactive_notifications"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 1 tickets to Urget for SLA calculation on ticket creation",
+      "position": 1,
+      "raw_title": "[SLA] [New] Sev-1 SLA calculation",
+      "category_id": "4615176155415"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522002.json",
+      "id": 1500033522002,
+      "title": "[SLA] [Update] Sev-1 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-29T14:45:06Z",
+      "created_at": "2021-10-01T18:57:36Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "urgent"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "critical_-_1"
+          },
+          {
+            "field": "status",
+            "operator": "is_not",
+            "value": "new"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 1 tickets to Urget for SLA calculation on ticket update",
+      "position": 2,
+      "raw_title": "[SLA] [Update] Sev-1 SLA calculation",
+      "category_id": "4615176155415"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522022.json",
+      "id": 1500033522022,
+      "title": "[SLA] [New] Sev-2 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-15T20:31:33Z",
+      "created_at": "2021-10-01T18:57:37Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "high"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "severe_-_2"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 2 tickets to High for SLA calculation on ticket creation",
+      "position": 3,
+      "raw_title": "[SLA] [New] Sev-2 SLA calculation",
+      "category_id": "4615176155415"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1900008676805.json",
+      "id": 1900008676805,
+      "title": "[SLA] [Update] Sev-2 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-29T14:46:07Z",
+      "created_at": "2021-10-01T18:57:37Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "high"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "severe_-_2"
+          },
+          {
+            "field": "status",
+            "operator": "is_not",
+            "value": "new"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 2 tickets to High for SLA calculation on ticket update",
+      "position": 4,
+      "raw_title": "[SLA] [Update] Sev-2 SLA calculation",
+      "category_id": "4615176155415"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522042.json",
+      "id": 1500033522042,
+      "title": "[SLA] [New] Sev-3 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-15T20:31:58Z",
+      "created_at": "2021-10-01T18:57:37Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "normal"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Create"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "moderate_-_3"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "case_file proactive_notifications"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 3 tickets to Normal for SLA calculation on ticket creation",
+      "position": 5,
+      "raw_title": "[SLA] [New] Sev-3 SLA calculation",
+      "category_id": "4615176155415"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/triggers/1500033522062.json",
+      "id": 1500033522062,
+      "title": "[SLA] [Update] Sev-3 SLA calculation",
+      "active": true,
+      "updated_at": "2023-03-29T14:46:28Z",
+      "created_at": "2021-10-01T18:57:38Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "normal"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "update_type",
+            "operator": "is",
+            "value": "Change"
+          },
+          {
+            "field": "custom_fields_1500011047201",
+            "operator": "is",
+            "value": "moderate_-_3"
+          },
+          {
+            "field": "status",
+            "operator": "is_not",
+            "value": "new"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "case_file"
+          }
+        ],
+        "any": []
+      },
+      "description": "Set Severity 3 tickets to Normal for SLA calculation on ticket update",
+      "position": 6,
+      "raw_title": "[SLA] [Update] Sev-3 SLA calculation",
+      "category_id": "4615176155415"
+    }
+  ],
+  "next_page": "https://dynatrace1633106639.zendesk.com/api/v2/triggers.json?page=2",
+  "previous_page": null,
+  "count": 418
+}

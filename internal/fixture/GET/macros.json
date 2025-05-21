@@ -1,0 +1,3575 @@
+{
+  "macros": [
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250641.json",
+      "id": 1500033250641,
+      "title": "Assignment & Routing...::Handoff::APAC TSE",
+      "active": true,
+      "updated_at": "2023-01-25T20:18:22Z",
+      "created_at": "2021-10-01T18:58:22Z",
+      "default": false,
+      "position": 30,
+      "description": "Initiates handoff to APAC TSE team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Handover to APAC</b><br><br><b>Reason(s) for a handover:</b></p><p><b><br></b></p><p><b>Troubleshooting performed:</b></p><p><b><br></b></p><p><b>Troubleshooting results:</b></p><p><b><br></b></p><p><b>Requested action(s):</b></p><p><b><br></b></p><p><b>Call summary? </b>(if applicable)</p>"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": "handover_apac"
+        },
+        {
+          "field": "current_tags",
+          "value": "handover_apac"
+        },
+        {
+          "field": "remove_tags",
+          "value": "handover_emea handover_noram follow_the_sun"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::APAC TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250621.json",
+      "id": 1500033250621,
+      "title": "Assignment & Routing...::Handoff::Clear Handoff / Follow the Sun",
+      "active": true,
+      "updated_at": "2023-01-25T20:17:55Z",
+      "created_at": "2021-10-01T18:58:21Z",
+      "default": false,
+      "position": 28,
+      "description": "Removes all handoff statuses (including \"Follow the Sun\").",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "follow_the_sun handover handover_apac handover_emea handover_noram weekend_2"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": ""
+        },
+        {
+          "field": "custom_fields_1900004663765",
+          "value": ""
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::Clear Handoff / Follow the Sun"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250661.json",
+      "id": 1500033250661,
+      "title": "Assignment & Routing...::Handoff::EMEA TSE",
+      "active": true,
+      "updated_at": "2023-01-25T20:18:14Z",
+      "created_at": "2021-10-01T18:58:22Z",
+      "default": false,
+      "position": 31,
+      "description": "Initiates handoff to EMEA TSE team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Handover to EMEA</b><br><br><b>Reason(s) for a handover:</b></p><p><b><br></b></p><p><b>Troubleshooting performed:</b></p><p><b><br></b></p><p><b>Troubleshooting results:</b></p><p><b><br></b></p><p><b>Requested action(s):</b></p><p><b><br></b></p><p><b>Call summary? </b>(if applicable)</p>"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": "handover_emea"
+        },
+        {
+          "field": "current_tags",
+          "value": "handover_emea"
+        },
+        {
+          "field": "remove_tags",
+          "value": "handover_apac handover_noram follow_the_sun"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::EMEA TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677525.json",
+      "id": 1900008677525,
+      "title": "Assignment & Routing...::Handoff::Follow the Sun",
+      "active": true,
+      "updated_at": "2023-01-12T13:33:26Z",
+      "created_at": "2021-10-01T18:58:22Z",
+      "default": false,
+      "position": 29,
+      "description": "Initiates \"Follow the Sun\" handoff and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Follow the Sun</b></p><p><b>Reason(s) for Follow the sun:</b></p>"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": "follow_the_sun"
+        },
+        {
+          "field": "current_tags",
+          "value": "follow_the_sun"
+        },
+        {
+          "field": "remove_tags",
+          "value": "handover_apac handover_emea handover_noram"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::Follow the Sun"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/22738697999639.json",
+      "id": 22738697999639,
+      "title": "Assignment & Routing...::Handoff::India TSE",
+      "active": true,
+      "updated_at": "2024-04-11T17:47:39Z",
+      "created_at": "2024-04-11T17:43:04Z",
+      "default": false,
+      "position": 131,
+      "description": "Initiates handoff to India TSE team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Handover to EMEA</b><br></p><p><br><b>Reason(s) for a handover:</b></p><p><b><br></b></p><p><b>Troubleshooting performed:</b></p><p><b><br></b></p><p><b>Troubleshooting results:</b></p><p><b><br></b></p><p><b>Requested action(s):</b></p><p><b><br></b></p><p><b>Call summary? </b>(if applicable)</p><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": "handover_india"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::India TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/17694698236439.json",
+      "id": 17694698236439,
+      "title": "Assignment & Routing...::Handoff::NASA PS",
+      "active": true,
+      "updated_at": "2024-02-15T19:46:20Z",
+      "created_at": "2023-09-20T21:33:49Z",
+      "default": false,
+      "position": 125,
+      "description": "Initiates handoff to NASA PS team.",
+      "actions": [
+        {
+          "field": "custom_fields_17694655303447",
+          "value": "to_nasa_handoff"
+        },
+        {
+          "field": "assignee_id",
+          "value": ""
+        },
+        {
+          "field": "group_id",
+          "value": "17616661917335"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>NASA Chat Handoff Notes from {{current_user.name}}​</b><br></p><p><b><br></b></p><p><b>Reason for Handoff: </b>[Provide the reason you are handing off an active chat]</p><p><b><br></b></p><p><b>Issue:</b>&nbsp;[High level description of issue]</p><p><br></p><p><b>Link to MC</b>:</p><p><b>Link to SaaS</b>: https://{{ticket.ticket_field_1500011047301}}.live.dynatrace.com&nbsp;(if Managed or invalid environment, fix)</p><p><br></p><p><b>Status:</b> [What is the current status - initial diagnosis/close to resolution/waiting for customer/etc]</p><p><b><br></b></p><p><b>Steps taken: </b>[Numbered list of steps that have been taken so far]</p><p><b><br></b></p><p><b>Suggested next Steps for PS: </b>[Numbered list of suggestions for the next PS who will take on this chat]</p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006053542,
+          1500006046281
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::NASA PS"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250681.json",
+      "id": 1500033250681,
+      "title": "Assignment & Routing...::Handoff::NORAM TSE",
+      "active": true,
+      "updated_at": "2023-01-25T20:18:35Z",
+      "created_at": "2021-10-01T18:58:23Z",
+      "default": false,
+      "position": 32,
+      "description": "Initiates handoff to NORAM TSE team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Handover to NORAM</b><br><br><b>Reason(s) for a handover:</b></p><p><b><br></b></p><p><b>Troubleshooting performed:</b></p><p><b><br></b></p><p><b>Troubleshooting results:</b></p><p><b><br></b></p><p><b>Requested action(s):</b></p><p><b><br></b></p><p><b>Call summary? </b>(if applicable)</p>"
+        },
+        {
+          "field": "custom_fields_1500011100762",
+          "value": "handover_noram"
+        },
+        {
+          "field": "current_tags",
+          "value": "handover_noram"
+        },
+        {
+          "field": "remove_tags",
+          "value": "handover_emea handover_apac follow_the_sun"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::NORAM TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5524217962135.json",
+      "id": 5524217962135,
+      "title": "Assignment & Routing...::Handoff::PS to PS — Active Chat",
+      "active": true,
+      "updated_at": "2024-04-11T17:00:32Z",
+      "created_at": "2022-04-18T17:42:03Z",
+      "default": false,
+      "position": 76,
+      "description": "Initiates \"Active\" handoff to another Product Specialist, unassigns the ticket, and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "assignee_id",
+          "value": ""
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h1>Active Chat Handoff Notes from {{current_user.name}}​</h1><p><b><br></b></p><p><b>Reason for Handoff: </b>[Provide the reason you are handing off an active chat]</p><p><b><br></b></p><p><b>Issue:</b>&nbsp;[High level description of issue]</p><p><br></p><p><b>Link to MC</b>:</p><p><b>Link to SaaS</b>: https://{{ticket.ticket_field_1500011047301}}.live.dynatrace.com&nbsp;(if Managed or invalid environment, fix)</p><p><br></p><p><b>Status:</b> [What is the current status - initial diagnosis/close to resolution/waiting for customer/etc]</p><p><b><br></b></p><p><b>Steps taken: </b>[Numbered list of steps that have been taken so far]</p><p><b><br></b></p><p><b>Suggested next Steps for PS: </b>[Numbered list of suggestions for the next PS who will take on this chat]</p>"
+        },
+        {
+          "field": "status",
+          "value": "open"
+        },
+        {
+          "field": "remove_tags",
+          "value": "away_and_reassign"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::PS to PS — Active Chat"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5524369928471.json",
+      "id": 5524369928471,
+      "title": "Assignment & Routing...::Handoff::PS to PS — Pending Chat",
+      "active": true,
+      "updated_at": "2023-02-23T19:31:24Z",
+      "created_at": "2022-04-18T17:48:47Z",
+      "default": false,
+      "position": 77,
+      "description": "Initiates \"Pending\" handoff to another Product Specialist, puts ticket in \"Pending\" status, and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "status",
+          "value": "pending"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h1>Pending Chat Handoff Notes from {{current_user.name}}​&nbsp;</h1><p><b><br></b></p><p><b>Issue: </b>[High level description of issue]</p><p><br></p><p><b>Link to MC</b>:&nbsp;</p><p><b>Link to SaaS</b>: https://{{ticket.ticket_field_1500011047301}}.live.dynatrace.com (if managed or invalid environment, fix)</p><p><br></p><p><b>Status:</b> [What is the current status - initial diagnosis/close to resolution/waiting for customer/etc]</p><p><b><br></b></p><p><b>Steps taken: </b>[Numbered list of steps that have been taken so far]</p><p><b><br></b></p><p><b>Suggested next Steps for PS: </b>[Numbered list of suggestions for the next PS who will take on this chat]</p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::PS to PS — Pending Chat"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5401157967767.json",
+      "id": 5401157967767,
+      "title": "Assignment & Routing...::Handoff::To PS",
+      "active": true,
+      "updated_at": "2024-02-20T22:27:07Z",
+      "created_at": "2022-04-12T15:44:58Z",
+      "default": false,
+      "position": 57,
+      "description": "Initiates handoff to Product Specialist team and templates a private comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse_to_ps_handoff"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h1>Handoff from Technical Support Engineer to Product Specialist</h1><h2>Please ensure to update the conversation title, and set the appropriate severity, product area, and reason for contact fields.</h2><p>{{current_user.name}} has marked this issue for handoff to Dynatrace ONE Product Specialist.<br></p><p><br></p><p><b>Issue/Question</b>:</p><p><b>Environment: {{ticket.ticket_field_1500011047301}}</b></p><p><b>Troubleshooting Details/Summary (if applicable):&nbsp;</b></p><p><b><br></b></p><p><b>Important! Please review any critical Org or User Notes below before starting conversation (if empty, just ignore).&nbsp;</b></p><p><b>Org Notes: </b>{{ticket.organization.notes}}<b> </b></p><p><b>User Notes: </b>{{ticket.requester.notes}}<b><br></b></p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_tse_to_ps remove_assignee_from_followers"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006046281,
+          1900001030265
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::To PS"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500042831902.json",
+      "id": 1500042831902,
+      "title": "Assignment & Routing...::Handoff::To TSE",
+      "active": true,
+      "updated_at": "2024-05-22T17:17:09Z",
+      "created_at": "2021-12-14T16:59:24Z",
+      "default": false,
+      "position": 54,
+      "description": "Initiates handoff to Technical Support team, puts ticket into \"On-hold\" status, and templates a private comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps_to_tse_handoff"
+        },
+        {
+          "field": "status",
+          "value": "hold"
+        },
+        {
+          "field": "current_tags",
+          "value": "handoff_to_tse_sla public_ps_to_tse"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h1><b>Handoff from Product Specialist to Technical Support Engineer</b><br></h1><h2>Please ensure to update the conversation title, and set the appropriate severity, product area, and reason for contact fields.</h2><p>{{current_user.name}} has marked this issue to be handed off to support.<br></p><p><br></p><p><b>Issue</b>:</p><p><b>Environment: {{ticket.ticket_field_1500011047301}}</b></p><p><b>Details and Troubleshooting Results:</b></p><p><b>RTC Results: </b>[*if applicable]</p><p><br></p><p>(Please ensure any troubleshooting info is documented and any attachments added. Check <a href=\"https://dev-wiki.dynatrace.org/display/SUP/Needed+Information+from+the+customer\" target=\"_blank\" rel=\"noreferrer\">https://dev-wiki.dynatrace.org/display/SUP/Needed+Information+from+the+customer</a> for a checklist for your issue type)&nbsp;</p><p><br></p><p><b>Important! Please review any critical Org or User Notes below before starting conversation (if empty, just ignore).&nbsp;</b></p><p><b>Org Notes: </b>{{ticket.organization.notes}}<b></b></p><p><b>User Notes: </b>{{ticket.requester.notes}}</p>"
+        },
+        {
+          "field": "remove_tags",
+          "value": "to_tse_pushback"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Handoff::To TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047768222.json",
+      "id": 1500047768222,
+      "title": "Assignment & Routing...::Special Handling Override::Move to EU Residents Only",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:03Z",
+      "created_at": "2022-01-12T14:12:21Z",
+      "default": false,
+      "position": 62,
+      "description": "Moves ticket to the \"EU Residents Only\" subgroup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_fedramp sh_non_chinese_residents sh_non_us_citizens_only sh_standard sh_us_citizens_residents_only"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_eu_residents_only"
+        },
+        {
+          "field": "group_id",
+          "value": "1900001030225"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to EU Residents Only"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047768682.json",
+      "id": 1500047768682,
+      "title": "Assignment & Routing...::Special Handling Override::Move to FedRAMP",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:08Z",
+      "created_at": "2022-01-12T14:18:17Z",
+      "default": false,
+      "position": 67,
+      "description": "Moves ticket to the \"FedRAMP\" subgroup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_eu_residents_only sh_non_chinese_residents sh_non_us_citizens_only sh_standard sh_us_citizens_residents_only"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_fedramp"
+        },
+        {
+          "field": "group_id",
+          "value": "1500006053502"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to FedRAMP"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047768782.json",
+      "id": 1500047768782,
+      "title": "Assignment & Routing...::Special Handling Override::Move to Non-Chinese Residents",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:14Z",
+      "created_at": "2022-01-12T14:19:20Z",
+      "default": false,
+      "position": 65,
+      "description": "Moves ticket to the \"Non-China\" subgroup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_eu_residents_only sh_fedramp sh_non_us_citizens_only sh_standard sh_us_citizens_residents_only"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_non_chinese_residents"
+        },
+        {
+          "field": "group_id",
+          "value": "1500006046261"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to Non-Chinese Residents"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047768862.json",
+      "id": 1500047768862,
+      "title": "Assignment & Routing...::Special Handling Override::Move to Non-US Residents Only",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:20Z",
+      "created_at": "2022-01-12T14:20:37Z",
+      "default": false,
+      "position": 64,
+      "description": "Moves ticket to the \"Non-US\" subgroup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_eu_residents_only sh_fedramp sh_non_chinese_residents sh_standard sh_us_citizens_residents_only"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_non_us_citizens_only"
+        },
+        {
+          "field": "group_id",
+          "value": "1500006053522"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to Non-US Residents Only"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047769002.json",
+      "id": 1500047769002,
+      "title": "Assignment & Routing...::Special Handling Override::Move to Standard",
+      "active": true,
+      "updated_at": "2023-01-30T22:17:09Z",
+      "created_at": "2022-01-12T14:22:21Z",
+      "default": false,
+      "position": 63,
+      "description": "Moves ticket to the normal Dynatrace ONE group.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_eu_residents_only sh_fedramp sh_non_chinese_residents sh_non_us_citizens_only sh_us_citizens_residents_only"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_standard"
+        },
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to Standard"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500047768662.json",
+      "id": 1500047768662,
+      "title": "Assignment & Routing...::Special Handling Override::Move to US Residents Only",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:39Z",
+      "created_at": "2022-01-12T14:17:53Z",
+      "default": false,
+      "position": 66,
+      "description": "Moves ticket to the \"US Only\" subgroup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "sh_eu_residents_only sh_fedramp sh_non_chinese_residents sh_non_us_citizens_only sh_standard"
+        },
+        {
+          "field": "current_tags",
+          "value": "sh_us_citizens_residents_only"
+        },
+        {
+          "field": "group_id",
+          "value": "1900001030285"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Special Handling Override::Move to US Residents Only"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522622.json",
+      "id": 1500033522622,
+      "title": "Assignment & Routing...::Transfer::To Dynatrace ONE — D1 Team",
+      "active": true,
+      "updated_at": "2024-03-06T23:17:04Z",
+      "created_at": "2021-10-01T18:58:23Z",
+      "default": false,
+      "position": 33,
+      "description": "Initiates transfer to Dynatrace ONE Product Specialist team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011047321",
+          "value": ""
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes to D1 team from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "custom_fields_1500011047341",
+          "value": ""
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "1500002895221"
+        },
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006046321,
+          1500006053622,
+          1500006053582,
+          1900001030385,
+          4858717614231,
+          1500006046341,
+          1500006046361
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Transfer::To Dynatrace ONE — D1 Team"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/12241488552087.json",
+      "id": 12241488552087,
+      "title": "Assignment & Routing...::Transfer::To Dynatrace ONE — Support Team",
+      "active": true,
+      "updated_at": "2024-03-06T23:17:15Z",
+      "created_at": "2023-02-07T16:31:01Z",
+      "default": false,
+      "position": 34,
+      "description": "Initiates transfer to Dynatrace ONE TSE team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011047321",
+          "value": ""
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes to Support team from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        },
+        {
+          "field": "custom_fields_1500011047341",
+          "value": ""
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "1500002895221"
+        },
+        {
+          "field": "group_id",
+          "value": "1900001029865"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        },
+        {
+          "field": "custom_fields_15279369602839",
+          "value": "1_stage_intake"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006053582,
+          4858717614231,
+          1500006046341,
+          1500006046321,
+          1500006053622,
+          1900001030385,
+          1500006046361
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Transfer::To Dynatrace ONE — Support Team"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/8184248747671.json",
+      "id": 8184248747671,
+      "title": "Assignment & Routing...::Transfer::To Insights",
+      "active": true,
+      "updated_at": "2024-03-06T21:23:01Z",
+      "created_at": "2022-08-15T15:24:34Z",
+      "default": false,
+      "position": 91,
+      "description": "Initiates transfer to Insights team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030305"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "21798545497239"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Insights"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/8899487076887.json",
+      "id": 8899487076887,
+      "title": "Assignment & Routing...::Transfer::To Insights Internal Help",
+      "active": true,
+      "updated_at": "2024-03-06T23:17:41Z",
+      "created_at": "2022-09-15T16:32:51Z",
+      "default": false,
+      "position": 92,
+      "description": "Initiates transfer to Insights Internal Help team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030305"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "8899030124439"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Insights Internal Help"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522642.json",
+      "id": 1500033522642,
+      "title": "Assignment & Routing...::Transfer::To Licensing",
+      "active": true,
+      "updated_at": "2024-03-06T21:21:26Z",
+      "created_at": "2021-10-01T18:58:24Z",
+      "default": false,
+      "position": 35,
+      "description": "Initiates transfer to Licensing team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053602"
+        },
+        {
+          "field": "custom_fields_1500011047321",
+          "value": "question"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "21798065240471"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Licensing"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5923426409751.json",
+      "id": 5923426409751,
+      "title": "Assignment & Routing...::Transfer::To PreSales",
+      "active": true,
+      "updated_at": "2023-01-12T13:37:49Z",
+      "created_at": "2022-05-06T19:57:14Z",
+      "default": false,
+      "position": 36,
+      "description": "Initiates transfer to PreSales team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1900001030325"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To PreSales"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/4858816091287.json",
+      "id": 4858816091287,
+      "title": "Assignment & Routing...::Transfer::To Preview Program",
+      "active": true,
+      "updated_at": "2024-03-06T21:35:33Z",
+      "created_at": "2022-03-18T19:29:08Z",
+      "default": false,
+      "position": 37,
+      "description": "Initiates transfer to Preview Program team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "notify_preview public_transfer"
+        },
+        {
+          "field": "group_id",
+          "value": "5694468584343"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "21868420704663"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Preview Program"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677545.json",
+      "id": 1900008677545,
+      "title": "Assignment & Routing...::Transfer::To Proscripting",
+      "active": false,
+      "updated_at": "2023-05-05T15:16:27Z",
+      "created_at": "2021-10-01T18:58:24Z",
+      "default": false,
+      "position": 38,
+      "description": "Initiates transfer to Proscripting team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053662"
+        },
+        {
+          "field": "custom_fields_1500011100802",
+          "value": "support"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "1900000582185"
+        },
+        {
+          "field": "current_tags",
+          "value": "proscripting public_transfer"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Proscripting"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500037069142.json",
+      "id": 1500037069142,
+      "title": "Assignment & Routing...::Transfer::To Services Portal",
+      "active": true,
+      "updated_at": "2024-03-06T21:45:04Z",
+      "created_at": "2021-11-05T16:04:25Z",
+      "default": false,
+      "position": 40,
+      "description": "Initiates transfer to Services Portal team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006053682"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<ul><li><p>Consultant that is assigned to this project (found in ci360):</p></li><li><p>Planned start and end date:&nbsp;</p></li><li><p>Engagement Manager’s name:</p></li><li><p>Contact that approved the work:</p></li></ul><p><br></p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "21868714215191"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To Services Portal"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250701.json",
+      "id": 1500033250701,
+      "title": "Assignment & Routing...::Transfer::To University",
+      "active": true,
+      "updated_at": "2024-03-06T21:22:14Z",
+      "created_at": "2021-10-01T18:58:25Z",
+      "default": false,
+      "position": 39,
+      "description": "Initiates transfer to University team and templates private handoff comment.",
+      "actions": [
+        {
+          "field": "group_id",
+          "value": "1500006046381"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Handoff Notes from {{current_user.name}}</p><p>Reason for Handoff: [Why is this being handed off]</p><p>Issue: [High level description of issue]</p><p>Status: [What is the status - initial diagnosis/close to resolution/waiting for customer/etc.]</p><p>Steps taken: [Numbered list of steps that have been taken so far]</p><p>Suggested next steps: [Numbered list of suggestions for the next agent who will take on this conversation]</p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "public_transfer"
+        },
+        {
+          "field": "ticket_form_id",
+          "value": "21797802327063"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Assignment & Routing...::Transfer::To University"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/7249471452951.json",
+      "id": 7249471452951,
+      "title": "Assignment & Routing...::Update Geo::APAC",
+      "active": true,
+      "updated_at": "2023-01-12T13:39:44Z",
+      "created_at": "2022-07-05T20:00:38Z",
+      "default": false,
+      "position": 89,
+      "description": "Sets \"Account Geography\" to \"APAC\" and tags accordingly.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011835901",
+          "value": "apac"
+        },
+        {
+          "field": "current_tags",
+          "value": "apac"
+        },
+        {
+          "field": "remove_tags",
+          "value": "latam emea noram"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046321,
+        "ids": [
+          1500006046321
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Update Geo::APAC"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/7249463471767.json",
+      "id": 7249463471767,
+      "title": "Assignment & Routing...::Update Geo::EMEA",
+      "active": true,
+      "updated_at": "2023-01-12T13:39:50Z",
+      "created_at": "2022-07-05T20:00:06Z",
+      "default": false,
+      "position": 90,
+      "description": "Sets \"Account Geography\" to \"EMEA\" and tags accordingly.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011835901",
+          "value": "emea"
+        },
+        {
+          "field": "current_tags",
+          "value": "emea"
+        },
+        {
+          "field": "remove_tags",
+          "value": "latam apac noram"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046321,
+        "ids": [
+          1500006046321
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Update Geo::EMEA"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/7249468124695.json",
+      "id": 7249468124695,
+      "title": "Assignment & Routing...::Update Geo::LATAM",
+      "active": true,
+      "updated_at": "2023-01-12T13:39:55Z",
+      "created_at": "2022-07-05T20:01:01Z",
+      "default": false,
+      "position": 88,
+      "description": "Sets \"Account Geography\" to \"LATAM\" and tags accordingly.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011835901",
+          "value": "latam"
+        },
+        {
+          "field": "current_tags",
+          "value": "latam"
+        },
+        {
+          "field": "remove_tags",
+          "value": "emea apac noram"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046321,
+        "ids": [
+          1500006046321
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Update Geo::LATAM"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/7249432959255.json",
+      "id": 7249432959255,
+      "title": "Assignment & Routing...::Update Geo::NORAM",
+      "active": true,
+      "updated_at": "2023-01-12T13:40:00Z",
+      "created_at": "2022-07-05T19:59:40Z",
+      "default": false,
+      "position": 87,
+      "description": "Sets \"Account Geography\" to \"NORAM\" and tags accordingly.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011835901",
+          "value": "noram"
+        },
+        {
+          "field": "current_tags",
+          "value": "noram"
+        },
+        {
+          "field": "remove_tags",
+          "value": "latam emea apac"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046321,
+        "ids": [
+          1500006046321
+        ]
+      },
+      "raw_title": "Assignment & Routing...::Update Geo::NORAM"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/8184340302231.json",
+      "id": 8184340302231,
+      "title": "Chats...::Disable Auto-routing on \"Away and Reassign\"",
+      "active": true,
+      "updated_at": "2023-01-12T14:08:13Z",
+      "created_at": "2022-08-15T15:29:20Z",
+      "default": false,
+      "position": 93,
+      "description": "This macro will apply a tag to prevent auto-routing should the agent's status be \"Away and Reassign\" and the customer replies.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "auto_route_ignore"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}}​ has turned off auto-routing on this conversation. To reenable, please run the macro <i>Chats::Enable Auto routing on \"Away and Reassign\"</i>.<br></p>"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Chats...::Disable Auto-routing on \"Away and Reassign\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/8184400668311.json",
+      "id": 8184400668311,
+      "title": "Chats...::Enable Auto-routing on \"Away and Reassign\"",
+      "active": true,
+      "updated_at": "2023-01-12T14:08:11Z",
+      "created_at": "2022-08-15T15:31:36Z",
+      "default": false,
+      "position": 94,
+      "description": "This macro will remove the tag that prevents auto-routing should the agent's status be \"Away and Reassign\" and the customer replies.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "auto_route_ignore"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}}​ has enabled auto-routing on this conversation. To disable, please run the macro <i>Chats::Prevent Auto routing on \"Away and Reassign\"</i>.<br></p>"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Chats...::Enable Auto-routing on \"Away and Reassign\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/8868969253399.json",
+      "id": 8868969253399,
+      "title": "Chats...::Snooze Conversation",
+      "active": true,
+      "updated_at": "2023-02-02T02:42:23Z",
+      "created_at": "2022-09-14T14:38:22Z",
+      "default": false,
+      "position": 95,
+      "description": "Snoozes conversation by placing it in \"Pending\" status and updates ticket fields \"Next Steps\" and \"Current Summary\".",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "snooze"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Chats...::Snooze Conversation"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250421.json",
+      "id": 1500033250421,
+      "title": "Close and redirect to topics",
+      "active": false,
+      "updated_at": "2021-10-01T18:58:10Z",
+      "created_at": "2021-10-01T18:58:10Z",
+      "default": false,
+      "position": 1,
+      "description": null,
+      "actions": [
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "priority",
+          "value": "normal"
+        },
+        {
+          "field": "type",
+          "value": "incident"
+        },
+        {
+          "field": "assignee_id",
+          "value": "current_user"
+        },
+        {
+          "field": "group_id",
+          "value": "current_groups"
+        },
+        {
+          "field": "comment_value",
+          "value": "Thanks for your request. This issue you reported is a known issue. For more information, please visit our forums. "
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Close and redirect to topics"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900020257945.json",
+      "id": 1900020257945,
+      "title": "Collaboration: :Request Chat Captain Assistance",
+      "active": false,
+      "updated_at": "2021-12-28T15:32:46Z",
+      "created_at": "2021-12-28T15:31:57Z",
+      "default": false,
+      "position": 59,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "help-livechat",
+            "<strong>Requester:</strong> {{current_user.name}}<br><strong>Customer is Seeing:</strong><br><strong>MC/SaaS Link:</strong><br><a href='{{ticket.url}}'><strong>Conversation Link:</strong></a><br><strong>Troubleshooting:</strong><br><strong>Important Collaborators:</strong>"
+          ]
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Collaboration: :Request Chat Captain Assistance"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500038806421.json",
+      "id": 1500038806421,
+      "title": "Collaboration::Clear Chat Captain Assistance",
+      "active": false,
+      "updated_at": "2022-03-07T15:05:18Z",
+      "created_at": "2021-11-24T19:27:21Z",
+      "default": false,
+      "position": 50,
+      "description": null,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "chat_cap_help"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Assistance Summary:</b></p><p><b><br></b></p>"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Collaboration::Clear Chat Captain Assistance"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900020257985.json",
+      "id": 1900020257985,
+      "title": "Collaboration::Request Chat Captain Assistance test",
+      "active": false,
+      "updated_at": "2021-12-28T15:39:07Z",
+      "created_at": "2021-12-28T15:32:55Z",
+      "default": false,
+      "position": 60,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<strong>Requester:</strong> {{current_user.name}}<br><strong>Customer is Seeing:</strong><br><strong>MC/SaaS Link:</strong><br><a href='{{ticket.url}}'><strong>Conversation Link:</strong></a><br><strong>Troubleshooting:</strong><br><strong>Important Collaborators:</strong>",
+            "help-livechat"
+          ]
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Collaboration::Request Chat Captain Assistance test"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500042503561.json",
+      "id": 1500042503561,
+      "title": "Collaboration::Take Handoff from D1",
+      "active": false,
+      "updated_at": "2022-03-07T17:59:00Z",
+      "created_at": "2021-12-14T17:06:18Z",
+      "default": false,
+      "position": 58,
+      "description": null,
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "support_handoff"
+        },
+        {
+          "field": "assignee_id",
+          "value": "current_user"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}} is taking ownership of this conversation<br></p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "support_investigation"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542
+        ]
+      },
+      "raw_title": "Collaboration::Take Handoff from D1"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522422.json",
+      "id": 1500033522422,
+      "title": "Customer not responding",
+      "active": false,
+      "updated_at": "2021-10-01T18:58:11Z",
+      "created_at": "2021-10-01T18:58:11Z",
+      "default": false,
+      "position": 2,
+      "description": null,
+      "actions": [
+        {
+          "field": "status",
+          "value": "pending"
+        },
+        {
+          "field": "comment_value",
+          "value": "Hello {{ticket.requester.name}}. Our agent {{current_user.name}} has tried to contact you about this request but we haven't heard back from you yet. Please let us know if we can be of further assistance. Thanks. "
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Customer not responding"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/23665443059223.json",
+      "id": 23665443059223,
+      "title": "Dev only...::Adam",
+      "active": true,
+      "updated_at": "2024-05-22T15:25:39Z",
+      "created_at": "2024-05-22T15:17:54Z",
+      "default": false,
+      "position": 134,
+      "description": null,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "test_adam"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Dev only...::Adam"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500048848041.json",
+      "id": 1500048848041,
+      "title": "Dev only...::Close Conversation",
+      "active": true,
+      "updated_at": "2023-01-12T14:12:40Z",
+      "created_at": "2022-01-19T22:07:37Z",
+      "default": false,
+      "position": 62,
+      "description": null,
+      "actions": [
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "current_tags",
+          "value": "permclose"
+        }
+      ],
+      "restriction": {
+        "type": "User",
+        "id": 1905893850245
+      },
+      "raw_title": "Dev only...::Close Conversation"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522442.json",
+      "id": 1500033522442,
+      "title": "Downgrade and inform",
+      "active": false,
+      "updated_at": "2022-01-10T19:27:53Z",
+      "created_at": "2021-10-01T18:58:11Z",
+      "default": false,
+      "position": 3,
+      "description": null,
+      "actions": [
+        {
+          "field": "priority",
+          "value": "low"
+        },
+        {
+          "field": "comment_value",
+          "value": "We're currently experiencing unusually high traffic. We'll get back to you as soon as possible."
+        },
+        {
+          "field": "status",
+          "value": "pending"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Downgrade and inform"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677405.json",
+      "id": 1900008677405,
+      "title": "Follow-up...::Account Attention::CSM Follow-up call",
+      "active": true,
+      "updated_at": "2023-01-12T13:43:06Z",
+      "created_at": "2021-10-01T18:58:13Z",
+      "default": false,
+      "position": 9,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"CSM Follow-up call\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Follow up call needed with {{ticket.organization.name}}",
+            "<p>Follow up call needed with {{ticket.organization.name}} for&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "account_attention__csm_follow-up_call"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Follow-up...::Account Attention::CSM Follow-up call"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250481.json",
+      "id": 1500033250481,
+      "title": "Follow-up...::Account Attention::Customer Coaching",
+      "active": true,
+      "updated_at": "2023-01-12T13:42:47Z",
+      "created_at": "2021-10-01T18:58:14Z",
+      "default": false,
+      "position": 10,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Customer coaching\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Customer Coaching needed for {{ticket.organization.name}}",
+            "<p>Customer Coaching needed for {{ticket.organization.name}}<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "account_attention__customer_coaching"
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Account Attention::Customer Coaching"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522502.json",
+      "id": 1500033522502,
+      "title": "Follow-up...::Documentation::Dynatrace Documentation",
+      "active": true,
+      "updated_at": "2024-02-07T15:09:29Z",
+      "created_at": "2021-10-01T18:58:15Z",
+      "default": false,
+      "position": 12,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Technical Handoff\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Technical handoff needed for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Technical handoff needed for {{ticket.ticket_field_option_title_1900002752685}}&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "doc__dynatrace_documentation"
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Follow-up...::Documentation::Dynatrace Documentation"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677425.json",
+      "id": 1900008677425,
+      "title": "Follow-up...::Documentation::External KB::Community Article",
+      "active": true,
+      "updated_at": "2024-02-06T21:12:24Z",
+      "created_at": "2021-10-01T18:58:14Z",
+      "default": false,
+      "position": 11,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"External Doc\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Improved Product documentation needed for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Improved Product documentation needed for {{ticket.ticket_field_option_title_1900002752685}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "doc__external_doc"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Documentation::External KB::Community Article"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677445.json",
+      "id": 1900008677445,
+      "title": "Follow-up...::Documentation::Internal KB",
+      "active": true,
+      "updated_at": "2024-02-06T21:12:42Z",
+      "created_at": "2021-10-01T18:58:15Z",
+      "default": false,
+      "position": 13,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"TKB\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Improved TKB needed for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Improved TKB needed for {{ticket.ticket_field_option_title_1900002752685}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "doc__internal_doc__tkb"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Documentation::Internal KB"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677465.json",
+      "id": 1900008677465,
+      "title": "Follow-up...::Expert Enablement::Global Training",
+      "active": true,
+      "updated_at": "2023-01-12T13:43:34Z",
+      "created_at": "2021-10-01T18:58:16Z",
+      "default": false,
+      "position": 14,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Global Training\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Improved Training needed for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Improved training needed for {{ticket.ticket_field_option_title_1900002752685}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "enablement__global_training"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Expert Enablement::Global Training"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250521.json",
+      "id": 1500033250521,
+      "title": "Follow-up...::Process Improvement",
+      "active": true,
+      "updated_at": "2023-01-12T13:43:39Z",
+      "created_at": "2021-10-01T18:58:16Z",
+      "default": false,
+      "position": 16,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Process Improvement\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Support Process improvement needed",
+            "<p>Support Process improvement due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "process_improvement"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Process Improvement"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522522.json",
+      "id": 1500033522522,
+      "title": "Follow-up...::Product Feedback::Product Idea",
+      "active": true,
+      "updated_at": "2023-01-12T13:43:46Z",
+      "created_at": "2021-10-01T18:58:17Z",
+      "default": false,
+      "position": 17,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Product Idea\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Product Idea identified for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Product Idea identified for {{ticket.ticket_field_option_title_1900002752685}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "product_feedback__product_idea"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Follow-up...::Product Feedback::Product Idea"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522542.json",
+      "id": 1500033522542,
+      "title": "Follow-up...::Product Feedback::Supportability Improvement",
+      "active": true,
+      "updated_at": "2023-01-12T13:43:53Z",
+      "created_at": "2021-10-01T18:58:17Z",
+      "default": false,
+      "position": 18,
+      "description": "Creates a child ticket via side conversations and sets \"Follow-up Category\" to \"Supportability Improvement\".",
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Supportability improvement identified for {{ticket.ticket_field_option_title_1900002752685}}",
+            "<p>Supportability improvement identified for {{ticket.ticket_field_option_title_1900002752685}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "product_feedback__supportability_improvement"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up...::Product Feedback::Supportability Improvement"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250501.json",
+      "id": 1500033250501,
+      "title": "Follow-up::Expert Enablement::Personal Training/Coaching",
+      "active": false,
+      "updated_at": "2021-10-01T18:58:16Z",
+      "created_at": "2021-10-01T18:58:16Z",
+      "default": false,
+      "position": 15,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Personal training/coaching for {{ticket.assignee}}",
+            "<p><b>Please complete this section:</b></p><p>Personal training/coaching needed for&nbsp;</p>",
+            "SupportAssignable:support_assignable/group/1500001300242",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "enablement__personal"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542
+        ]
+      },
+      "raw_title": "Follow-up::Expert Enablement::Personal Training/Coaching"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250541.json",
+      "id": 1500033250541,
+      "title": "Follow-up::SUPLAB::Reproducer",
+      "active": false,
+      "updated_at": "2022-03-07T20:10:24Z",
+      "created_at": "2021-10-01T18:58:18Z",
+      "default": false,
+      "position": 19,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Reproducer needed for {{ticket.ticket_field_option_title_1500004762442}}",
+            "<p>Reproducer needed for {{ticket.ticket_field_option_title_1500004762442}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "suplab__reproducer"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up::SUPLAB::Reproducer"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522562.json",
+      "id": 1500033522562,
+      "title": "Follow-up::SUPLAB::Troubleshooting Environment",
+      "active": false,
+      "updated_at": "2022-03-07T20:10:29Z",
+      "created_at": "2021-10-01T18:58:18Z",
+      "default": false,
+      "position": 20,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Troubleshooting environment needed for {{ticket.ticket_field_option_title_1500004762442}}",
+            "<p>Troubleshooting environment needed for {{ticket.ticket_field_option_title_1500004762442}} due to&nbsp;<br></p>",
+            "SupportAssignable:support_assignable/group/1500001300162",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "followed_up"
+        },
+        {
+          "field": "custom_fields_1500011100782",
+          "value": "suplab__troubleshooting_environment"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Follow-up::SUPLAB::Troubleshooting Environment"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5748166192663.json",
+      "id": 5748166192663,
+      "title": "Handoffs::PS to TSE::Handoff to Technical Support Engineer test no sla",
+      "active": false,
+      "updated_at": "2022-04-29T16:41:31Z",
+      "created_at": "2022-04-28T17:24:24Z",
+      "default": false,
+      "position": 56,
+      "description": null,
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h1><span style=\"font-size: inherit; font-weight: 600; font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, Arial, sans-serif;\">Handoff from Product Specialist to Technical Support Engineer</span><br></h1><h2><b>Please ensure to update the conversation title, and set the appropriate severity, product area, and reason for contact fields.</b></h2><p>{{current_user.name}} has marked this issue to be handed off to support.</p><p><b>Issue:</b><br></p><p><b>Environment:</b> (URL or ID)</p><p><b>Details and Troubleshooting Results:&nbsp;</b></p><p><b>RTC Results:</b> [*if applicable]</p><p>(Please ensure any troubleshooting info is documented and any attachments added)</p><p><br></p><h2><b><br></b></h2>"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps_to_tse_handoff"
+        },
+        {
+          "field": "status",
+          "value": "hold"
+        },
+        {
+          "field": "current_tags",
+          "value": "handoff_sla_test"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Handoffs::PS to TSE::Handoff to Technical Support Engineer test no sla"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5748251698455.json",
+      "id": 5748251698455,
+      "title": "Handoffs::PS to TSE::Take Handoff from Product Specialist",
+      "active": false,
+      "updated_at": "2022-04-28T23:20:53Z",
+      "created_at": "2022-04-28T17:26:16Z",
+      "default": false,
+      "position": 55,
+      "description": null,
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}} is taking ownership of this conversation</p>"
+        },
+        {
+          "field": "assignee_id",
+          "value": "current_user"
+        },
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "tse"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030265
+        ]
+      },
+      "raw_title": "Handoffs::PS to TSE::Take Handoff from Product Specialist"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500039100142.json",
+      "id": 1500039100142,
+      "title": "Help::Chat Captain::Request Chat Captain Assistance",
+      "active": false,
+      "updated_at": "2022-05-09T16:03:14Z",
+      "created_at": "2021-11-24T18:48:12Z",
+      "default": false,
+      "position": 49,
+      "description": null,
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<strong>Chat captain assistance request </strong><br>\n<strong>Requester:</strong> {{current_user.name}}<br>\n<strong>Customer is Seeing:</strong><br>\n<strong>MC/SaaS Link:</strong><br>\n<a href=\"http://{{ticket.url}}\"><strong>Conversation Link</strong></a><br>\n<strong>Troubleshooting:</strong><br>\n",
+            "help-livechat",
+            "text/plain"
+          ]
+        },
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "chat_captain_new"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Help::Chat Captain::Request Chat Captain Assistance"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500042669142.json",
+      "id": 1500042669142,
+      "title": "Help::RTC::Request RTC",
+      "active": false,
+      "updated_at": "2022-05-10T15:07:22Z",
+      "created_at": "2021-12-13T18:28:02Z",
+      "default": false,
+      "position": 51,
+      "description": null,
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "rtc_new"
+        },
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<strong>New RTC Request</strong><br>\n<strong>Requester:</strong> {{current_user.name}} <br>\n<strong>MC/SaaS Link:</strong><br>\n<strong>Product Area:</strong> {{ticket.ticket_field_option_title_product_area}} <br>\n<a href=\"{{ticket.url}}\"><strong>Conversation Link</strong></a><br>\n<strong>Details (PS Troubleshooting):</strong>\n* What is the issue?\n* What have we done so far?\n* Log files/Images\n",
+            "help-support",
+            "text/plain"
+          ]
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Real Time Collaboration requested by {{current_user.name}}</p>"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_active chat_captain_complete rtc_active rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Help::RTC::Request RTC"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/7597218045975.json",
+      "id": 7597218045975,
+      "title": "Jays Handoffs::PS to TSE::Handoff to TSE",
+      "active": true,
+      "updated_at": "2022-07-20T17:42:21Z",
+      "created_at": "2022-07-20T13:36:16Z",
+      "default": false,
+      "position": 2,
+      "description": null,
+      "actions": [
+        {
+          "field": "custom_fields_4612925021719",
+          "value": "ps_to_tse_handoff"
+        },
+        {
+          "field": "status",
+          "value": "hold"
+        },
+        {
+          "field": "side_conversation_ticket",
+          "value": [
+            "Handoff to TSE - {{ticket.ticket_field_option_title_1900002752685}}",
+            "<h1>Handoff from Product Specialist to Technical Support Engineer</h1><h2><b>Please ensure to update the conversation title, and set the appropriate severity, product area, and reason for contact fields.</b></h2><p>{{current_user.name}} has marked this issue to be handed off to support.</p><p><b>Issue:</b><br></p><p><b>Environment:</b> (URL or ID)<br></p><p><b>Details and Troubleshooting Results:&nbsp;</b></p><p><b>RTC Results:</b> [*if applicable]</p><p>(Please ensure any troubleshooting info is documented and any attachments added)</p><p><br></p><p><b>Original ticket created:</b>&nbsp;{{ticket.created_at_with_time}}</p><p><b>Special Handling Tag:</b> {{ticket.organization.custom_fields.special_handling.title}}</p><p><b>Severity:</b> {{ticket.ticket_field_option_title_1500011047201}}</p><p><br></p>",
+            "SupportAssignable:support_assignable/group/1900001029865",
+            "text/html"
+          ]
+        }
+      ],
+      "restriction": {
+        "type": "User",
+        "id": 1905888537025
+      },
+      "raw_title": "Jays Handoffs::PS to TSE::Handoff to TSE"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/24396719900823.json",
+      "id": 24396719900823,
+      "title": "Mark as...::Away and Reassign",
+      "active": true,
+      "updated_at": "2024-06-24T18:24:29Z",
+      "created_at": "2024-06-24T17:43:01Z",
+      "default": false,
+      "position": 136,
+      "description": "Applies the away_and_reassign tag.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "away_and_reassign"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Mark as...::Away and Reassign"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250441.json",
+      "id": 1500033250441,
+      "title": "Mark as...::Hot Ticket::Clear Hot Ticket",
+      "active": true,
+      "updated_at": "2023-01-12T14:04:03Z",
+      "created_at": "2021-10-01T18:58:11Z",
+      "default": false,
+      "position": 4,
+      "description": "Removes \"Hot Ticket\" status and templates audit via private comment.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011100622",
+          "value": "false"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Hot ticket cleared by {{current_user.name}}<br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245,
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Hot Ticket::Clear Hot Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677385.json",
+      "id": 1900008677385,
+      "title": "Mark as...::Hot Ticket::Set Hot Ticket",
+      "active": true,
+      "updated_at": "2023-01-12T14:05:55Z",
+      "created_at": "2021-10-01T18:58:13Z",
+      "default": false,
+      "position": 8,
+      "description": "Marks ticket as \"Hot Ticket\" and templates audit via private comment.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011100622",
+          "value": "true"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Hot ticket set by {{current_user.name}}<br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245,
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Hot Ticket::Set Hot Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/9166101922071.json",
+      "id": 9166101922071,
+      "title": "Mark as...::Known Long Running Ticket",
+      "active": true,
+      "updated_at": "2023-01-12T14:05:46Z",
+      "created_at": "2022-09-27T14:45:46Z",
+      "default": false,
+      "position": 97,
+      "description": "Tags ticket as a \"known\" long running ticket.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "known_long_ticket"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>This ticket is being marked as a \"known\" long-running ticket by {{current_user.name}}​.<br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245
+        ]
+      },
+      "raw_title": "Mark as...::Known Long Running Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/22203579242775.json",
+      "id": 22203579242775,
+      "title": "Mark as...::POC",
+      "active": true,
+      "updated_at": "2024-03-20T13:48:20Z",
+      "created_at": "2024-03-20T08:02:45Z",
+      "default": false,
+      "position": 130,
+      "description": "Mark ticket as POC and apply internal template.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "poc_support"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<h3>Customer name:</h3><p><b><br></b></p><h3>POC Region:</h3><p><b><br></b></p><h3>POC details, status &amp; deadline:</h3><p><b><br></b></p><h3>Technical Details:</h3><p><b><br></b></p><p><b>Problem description:</b></p><p><b><br></b></p><p><b>Tenant URL (SaaS): </b></p><p><b><br></b></p><p><b>MC Link (Managed):</b></p><p><b><br></b></p><p><b>BAS UUID: </b></p><p><b><br></b></p><p><b>Affected components &amp; versions:</b></p><p><b><br></b></p><p><b>Host OS Version details:</b></p><p><b><br></b></p><p><b>OneAgent &amp; Cluster Versions:</b></p><p><b><br></b></p><p><b>Extensions (OA/AG) versions:</b></p><p><b><br></b></p><p><b>ANY OTHER TECHNOLOGY, including Anti-Virus/Malware:</b></p><p><b><br></b></p><p><b>Remote access enabled (Y/N):</b></p><p><b>Any other APM agents running on the impacted host (Y/N):</b></p><p><b><br></b></p><p><b>Used Documentation, Troubleshooting articles, or steps followed (share links):</b></p><p><b><br></b></p><p><b>Supported Technologies (Y/N)</b></p><p><b>The tenant has sufficient Credit Units/License Enabled (Y/N)</b></p><p><b>Is there an active Slack project channel for this POC (Y/N)</b></p><p><br></p>"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Mark as...::POC"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/21222597862295.json",
+      "id": 21222597862295,
+      "title": "Mark as...::RFA Migration::Clear RFA Tag",
+      "active": false,
+      "updated_at": "2024-03-01T19:59:47Z",
+      "created_at": "2024-02-08T18:24:24Z",
+      "default": false,
+      "position": 129,
+      "description": "Temporary macro to remove RFA tagged tickets.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "jira-migration-outage-feb-2024-rfaupdate jira-migration-outage-feb-2024-newrfa"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1900001030245,
+          1500006046241
+        ]
+      },
+      "raw_title": "Mark as...::RFA Migration::Clear RFA Tag"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/21200403085335.json",
+      "id": 21200403085335,
+      "title": "Mark as...::RFA Migration::New RFA",
+      "active": false,
+      "updated_at": "2024-03-01T19:59:27Z",
+      "created_at": "2024-02-07T21:40:07Z",
+      "default": false,
+      "position": 127,
+      "description": "Temporary macro to tag ticket that needs a new RFA created.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "jira-migration-outage-feb-2024-newrfa"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245,
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Mark as...::RFA Migration::New RFA"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/21200442558999.json",
+      "id": 21200442558999,
+      "title": "Mark as...::RFA Migration::RFA Update",
+      "active": false,
+      "updated_at": "2024-03-01T19:59:19Z",
+      "created_at": "2024-02-07T21:41:35Z",
+      "default": false,
+      "position": 128,
+      "description": "Temporary macro to tag ticket that needs an RFA update.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "jira-migration-outage-feb-2024-rfaupdate"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245,
+          1500006046241,
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::RFA Migration::RFA Update"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/16505434868631.json",
+      "id": 16505434868631,
+      "title": "Mark as...::Support Level Override::ESS",
+      "active": true,
+      "updated_at": "2023-08-03T14:27:33Z",
+      "created_at": "2023-08-03T14:20:10Z",
+      "default": false,
+      "position": 122,
+      "description": "Gives a ticket ESS Support Level handling.",
+      "actions": [
+        {
+          "field": "custom_fields_1500011047241",
+          "value": "ess"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245,
+          1500006046281
+        ]
+      },
+      "raw_title": "Mark as...::Support Level Override::ESS"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/6125601245719.json",
+      "id": 6125601245719,
+      "title": "Mark as...::Support Standup::Agent",
+      "active": true,
+      "updated_at": "2023-01-12T14:04:26Z",
+      "created_at": "2022-05-16T20:06:28Z",
+      "default": false,
+      "position": 83,
+      "description": "Tags ticket for Agent Standup.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "standup-agent"
+        },
+        {
+          "field": "remove_tags",
+          "value": "standup-env standup-dem"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Support Standup::Agent"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/6125603357079.json",
+      "id": 6125603357079,
+      "title": "Mark as...::Support Standup::DEM",
+      "active": true,
+      "updated_at": "2023-01-12T14:04:32Z",
+      "created_at": "2022-05-16T20:06:54Z",
+      "default": false,
+      "position": 84,
+      "description": "Tags ticket for DEM Standup.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "standup-dem"
+        },
+        {
+          "field": "remove_tags",
+          "value": "standup-agent standup-env"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Support Standup::DEM"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/6125621031831.json",
+      "id": 6125621031831,
+      "title": "Mark as...::Support Standup::ENV",
+      "active": true,
+      "updated_at": "2023-01-12T14:04:39Z",
+      "created_at": "2022-05-16T20:08:10Z",
+      "default": false,
+      "position": 85,
+      "description": "Tags ticket for Environment Standup.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "standup-env"
+        },
+        {
+          "field": "remove_tags",
+          "value": "standup-agent standup-dem"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Support Standup::ENV"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/6125636376087.json",
+      "id": 6125636376087,
+      "title": "Mark as...::Support Standup::Remove Standup Tag",
+      "active": true,
+      "updated_at": "2023-01-12T14:05:05Z",
+      "created_at": "2022-05-16T20:08:27Z",
+      "default": false,
+      "position": 86,
+      "description": "Removes any tags on ticket relating to Support Standup.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "standup-agent standup-dem standup-env"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Mark as...::Support Standup::Remove Standup Tag"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/11475220716055.json",
+      "id": 11475220716055,
+      "title": "Mark as...::TSE OOO:: Clear OOO",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:49Z",
+      "created_at": "2023-01-06T01:25:24Z",
+      "default": false,
+      "position": 114,
+      "description": "Used to remove tagging identifying ticket as an out of office handover.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "tse_ooo"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1900001030245,
+          1500006046241
+        ]
+      },
+      "raw_title": "Mark as...::TSE OOO:: Clear OOO"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/11475217196311.json",
+      "id": 11475217196311,
+      "title": "Mark as...::TSE OOO::Set OOO",
+      "active": true,
+      "updated_at": "2023-01-12T14:06:55Z",
+      "created_at": "2023-01-06T01:23:43Z",
+      "default": false,
+      "position": 113,
+      "description": "Used to set tagging to identify ticket as an out of office handover.",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "tse_ooo"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Issue:</b><br></p><p><i>[State the problem that is reported in ticket]</i></p><p><b>Desired Resolution:</b><br><i>[State the outcome that would reach resolution for ticket]</i></p><p><b>Data Collected:</b><br><i>[Provide link to issue, upload Support Archive logs, provide screenshots and anything used for troubleshooting]</i></p><p><b>Steps Taken:</b><br><i>[List troubleshooting steps taken]</i></p><p><b>Potential Next Steps:</b><br><i>[Link troubleshooting guides with potential next steps]</i></p><p><b>Additional Information:</b><br><i>[Link any Slack, RFA, or ZD Tickets used in troubleshooting]</i></p><p><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Mark as...::TSE OOO::Set OOO"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5968730481687.json",
+      "id": 5968730481687,
+      "title": "Request help...::Chat Captain::Request Chat Captain Assistance",
+      "active": true,
+      "updated_at": "2023-02-23T18:46:52Z",
+      "created_at": "2022-05-09T16:04:12Z",
+      "default": false,
+      "position": 80,
+      "description": "Initiates request to Chat Captain team, templates Slack side conversation, and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "chat_captain_new"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_active chat_captain_complete rtc_new rtc_active rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete"
+        },
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p><b>Chat captain assistance request</b></p><p><b>Requester</b>:&nbsp;{{current_user.name}}<br></p><p><b>Customer is Seeing</b>:</p><p><b>MC/SaaS Link</b>:</p><p><b>Troubleshooting</b>:<br></p><p><br></p><p><b>If Applicable</b>:<br></p><p><b>Obtained logs?</b>:</p><p><b>Obtained Fiddler trace (RUM only)?</b>:</p><p><b>Checked Slack for known issues?</b>:</p><p><b>Is the customer active?</b>:</p>",
+            "help-livechat",
+            "text/html"
+          ]
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}}​ has requested Chat Captain Assistance</p><p><br></p><p><b>Please hit submit to save changes to the conversation.&nbsp;</b></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::Chat Captain::Request Chat Captain Assistance"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/4660387105943.json",
+      "id": 4660387105943,
+      "title": "Request help...::Chat Captain::Set Chat Captain Request to \"Active \"",
+      "active": true,
+      "updated_at": "2023-01-12T13:47:39Z",
+      "created_at": "2022-03-09T19:26:23Z",
+      "default": false,
+      "position": 70,
+      "description": "Updates \"Help Request\" status to \"Chat Captain - Active\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "chat_captain_active"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_complete rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Chat Captain request has been set to active by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::Chat Captain::Set Chat Captain Request to \"Active \""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/4660451183255.json",
+      "id": 4660451183255,
+      "title": "Request help...::Chat Captain::Set Chat Captain Request to \"Complete\"",
+      "active": true,
+      "updated_at": "2023-01-12T13:48:05Z",
+      "created_at": "2022-03-09T19:27:46Z",
+      "default": false,
+      "position": 73,
+      "description": "Updates \"Help Request\" status to \"Chat Captain - Complete\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "chat_captain_complete"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active chat_captain_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Chat Captain request has been set to complete by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::Chat Captain::Set Chat Captain Request to \"Complete\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5254768786327.json",
+      "id": 5254768786327,
+      "title": "Request help...::CSM SOS:: High Touch (>=100k ARR)",
+      "active": true,
+      "updated_at": "2023-01-18T15:16:22Z",
+      "created_at": "2022-04-05T19:56:47Z",
+      "default": false,
+      "position": 75,
+      "description": "Initiates SOS to CSM team and templates Slack side conversation for accounts >=100k ARR.",
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p><b>Topic?</b></p><p>&lt;Licensing, eServices, Credits, Upsell, Renewal Risk, AppSec&gt;</p><p><b>Summary of issue/request</b>:</p><p>&lt;place summary of issue here&gt;</p><p><b>Customer</b></p><p>{{ticket.organization.name}}&nbsp;</p><p><b>Name</b></p><p>{{ticket.requester.name}}&nbsp;</p><p><b>Region</b><br></p><p>&lt;APAC, NORAM, EMEA&gt;</p><p>If greater attention is needed please be sure to slack a message in the #help-d1-csm-sos using the appropriate group (@APAC-D1-CSM,&nbsp;@EMEA-D1-CSM,&nbsp;@NORAM-D1-CSM)<br></p><p><b><a href=\"https://{{ticket.url}}\" target=\"_blank\" rel=\"noreferrer\">Chat Link</a></b></p><p><b>CI360 Link</b>:</p>",
+            "help-d1-csm-sos",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "csm_sos"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::CSM SOS:: High Touch (>=100k ARR)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/11013644567575.json",
+      "id": 11013644567575,
+      "title": "Request help...::CSM SOS::Low Touch (<100k ARR)",
+      "active": true,
+      "updated_at": "2023-01-12T13:48:27Z",
+      "created_at": "2022-12-16T18:39:13Z",
+      "default": false,
+      "position": 112,
+      "description": "Initiates SOS to CSM team and templates Slack side conversation for accounts <100k ARR.",
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p><b>Topic?</b></p><p>&lt;Licensing, eServices, Credits, Upsell, Renewal Risk, AppSec&gt;</p><p><b>Summary of issue/request</b>:</p><p>&lt;place summary of issue here&gt;</p><p><b>Customer</b></p><p>{{ticket.organization.name}}&nbsp;</p><p><b>Name</b></p><p>{{ticket.requester.name}}&nbsp;</p><p><b>Region</b><br></p><p>&lt;APAC, NORAM, EMEA&gt;</p><p><b><a href=\"https://%7B%7Bticket.url%7D%7D/\" target=\"_blank\" rel=\"noreferrer\">Chat Link</a></b></p><p><b>CI360 Link</b>:</p>",
+            "d1-lowtouch-escalations-exceptions",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "low_touch_csm_sos"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241,
+          1500006053542
+        ]
+      },
+      "raw_title": "Request help...::CSM SOS::Low Touch (<100k ARR)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/16814559063575.json",
+      "id": 16814559063575,
+      "title": "Request help...::Development::Close Priority",
+      "active": true,
+      "updated_at": "2023-08-16T18:01:33Z",
+      "created_at": "2023-08-16T18:01:33Z",
+      "default": false,
+      "position": 124,
+      "description": "Applies tag to ticket to be sync'd with JIRA indicating priority has been closed",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "jira_support_prio_request"
+        },
+        {
+          "field": "current_tags",
+          "value": "jira_support_prio_request_closed"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::Development::Close Priority"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522602.json",
+      "id": 1500033522602,
+      "title": "Request help...::Development::Create RFA Ticket",
+      "active": true,
+      "updated_at": "2024-01-31T15:35:43Z",
+      "created_at": "2021-10-01T18:58:20Z",
+      "default": false,
+      "position": 24,
+      "description": "Sets \"Development Status\" to \"Waiting for Development, ticket status to \"On-hold\", and creates template for RFA handoff via private comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Customer Name: {{ticket.organization.name}}</b></p><p><b>Tenant URL (SaaS)</b>:<b> </b><br></p><p><b>MC Link (Managed)</b>:<b> </b></p><p><b>BAS UUID: {{ticket.organization.external_id}}</b></p><p><br></p><p><b>Problem</b>:<br></p><p>&lt;precise description, allowing ticket to be assigned to proper Dev team&gt;<br></p><p>(if any) &lt;infos requested and provided by customer later&gt;<br></p><p>(if any) &lt;specifically required Dev actions&gt;<br></p><p><br></p><p><b>Business impact</b>:<br></p><p>(if severity 1 or 2 / escalation) &lt;describe, and provide escalation details if Deal At Risk or Time Critical&gt;<br></p><p><br></p><p><b>Customer description</b>:<br></p><p>&lt;all problem related infos provided by reporter&gt;<br></p><p><br></p><p><b>Affected components &amp; versions</b>:<br></p><p>&lt;of cluster/agent, and affected customer application incl. UI links&gt;<br></p><p><br></p><p><b>Troubleshooting results</b>:<br></p><p>&lt;e.g. from UI, Debug UI, logs, debug flags or customer application if access&gt;</p><p><br></p><p><b>Ask</b>:<br></p><p>&lt;specific ask or request of this ticket&gt;</p><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1500011047261",
+          "value": "waiting_for_development"
+        },
+        {
+          "field": "status",
+          "value": "hold"
+        },
+        {
+          "field": "current_tags",
+          "value": "rfa_created"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030265,
+          1900001030245
+        ]
+      },
+      "raw_title": "Request help...::Development::Create RFA Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677505.json",
+      "id": 1900008677505,
+      "title": "Request help...::Development::Link Ticket",
+      "active": true,
+      "updated_at": "2023-01-12T13:46:41Z",
+      "created_at": "2021-10-01T18:58:20Z",
+      "default": false,
+      "position": 25,
+      "description": "Sets \"Development Status\" to \"Waiting for Development, ticket status to \"On-hold\", and templates audit via private comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b>Customer Name: {{ticket.organization.name}}</b></p><p><b>Tenant URL: </b>{{ticket.ticket_field_1500011047301}}<br></p><p><br></p><p>This ticket will be linked to the following development ticket.&nbsp; It will be linked due to development request or similarities to the existing development ticket.<br></p><p><i>&lt;Replace with Development Ticket ID&gt;</i></p><p><br></p><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1500011047261",
+          "value": "waiting_for_development"
+        },
+        {
+          "field": "status",
+          "value": "hold"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Request help...::Development::Link Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/16814355612183.json",
+      "id": 16814355612183,
+      "title": "Request help...::Development::Request Priority",
+      "active": true,
+      "updated_at": "2023-08-16T17:54:37Z",
+      "created_at": "2023-08-16T17:54:37Z",
+      "default": false,
+      "position": 123,
+      "description": "Applies tag to ticket to be sync'd with JIRA indicating priority has been requested",
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "jira_support_prio_request"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p><b style=\"font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, Arial, sans-serif;\">- Please provide a justification for this priority request and notify the RFA using the JIRA app -</b><br></p>"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1900001030245
+        ]
+      },
+      "raw_title": "Request help...::Development::Request Priority"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677365.json",
+      "id": 1900008677365,
+      "title": "Request help...::Escalation::Escalate Ticket",
+      "active": true,
+      "updated_at": "2023-11-30T18:36:38Z",
+      "created_at": "2021-10-01T18:58:12Z",
+      "default": false,
+      "position": 5,
+      "description": "Templates private escalation message which notifies the managers of currently assigned team via email.",
+      "actions": [
+        {
+          "field": "follower",
+          "value": "current_user"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Ticket escalated by {{current_user.name}}</p><p>Escalation Reason: <b>PLEASE ENTER ESCALATION REASON BELOW</b> If there is no escalation reason entered here this may delay the response.</p><p><br> </p><p><br></p>"
+        },
+        {
+          "field": "current_tags",
+          "value": "esc_status_new"
+        },
+        {
+          "field": "remove_tags",
+          "value": "escalation_notified esc_status_active esc_status_complete"
+        },
+        {
+          "field": "custom_fields_1500011100642",
+          "value": "esc_status_new"
+        }
+      ],
+      "restriction": null,
+      "raw_title": "Request help...::Escalation::Escalate Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522462.json",
+      "id": 1500033522462,
+      "title": "Request help...::Escalation::Set Escalation to \"Active\"",
+      "active": true,
+      "updated_at": "2023-01-12T16:14:15Z",
+      "created_at": "2021-10-01T18:58:12Z",
+      "default": false,
+      "position": 6,
+      "description": "Updates \"Escalation Status\" status to \"Escalation - Active\" and templates audit via private comment.",
+      "actions": [
+        {
+          "field": "follower",
+          "value": "current_user"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Escalation Status Set to Active.</p>"
+        },
+        {
+          "field": "custom_fields_1500011100642",
+          "value": "esc_status_active"
+        },
+        {
+          "field": "current_tags",
+          "value": "esc_status_active"
+        },
+        {
+          "field": "remove_tags",
+          "value": "esc_status_complete esc_status_new"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245
+        ]
+      },
+      "raw_title": "Request help...::Escalation::Set Escalation to \"Active\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033250461.json",
+      "id": 1500033250461,
+      "title": "Request help...::Escalation::Set Escalation to \"Complete\"",
+      "active": true,
+      "updated_at": "2023-01-12T13:30:45Z",
+      "created_at": "2021-10-01T18:58:13Z",
+      "default": false,
+      "position": 7,
+      "description": "Updates \"Escalation Status\" status to \"Escalation - Complete\" and templates audit via private comment.",
+      "actions": [
+        {
+          "field": "follower",
+          "value": "current_user"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Escalation Status set to Complete.</p>"
+        },
+        {
+          "field": "custom_fields_1500011100642",
+          "value": "esc_status_complete"
+        },
+        {
+          "field": "current_tags",
+          "value": "esc_status_complete"
+        },
+        {
+          "field": "remove_tags",
+          "value": "esc_status_active esc_status_new"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030245,
+        "ids": [
+          1900001030245
+        ]
+      },
+      "raw_title": "Request help...::Escalation::Set Escalation to \"Complete\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/5992020542615.json",
+      "id": 5992020542615,
+      "title": "Request help...::RTC::Request RTC",
+      "active": true,
+      "updated_at": "2023-01-12T13:48:35Z",
+      "created_at": "2022-05-10T15:15:18Z",
+      "default": false,
+      "position": 82,
+      "description": "Initiates RTC to TSE team, templates Slack side conversation, and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "rtc_new"
+        },
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p><b>New RTC Request</b></p><p><b>Requester</b>:&nbsp;{{current_user.name}}</p><p><b>MC/SaaS Link</b>: &lt;insert link here&gt;</p><p><b>Product Area</b>: {{ticket.ticket_field_option_title_1900002752685}}&nbsp;</p><p><b>Details (PS Troubleshooting)</b>:</p><ul dir=\"auto\"><li>What is the issue?&nbsp;</li><li>What have we done so far?&nbsp;</li><li>Log files/Images<br></li></ul><p><br></p>",
+            "help-support",
+            "text/html"
+          ]
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Real Time Collaboration requested by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p><p><br></p><p><br></p><p><br></p>"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_active chat_captain_complete rtc_active rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::RTC::Request RTC"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900017753305.json",
+      "id": 1900017753305,
+      "title": "Request help...::RTC::RTC Needs Attention",
+      "active": true,
+      "updated_at": "2023-01-12T13:48:45Z",
+      "created_at": "2021-12-13T18:41:29Z",
+      "default": false,
+      "position": 52,
+      "description": "Sends Slack reminder to TSE team and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "remove_tags",
+          "value": "rtc_attention_notified rtc_attention_notified_emea rtc_attention_notified_apac rtc_attention_notified_noram"
+        },
+        {
+          "field": "current_tags",
+          "value": "rtc_attention_needed"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}} has requested attention for their RTC request.</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p><p><br></p><p><br></p><p><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::RTC::RTC Needs Attention"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/4659031193239.json",
+      "id": 4659031193239,
+      "title": "Request help...::RTC::Set RTC to \"Active\"",
+      "active": true,
+      "updated_at": "2023-01-12T13:48:56Z",
+      "created_at": "2022-03-09T18:31:54Z",
+      "default": false,
+      "position": 68,
+      "description": "Updates \"Help Request\" status to \"RTC - Active\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "rtc_active"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_active chat_captain_complete rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>RTC has been set to active by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p><p><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::RTC::Set RTC to \"Active\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/4660343550871.json",
+      "id": 4660343550871,
+      "title": "Request help...::RTC::Set RTC to \"Complete\"",
+      "active": true,
+      "updated_at": "2023-01-12T13:49:06Z",
+      "created_at": "2022-03-09T19:23:50Z",
+      "default": false,
+      "position": 69,
+      "description": "Updates \"Help Request\" status to \"RTC - Complete\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "rtc_complete"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_active chat_captain_complete rtc_new swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>RTC has been set to complete by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p><p><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::RTC::Set RTC to \"Complete\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/19259011907607.json",
+      "id": 19259011907607,
+      "title": "Request help...::SME::Request SME Assistance ",
+      "active": false,
+      "updated_at": "2023-12-08T17:12:13Z",
+      "created_at": "2023-11-22T17:34:12Z",
+      "default": false,
+      "position": 81,
+      "description": "Initiates request to SME, templates Slack side conversation, and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "19610926650775"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "true"
+        },
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p>Test test test</p>",
+            "d1-sme-k8s",
+            "text/html"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "sme_requested"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::SME::Request SME Assistance "
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/19430183441303.json",
+      "id": 19430183441303,
+      "title": "Request help...::SME::Set SME Request to \"Active \"",
+      "active": false,
+      "updated_at": "2023-11-29T22:03:45Z",
+      "created_at": "2023-11-29T18:53:24Z",
+      "default": false,
+      "position": 72,
+      "description": "Updates \"Help Request\" status to \"SME - Active\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "19430247391767"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_complete rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>SME request has been set to active by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006053542
+        ]
+      },
+      "raw_title": "Request help...::SME::Set SME Request to \"Active \""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/19430186547863.json",
+      "id": 19430186547863,
+      "title": "Request help...::SME::Set SME Request to \"Active \"",
+      "active": false,
+      "updated_at": "2023-11-29T18:57:46Z",
+      "created_at": "2023-11-29T18:53:57Z",
+      "default": false,
+      "position": 71,
+      "description": "Updates \"Help Request\" status to \"Chat Captain - Active\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "chat_captain_active"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new chat_captain_complete rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>Chat Captain request has been set to active by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006053542
+        ]
+      },
+      "raw_title": "Request help...::SME::Set SME Request to \"Active \""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/19430145163927.json",
+      "id": 19430145163927,
+      "title": "Request help...::SME::Set SME Request to \"Complete\"",
+      "active": false,
+      "updated_at": "2023-11-29T22:03:42Z",
+      "created_at": "2023-11-29T18:53:03Z",
+      "default": false,
+      "position": 74,
+      "description": "Updates \"Help Request\" status to \"SME - Complete\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "19430247391895"
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_captain_new rtc_new rtc_complete swarm_new swarm_active swarm_waiting_tse swarm_auto swarm_complete rtc_active chat_captain_active"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>SME request has been set to complete by {{current_user.name}}</p><p><br></p><p><b>Please hit submit to save changes to the conversation.</b><br></p>"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006053542,
+        "ids": [
+          1500006053542,
+          1500006046241
+        ]
+      },
+      "raw_title": "Request help...::SME::Set SME Request to \"Complete\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500042495581.json",
+      "id": 1500042495581,
+      "title": "Request help...::Swarm::Request Swarm",
+      "active": false,
+      "updated_at": "2023-05-30T14:47:19Z",
+      "created_at": "2021-12-14T16:06:08Z",
+      "default": false,
+      "position": 53,
+      "description": "Initiates Swarm to TSE team, templates Slack side conversation, and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "side_conversation_slack",
+          "value": [
+            "<p><b>SWARM Request for</b>:</p><p><b>URL</b>: {{ticket.url}}</p><p><b>Ticket group</b>: {{ticket.group.name}}<br><b>Product Area</b>: {{ticket.ticket_field_option_title_1900002752685}}<br><b>Requested by</b>: {{current_user.name}}<br></p><p><br></p><p><b>Summary of ticket and current status</b>:</p><p>[summary of ticket]</p><p><b>Troubleshooting Steps taken</b>:</p><p>[list all troubleshooting steps taken thus far]</p><p><b>Summary of previous Swarms</b>:</p><p>[If there have been swarms on this ticket previously, please summarize them here]</p><p><b>Request/Question for SME</b>:</p><p>[What are you asking the SME to assist with?]</p><p><br></p>",
+            "help-support",
+            "text/html"
+          ]
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>SWARM Requested by {{current_user.name}}<br></p>"
+        },
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "swarm_new"
+        },
+        {
+          "field": "current_tags",
+          "value": "swarm_new"
+        },
+        {
+          "field": "remove_tags",
+          "value": "swarm_active swarm_waiting_tse swarm_complete chat_captain_new chat_captain_active chat_captain_complete rtc_new rtc_active rtc_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Request help...::Swarm::Request Swarm"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500033522702.json",
+      "id": 1500033522702,
+      "title": "Request help...::Swarm::Set Swarm to \"Active\"",
+      "active": false,
+      "updated_at": "2023-05-30T14:47:19Z",
+      "created_at": "2021-10-01T18:58:27Z",
+      "default": false,
+      "position": 45,
+      "description": "Updates \"Help Request\" status to \"Swarm - Active\" and attaches submit reminder via private comment text.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>{{current_user.name}} moved the ticket to ACTIVE swarm status.</p><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "swarm_active"
+        },
+        {
+          "field": "current_tags",
+          "value": "swarm_active"
+        },
+        {
+          "field": "remove_tags",
+          "value": "swarm_new swarm_waiting_tse swarm_complete chat_captain_new chat_captain_active chat_captain_complete rtc_new rtc_active rtc_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Request help...::Swarm::Set Swarm to \"Active\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1900008677565.json",
+      "id": 1900008677565,
+      "title": "Request help...::Swarm::Set Swarm to \"Complete\"",
+      "active": false,
+      "updated_at": "2023-05-30T14:47:19Z",
+      "created_at": "2021-10-01T18:58:27Z",
+      "default": false,
+      "position": 47,
+      "description": "Updates \"Help Request\" status to \"Swarm - Complete\" and templates private swarm \"SWARM Summary\" comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>SWARM Summary:</p><p><br></p><p>Next steps from SME:</p><ol dir=\"auto\"><li>List</li><li>of</li><li>Steps</li></ol><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "swarm_complete"
+        },
+        {
+          "field": "current_tags",
+          "value": "swarm_complete"
+        },
+        {
+          "field": "remove_tags",
+          "value": "swarm_active swarm_waiting_tse swarm_new chat_captain_new chat_captain_active chat_captain_complete rtc_new rtc_active rtc_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Request help...::Swarm::Set Swarm to \"Complete\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/1500042497581.json",
+      "id": 1500042497581,
+      "title": "Request help...::Swarm::Set Swarm to \"Waiting for TSE\"",
+      "active": false,
+      "updated_at": "2023-05-30T14:47:19Z",
+      "created_at": "2021-12-14T16:24:18Z",
+      "default": false,
+      "position": 46,
+      "description": "Updates \"Help Request\" status to \"Swarm - Waiting for TSE\" and templates private \"needs more info\" comment.",
+      "actions": [
+        {
+          "field": "comment_mode_is_public",
+          "value": "false"
+        },
+        {
+          "field": "comment_value_html",
+          "value": "<p>SME needs more info to further assist:</p><p><br></p>"
+        },
+        {
+          "field": "custom_fields_1900006267625",
+          "value": "swarm_waiting_tse"
+        },
+        {
+          "field": "current_tags",
+          "value": "swarm_waiting_tse"
+        },
+        {
+          "field": "remove_tags",
+          "value": "swarm_active swarm_new swarm_complete chat_captain_new chat_captain_active chat_captain_complete rtc_new rtc_active rtc_complete"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1900001030265,
+        "ids": [
+          1900001030265
+        ]
+      },
+      "raw_title": "Request help...::Swarm::Set Swarm to \"Waiting for TSE\""
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/macros/9832002745751.json",
+      "id": 9832002745751,
+      "title": "Saved Replies::Bad Rating (can be neutral as well)",
+      "active": true,
+      "updated_at": "2023-01-12T13:54:15Z",
+      "created_at": "2022-10-27T15:36:01Z",
+      "default": false,
+      "position": 108,
+      "description": "Templates customer facing inquiry for further feedback via public comment.",
+      "actions": [
+        {
+          "field": "comment_value_html",
+          "value": "<p>Hello {{ticket.requester.first_name}}​,<br>Thanks for the feedback.&nbsp; I noticed you gave us a bad rating - we strive to go above and beyond.&nbsp; Is there anything we could have done better to provide the best chat experience?<br>We appreciate any feedback as it will help us improve for future conversations. Thanks in advance!<br>Regards,<br>{{current_user.name}}​</p>"
+        },
+        {
+          "field": "comment_mode_is_public",
+          "value": "true"
+        }
+      ],
+      "restriction": {
+        "type": "Group",
+        "id": 1500006046241,
+        "ids": [
+          1500006046241,
+          1500006053542
+        ]
+      },
+      "raw_title": "Saved Replies::Bad Rating (can be neutral as well)"
+    }
+  ],
+  "next_page": "https://dynatrace1633106639.zendesk.com/api/v2/macros.json?page=2",
+  "previous_page": null,
+  "count": 139
+}

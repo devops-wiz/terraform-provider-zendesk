@@ -1,0 +1,27 @@
+{
+  "ticket_field": {
+    "url": "https://dynatrace1633106639.zendesk.com/api/v2/ticket_fields/1500011100682.json",
+    "id": 1500011100682,
+    "type": "textarea",
+    "title": "Escalation Summary/Plan",
+    "raw_title": "Escalation Summary/Plan",
+    "description": "",
+    "raw_description": "",
+    "position": 9999,
+    "active": true,
+    "required": false,
+    "collapsed_for_agents": false,
+    "regexp_for_validation": null,
+    "title_in_portal": "Escalation Summary/Plan",
+    "raw_title_in_portal": "Escalation Summary/Plan",
+    "visible_in_portal": false,
+    "editable_in_portal": false,
+    "required_in_portal": false,
+    "tag": null,
+    "created_at": "2021-10-01T17:19:40Z",
+    "updated_at": "2021-10-01T17:19:40Z",
+    "removable": true,
+    "key": null,
+    "agent_description": null
+  }
+}

@@ -1,0 +1,2184 @@
+{
+  "automations": [
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/15119461206551.json",
+      "id": 15119461206551,
+      "title": "Close ticket 4 days after status is set to solved",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-06-07T01:14:39Z",
+      "default": true,
+      "actions": [
+        {
+          "field": "status",
+          "value": "closed"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "solved"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "greater_than",
+            "value": "480"
+          }
+        ],
+        "any": []
+      },
+      "position": 1,
+      "raw_title": "Close ticket 4 days after status is set to solved"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1500034398661.json",
+      "id": 1500034398661,
+      "title": "[TEST] copy of Move ticket to Closed after Solved",
+      "active": false,
+      "updated_at": "2021-10-25T13:34:56Z",
+      "created_at": "2021-10-13T14:51:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "closed"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "solved"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "greater_than",
+            "value": "1"
+          }
+        ],
+        "any": []
+      },
+      "position": 2,
+      "raw_title": "[TEST] copy of Move ticket to Closed after Solved"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1500034685042.json",
+      "id": 1500034685042,
+      "title": "[TEST] Copy of Reminder: Pending for more than 48 business hours",
+      "active": false,
+      "updated_at": "2021-10-25T13:35:02Z",
+      "created_at": "2021-10-13T16:08:26Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "{{ticket.title}}",
+            "We have not heard from you on your pending issue with Dynatrace {{ticket.link}}.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be closed in 3 business days if we don’t hear from you.\n \nThank you for your support,\n \nDynatraceONE Team"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "track_reminder_1 reminder_1"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "1"
+          },
+          {
+            "field": "updated_at",
+            "operator": "greater_than_business_hours",
+            "value": "1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_1 emails_disabled no_autosolve"
+          }
+        ],
+        "any": []
+      },
+      "position": 3,
+      "raw_title": "[TEST] Copy of Reminder: Pending for more than 48 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1500033250361.json",
+      "id": 1500033250361,
+      "title": "Status: Move ticket to Closed after Solved",
+      "active": true,
+      "updated_at": "2024-03-21T22:18:20Z",
+      "created_at": "2021-10-01T18:58:07Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "closed"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01GX6D4VN1ME0SWMNMVPWYF2QP",
+            "{\n  \"ticketId\": {{ticket.id}},\n  \"folderId\": {% if ticket.ticket_field_1500011100662 == blank %}null{% else %}{{ticket.ticket_field_1500011100662}}{% endif %},\n  \"closeDate\": \"{{ticket.updated_at_with_timestamp}}\",\n  \"excludeFromRentionPolicy\": {% if ticket.organization.custom_fields.exclude_from_attachment_retention_policy == blank %}false{% else %}{{ticket.organization.custom_fields.exclude_from_attachment_retention_policy}}{% endif %}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "solved"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "greater_than",
+            "value": "0"
+          }
+        ],
+        "any": []
+      },
+      "position": 4,
+      "raw_title": "Status: Move ticket to Closed after Solved"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900008677305.json",
+      "id": 1900008677305,
+      "title": "Reminder: 1 - Pending for more than 72 business hours",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-01T18:58:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "{{ticket.title}}",
+            "We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} {{ticket.link}}.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be closed in 3 business days if we don’t hear from you.\n \nThank you for your support,\n \nDynatraceONE Team"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "track_reminder_1 reminder_1"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "72"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_1 reminder_2 emails_disabled no_autosolve autosolve "
+          }
+        ],
+        "any": []
+      },
+      "position": 5,
+      "raw_title": "Reminder: 1 - Pending for more than 72 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900014241825.json",
+      "id": 1900014241825,
+      "title": "Reminder: 2 - Pending for more than 144 business hours",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-11-24T20:12:26Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "{{ticket.title}}",
+            "We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} {{ticket.link}}.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be closed in 3 business days if we don’t hear from you.\n \nThank you for your support,\n \nDynatraceONE Team"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "track_reminder_2 reminder_2"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_1"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "144"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_2 emails_disabled no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_1"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "tse"
+          }
+        ],
+        "any": []
+      },
+      "position": 6,
+      "raw_title": "Reminder: 2 - Pending for more than 144 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900008677325.json",
+      "id": 1900008677325,
+      "title": "Reminder: 3 - Pending for more than 216 business hours (Auto Solve)",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-01T18:58:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "autosolve track_autosolve"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_2"
+        },
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "Your ticket has been automatically closed due to inactivity",
+            "Hello {{ticket.requester.first_name}},\n\nThis is a reminder that we have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} # <a href=\"{{ticket.link}}\">{{ticket.id}}</a>. Because of this, your issue is now set to solved.\n\nPlease know that you will have seven days to reply and re-open this ticket. If you do not reply within 7 days, this ticket will be closed.\n\nThank you for contacting Dynatrace ONE.\n\nBest,\n{{ticket.assignee.first_name}}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"This ticket has been automatically solved due to customer inactivity.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "216"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder no_autosolve emails_disabled"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_2"
+          }
+        ],
+        "any": []
+      },
+      "position": 7,
+      "raw_title": "Reminder: 3 - Pending for more than 216 business hours (Auto Solve)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900022573385.json",
+      "id": 1900022573385,
+      "title": "Reminder: 3 - Pending for more than 216 business hours (Auto Solve - for disabled Emails)",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-01-11T16:23:35Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "autosolve track_autosolve"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_2"
+        },
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"This ticket has been automatically solved due to customer inactivity.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "216"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_2 emails_disabled"
+          }
+        ],
+        "any": []
+      },
+      "position": 8,
+      "raw_title": "Reminder: 3 - Pending for more than 216 business hours (Auto Solve - for disabled Emails)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1500033250381.json",
+      "id": 1500033250381,
+      "title": "Request customer satisfaction rating (system automation) - Full Comments",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-01T18:58:09Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_id",
+            "Request #{{ticket.id}}: How would you rate the support you received?",
+            "Hello {{ticket.requester.name}},\n\nThank you for your patience as we worked your ticket. We now believe it has been solved.\n\nYou have seven days to reply to this ticket to reopen it. If you do not reply within seven days, it will be closed.\n\nWe would also love to hear what you think of your experience with your Dynatrace ONE expert working this ticket. Please take a moment to answer one simple question by clicking either link below:\n\n{{satisfaction.rating_section}}\n\nHere's a reminder of what this request was about:\n\n{{ticket.comments_formatted}}\n\nThank you for contacting Dynatrace ONE!"
+          ]
+        },
+        {
+          "field": "satisfaction_score",
+          "value": "offered"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "is",
+            "value": "1"
+          },
+          {
+            "field": "satisfaction_score",
+            "operator": "is",
+            "value": "unoffered"
+          },
+          {
+            "field": "ticket_is_public",
+            "operator": "is",
+            "value": "public"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emails_disabled case_file proactive_notifications"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "task"
+          },
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is_not",
+            "value": "1500002050221"
+          }
+        ],
+        "any": [
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is",
+            "value": "1500002050281"
+          },
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "not_present",
+            "value": null
+          }
+        ]
+      },
+      "position": 9,
+      "raw_title": "Request customer satisfaction rating (system automation) - Full Comments"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/6222928021399.json",
+      "id": 6222928021399,
+      "title": "Request customer satisfaction rating (system automation) - Latest Comment",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-05-20T18:04:20Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_id",
+            "Request #{{ticket.id}}: How would you rate the support you received?",
+            "Hello {{ticket.requester.name}},\n\nThank you for your patience as we worked your ticket. We now believe it has been solved.\n\nYou have seven days to reply to this ticket to reopen it. If you do not reply within seven days, it will be closed.\n\nWe would also love to hear what you think of your experience with your Dynatrace ONE expert working this ticket. Please take a moment to answer one simple question by clicking either link below:\n\n{{satisfaction.rating_section}}\n\nHere's a reminder of what this request was about:\n\n{{ticket.latest_comment_formatted}}\n\nThank you for contacting Dynatrace ONE!"
+          ]
+        },
+        {
+          "field": "satisfaction_score",
+          "value": "offered"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "is",
+            "value": "1"
+          },
+          {
+            "field": "satisfaction_score",
+            "operator": "is",
+            "value": "unoffered"
+          },
+          {
+            "field": "ticket_is_public",
+            "operator": "is",
+            "value": "public"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emails_disabled case_file"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "task"
+          },
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is_not",
+            "value": "1500002050221"
+          }
+        ],
+        "any": [
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is",
+            "value": "1500002050261"
+          }
+        ]
+      },
+      "position": 10,
+      "raw_title": "Request customer satisfaction rating (system automation) - Latest Comment"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/6222967101079.json",
+      "id": 6222967101079,
+      "title": "Request customer satisfaction rating (system automation) - Updates Only",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-05-20T18:05:09Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_id",
+            "Request #{{ticket.id}}: How would you rate the support you received?",
+            "Hello {{ticket.requester.name}},\n\nThank you for your patience as we worked your ticket. We now believe it has been solved.\n\nYou have seven days to reply to this ticket to reopen it. If you do not reply within seven days, it will be closed.\n\nWe would also love to hear what you think of your experience with your Dynatrace ONE expert working this ticket. Please take a moment to answer one simple question by clicking either link below:\n\n{{satisfaction.rating_section}}\n\nThank you for contacting Dynatrace ONE!"
+          ]
+        },
+        {
+          "field": "satisfaction_score",
+          "value": "offered"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "is",
+            "value": "1"
+          },
+          {
+            "field": "satisfaction_score",
+            "operator": "is",
+            "value": "unoffered"
+          },
+          {
+            "field": "ticket_is_public",
+            "operator": "is",
+            "value": "public"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "emails_disabled case_file"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "task"
+          },
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is_not",
+            "value": "1500002050221"
+          }
+        ],
+        "any": [
+          {
+            "field": "organization.custom_fields.email_communication_type",
+            "operator": "is",
+            "value": "1500002050241"
+          }
+        ]
+      },
+      "position": 11,
+      "raw_title": "Request customer satisfaction rating (system automation) - Updates Only"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900008677345.json",
+      "id": 1900008677345,
+      "title": "Auto Solve case files",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-01T18:58:09Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "solved"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "case_file"
+          },
+          {
+            "field": "updated_at",
+            "operator": "greater_than",
+            "value": "168"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          }
+        ],
+        "any": []
+      },
+      "position": 12,
+      "raw_title": "Auto Solve case files"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1500033250401.json",
+      "id": 1500033250401,
+      "title": "Auto Close case files",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-01T18:58:10Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "closed"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "case_file"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "greater_than",
+            "value": "168"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "solved"
+          }
+        ],
+        "any": []
+      },
+      "position": 13,
+      "raw_title": "Auto Close case files"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/1900010911665.json",
+      "id": 1900010911665,
+      "title": "Long Running Ticket",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2021-10-25T13:38:58Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "long_running_ticket"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "NEW",
+            "operator": "greater_than",
+            "value": "336"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "long_running_ticket"
+          },
+          {
+            "field": "type",
+            "operator": "is",
+            "value": "incident"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "tse"
+          }
+        ],
+        "any": []
+      },
+      "position": 14,
+      "raw_title": "Long Running Ticket"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/5430016960151.json",
+      "id": 5430016960151,
+      "title": "Stale chat - 2 days - direct to assignee",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-04-13T17:42:23Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G0HMXCYBGS5BN3JQFX555HQN",
+            "{\n  \"conversation_url\": \"https://{{ticket.url}}\",\n  \"assignee\": \"{{ticket.assignee.email}}\",\n  \"account_name\": \"{{ticket.organization.name}}\",\n  \"conversation_summary\": \"{{ticket.title}}\"\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "stale_chat"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "updated_at",
+            "operator": "greater_than_business_hours",
+            "value": "48"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "stale_chat"
+          }
+        ],
+        "any": []
+      },
+      "position": 15,
+      "raw_title": "Stale chat - 2 days - direct to assignee"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/8503654060567.json",
+      "id": 8503654060567,
+      "title": "Long-running conversation",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-08-29T17:21:14Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "long_running_conversation"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "long_running_conversation"
+          },
+          {
+            "field": "NEW",
+            "operator": "greater_than_business_hours",
+            "value": "120"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": []
+      },
+      "position": 16,
+      "raw_title": "Long-running conversation"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/8875067798551.json",
+      "id": 8875067798551,
+      "title": "Stale chat - 3 days - direct to chat captains",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-09-14T17:54:58Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G0HMXCYBGS5BN3JQFX555HQN",
+            "{\n  \"conversation_url\": \"https://{{ticket.url}}\",\n  \"assignee\": \"{{ticket.assignee.email}}\",\n  \"account_name\": \"{{ticket.organization.name}}\",\n  \"conversation_summary\": \"{{ticket.title}}\"\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "stale_chat_cc"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "updated_at",
+            "operator": "greater_than_business_hours",
+            "value": "72"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "via_id",
+            "operator": "is",
+            "value": "75"
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "solved"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "stale_chat_cc"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "stale_chat"
+          }
+        ],
+        "any": []
+      },
+      "position": 17,
+      "raw_title": "Stale chat - 3 days - direct to chat captains"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9805879163031.json",
+      "id": 9805879163031,
+      "title": "Reminder: 5 - Resolution Provided & Pending for more than 120 business hours (Auto Solve - for disabled Emails)",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-10-26T15:41:39Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "autosolve track_autosolve"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_4"
+        },
+        {
+          "field": "status",
+          "value": "solved"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"This ticket has been automatically solved due to customer inactivity.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "120"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_4"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "emails_disabled"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "tse"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "6_stage_resolution_provided"
+          }
+        ],
+        "any": []
+      },
+      "position": 18,
+      "raw_title": "Reminder: 5 - Resolution Provided & Pending for more than 120 business hours (Auto Solve - for disabled Emails)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/10092887391895.json",
+      "id": 10092887391895,
+      "title": "No Autosolve Tracking 1",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-11-08T18:30:07Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "reminder_1"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "24"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "48"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "no_autosolve"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "reminder_1"
+          }
+        ],
+        "any": []
+      },
+      "position": 19,
+      "raw_title": "No Autosolve Tracking 1"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/10093124978327.json",
+      "id": 10093124978327,
+      "title": "No Autosolve Tracking 2",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-11-08T18:37:08Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "reminder_2"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_1"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "48"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "72"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "reminder_2"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          }
+        ],
+        "any": []
+      },
+      "position": 20,
+      "raw_title": "No Autosolve Tracking 2"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9808620617111.json",
+      "id": 9808620617111,
+      "title": "Reminder: 1 - Resolution Provided & Pending for more than 23 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:37:51Z",
+      "created_at": "2022-10-26T17:13:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_reminder_1 reminder_1"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"<p>We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} <a href=\\\"{{ticket.link}}\\\">#{{ticket.id}}</a>.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be resolved in 4 business days if we don’t hear from you.<br><br>Thank you for your support,<br><br>Dynatrace ONE Team</p>\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_1 reminder_2 no_autosolve autosolve ps ps_to_tse_handoff tse_to_ps_handoff 1_stage_intake 2_stage_triage 3_stage_mitigation"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          }
+        ],
+        "any": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ]
+      },
+      "position": 21,
+      "raw_title": "Reminder: 1 - Resolution Provided & Pending for more than 23 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9808806440087.json",
+      "id": 9808806440087,
+      "title": "Reminder: 2 - Resolution Provided & Pending for more than 46 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:39:11Z",
+      "created_at": "2022-10-26T17:20:28Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_reminder_2 reminder_2"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_1"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"<p>We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} <a href=\\\"{{ticket.link}}\\\">#{{ticket.id}}</a>.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be resolved in 3 business days if we don’t hear from you.<br><br>Thank you for your support,<br><br>Dynatrace ONE Team</p>\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_2 no_autosolve ps ps_to_tse_handoff tse_to_ps_handoff 1_stage_intake 2_stage_triage 3_stage_mitigation"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_1"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "30"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          }
+        ],
+        "any": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ]
+      },
+      "position": 22,
+      "raw_title": "Reminder: 2 - Resolution Provided & Pending for more than 46 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9805190483479.json",
+      "id": 9805190483479,
+      "title": "Reminder: 3 - Resolution Provided & Pending for more than 69 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:46:30Z",
+      "created_at": "2022-10-26T15:15:56Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_reminder_3 reminder_3"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_2"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"<p>We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} <a href=\\\"{{ticket.link}}\\\">#{{ticket.id}}</a>.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be resolved in 2 business days if we don’t hear from you.<br><br>Thank you for your support,<br><br>Dynatrace ONE Team</p>\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "3"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_3 no_autosolve ps ps_to_tse_handoff tse_to_ps_handoff 1_stage_intake 2_stage_triage 3_stage_mitigation"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_2"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "92"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          }
+        ],
+        "any": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ]
+      },
+      "position": 23,
+      "raw_title": "Reminder: 3 - Resolution Provided & Pending for more than 69 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/10093711925655.json",
+      "id": 10093711925655,
+      "title": "No Autosolve Tracking 3",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-11-08T18:59:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "reminder_3"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_2"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "72"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "96"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "reminder_3"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          }
+        ],
+        "any": []
+      },
+      "position": 24,
+      "raw_title": "No Autosolve Tracking 3"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9805372278935.json",
+      "id": 9805372278935,
+      "title": "Reminder: 4 - Resolution Provided & Pending for more than 92 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:48:00Z",
+      "created_at": "2022-10-26T15:21:42Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_reminder_4 reminder_4"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_3"
+        },
+        {
+          "field": "custom_fields_1500011047381",
+          "value": [
+            "days_from_now",
+            "3"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"<p>We have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} <a href=\\\"{{ticket.link}}\\\">#{{ticket.id}}</a>.  Let us know if you are still having issues or if you have any questions.  We are here to help.  Your issue will be resolved in 1 business day if we don’t hear from you.<br><br>Thank you for your support,<br><br>Dynatrace ONE Team</p>\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        }\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "4"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder reminder_4 no_autosolve ps ps_to_tse_handoff tse_to_ps_handoff 1_stage_intake 2_stage_triage 3_stage_mitigation"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_3"
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "115"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          }
+        ],
+        "any": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ]
+      },
+      "position": 25,
+      "raw_title": "Reminder: 4 - Resolution Provided & Pending for more than 92 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/9805630620055.json",
+      "id": 9805630620055,
+      "title": "Reminder: 5 - Resolution Provided & Pending for more than 115 business hours (Auto Solve)",
+      "active": true,
+      "updated_at": "2024-04-26T17:48:57Z",
+      "created_at": "2022-10-26T15:31:43Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "autosolve track_autosolve"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_4"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"html_body\": \"<p>Hello {{ticket.requester.first_name}},<br><br>This is a reminder that we have not heard from you on your pending issue with Dynatrace for {{ticket.organization.custom_fields.account_name}} <a href=\\\"{{ticket.link}}\\\">#{{ticket.id}}</a>.  Because of this, your issue is now set to solved.<br><br>Please know that you will have 7 days to reply and re-open this ticket. If you do not reply within 7 days, this ticket will be closed, however, you may open a follow-up ticket at any time.<br><br>Thank you for contacting Dynatrace ONE.</p>\",\n            \"author_id\": 1905893852465,\n            \"public\": true\n        },\n        \"status\": \"solved\",\n        \"custom_fields\": [\n    \t\t\t{\n    \t\t\t\t\"id\": 1500011100742,\n    \t\t\t\t\"value\": \"{% if ticket.ticket_field_1500011100742 == blank %}customer_inactivity{% else %}{{ticket.ticket_field_1500011100742}}{% endif %}\"\n    \t\t\t}\n    \t\t]\n    }\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_reminder no_autosolve ps ps_to_tse_handoff tse_to_ps_handoff 1_stage_intake 2_stage_triage 3_stage_mitigation"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "reminder_4"
+          },
+          {
+            "field": "type",
+            "operator": "is_not",
+            "value": "problem"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "5"
+          }
+        ],
+        "any": [
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ]
+      },
+      "position": 26,
+      "raw_title": "Reminder: 5 - Resolution Provided & Pending for more than 115 business hours (Auto Solve)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/10093919505559.json",
+      "id": 10093919505559,
+      "title": "No Autosolve Tracking 4",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2022-11-08T19:05:51Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "reminder_4"
+        },
+        {
+          "field": "remove_tags",
+          "value": "reminder_3"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "96"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "no_autosolve"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "reminder_4"
+          },
+          {
+            "field": "via_id",
+            "operator": "is_not",
+            "value": "75"
+          }
+        ],
+        "any": []
+      },
+      "position": 27,
+      "raw_title": "No Autosolve Tracking 4"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/11969878101143.json",
+      "id": 11969878101143,
+      "title": "Proactive Notification Auto Close",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-01-26T22:56:48Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "status",
+          "value": "closed"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "NEW",
+            "operator": "is",
+            "value": "1"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "11985841672727"
+          }
+        ],
+        "any": []
+      },
+      "position": 28,
+      "raw_title": "Proactive Notification Auto Close"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/13060956478999.json",
+      "id": 13060956478999,
+      "title": "AER-16084",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-03-13T19:40:09Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "would_delete"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "CLOSED",
+            "operator": "greater_than",
+            "value": "6360"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "would_delete"
+          }
+        ],
+        "any": []
+      },
+      "position": 29,
+      "raw_title": "AER-16084"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/14180033444119.json",
+      "id": 14180033444119,
+      "title": "Move attachments to Trash/redacted after 30 days close",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-04-26T20:44:01Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01GX6D4VN1ME0SWMNMVPWYF2QP",
+            "{\n  \"ticketId\":{{ticket.id}},\n  \"folderId\":{{ticket.ticket_field_1500011100662}},\n  \"excludeFromRentionPolicy\": \"{{ticket.organization.exclude_from_attachment_retention_policy}}\"\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "box_trash"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01GX6CZCG46V6P4JTC2B34WPKY",
+            "{\n  \"ticketId\": {{ticket.id}}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "closed"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "box_trash"
+          }
+        ],
+        "any": []
+      },
+      "position": 30,
+      "raw_title": "Move attachments to Trash/redacted after 30 days close"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/14195592714519.json",
+      "id": 14195592714519,
+      "title": "Copy of Move attachments to Trash/redacted after 30 days close without tag",
+      "active": false,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-04-27T14:55:22Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01GX6D4VN1ME0SWMNMVPWYF2QP",
+            "{\n  \"ticketId\":{{ticket.id}},\n  \"folderId\":{{ticket.ticket_field_1500011100662}}\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01GX6CZCG46V6P4JTC2B34WPKY",
+            "{\n  \"ticketId\": {{ticket.id}}\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "CLOSED",
+            "operator": "is",
+            "value": "1"
+          },
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "closed"
+          }
+        ],
+        "any": []
+      },
+      "position": 31,
+      "raw_title": "Copy of Move attachments to Trash/redacted after 30 days close without tag"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/18051874290327.json",
+      "id": 18051874290327,
+      "title": "Chat Pending Reminder: 1 - Pending for more than 24 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-10-05T16:04:00Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_chat_reminder_1 chat_reminder_1"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"The conversation has no updates for 24 hours; it will be automatically resolved after the next 24 hours.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC09GAM80MX83KYVXEXSZZYH",
+            "{\n  \"assigneeEmail\":\"{{ticket.assignee.email}}\",\n  \"body\":\"The conversation has no updates for 24 hours; it will be automatically resolved after the next 24 hours.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "Conversation Reminder",
+            "Hello {{ticket.requester.first_name}}, we have not heard from you for 24 hours. If there is no update to the conversation https://{{ticket.url}} in the next 24 hours, the conversation will be closed. If this problem persists or you have any additional questions, you can re-open this conversation for up to 7 days. \n\nThank you for contacting us."
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_chat_reminder chat_reminder_1 chat_reminder_2 no_autosolve autosolve "
+          },
+          {
+            "field": "PENDING",
+            "operator": "less_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": []
+      },
+      "position": 32,
+      "raw_title": "Chat Pending Reminder: 1 - Pending for more than 24 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/18056554389399.json",
+      "id": 18056554389399,
+      "title": "Chat Pending Reminder: 2 - Pending for more than 48 business hours (Auto-solve)",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-10-05T18:28:33Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_chat_reminder_2 chat_reminder_2 autosolve track_autosolve"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"The conversation has no updates for 48 hours, and it will be automatically resolved.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        },\n        \"status\": \"solved\",\n        \"custom_fields\": [\n    \t\t\t{\n    \t\t\t\t\"id\": 1500011100742,\n    \t\t\t\t\"value\": \"{% if ticket.ticket_field_1500011100742 == blank %}customer_inactivity{% else %}{{ticket.ticket_field_1500011100742}}{% endif %}\"\n    \t\t\t}\n    \t\t]\n    }\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC09GAM80MX83KYVXEXSZZYH",
+            "{\n  \"assigneeEmail\":\"{{ticket.assignee.email}}\",\n  \"body\":\"The conversation has no updates for 48 hours, and it will be automatically resolved.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        },
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_and_ccs",
+            "Conversation Resolved ",
+            "Hello {{ticket.requester.first_name}}, we have not heard from you for 48 hours. As a result, the conversation https://{{ticket.url}} will be closed. If this problem persists or you have any additional questions, you can re-open this conversation for up to 7 days. \n\nThank you for contacting us."
+          ]
+        },
+        {
+          "field": "remove_tags",
+          "value": "chat_reminder_1"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "pending"
+          },
+          {
+            "field": "PENDING",
+            "operator": "greater_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "no_chat_reminder chat_reminder_2 no_autosolve autosolve "
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "chat_reminder_1"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": []
+      },
+      "position": 33,
+      "raw_title": "Chat Pending Reminder: 2 - Pending for more than 48 business hours (Auto-solve)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/18068620773399.json",
+      "id": 18068620773399,
+      "title": "Chat On-Hold Reminder: 1 - On-Hold for more than 24 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-10-06T03:54:11Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_hold_reminder_1 hold_reminder_1"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"The customer has been waiting for an update for at least 24 hours. Please provide an update to the customer. If there’s no update, the chat captains will be notified after the next 24 hours.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC1HDHWEHENB0R9DPTH8K0RC",
+            "{\n  \"assigneeEmail\":\"{{ticket.assignee.email}}\",\n  \"body\":\"The customer has been waiting for an update for at least 24 hours. Please provide an update to the customer. If there’s no update, the chat captains will be notified after the next 24 hours.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "hold"
+          },
+          {
+            "field": "HOLD",
+            "operator": "greater_than_business_hours",
+            "value": "1"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "hold_reminder_1 hold_reminder_2"
+          },
+          {
+            "field": "HOLD",
+            "operator": "less_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": []
+      },
+      "position": 34,
+      "raw_title": "Chat On-Hold Reminder: 1 - On-Hold for more than 24 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/18068745316119.json",
+      "id": 18068745316119,
+      "title": "Chat On-Hold Reminder: 2 - On-Hold for more than 48 business hours",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2023-10-06T04:02:35Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "track_hold_reminder_2 hold_reminder_2"
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01G21FG3RM70VW5ZR9BA6HRK6A",
+            "{\n    \"ticket\": {\n        \"comment\": {\n            \"body\": \"The customer has been waiting for an update for at least 48 hours. The chat captains have been notified.\",\n            \"author_id\": 1905893852465,\n            \"public\": false\n        }\n    }\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC1HMNG5875T07R6KZMB46FY",
+            "{\n  \"body\":\"Chat {{ticket.id}} is waiting on an internal update for 48 hours; please update the assignee.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        },
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HC1HDHWEHENB0R9DPTH8K0RC",
+            "{\n  \"assigneeEmail\":\"{{ticket.assignee.email}}\",\n  \"body\":\"The customer has been waiting for an update for at least 48 hours. The chat captains have been notified.\\nConversation Link: https://{{ticket.url}}\"\n}"
+          ]
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "is",
+            "value": "hold"
+          },
+          {
+            "field": "HOLD",
+            "operator": "greater_than_business_hours",
+            "value": "2"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "hold_reminder_2"
+          },
+          {
+            "field": "custom_fields_4612925021719",
+            "operator": "is",
+            "value": "ps"
+          },
+          {
+            "field": "current_tags",
+            "operator": "includes",
+            "value": "hold_reminder_1"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "1500002895221"
+          }
+        ],
+        "any": []
+      },
+      "position": 35,
+      "raw_title": "Chat On-Hold Reminder: 2 - On-Hold for more than 48 business hours"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/20409763450135.json",
+      "id": 20409763450135,
+      "title": "Business Insights SLA Breach Notification",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2024-01-08T17:08:57Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "current_tags",
+          "value": "bi_sla_breach"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "sla_next_breach_at",
+            "operator": "greater_than",
+            "value": "0"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "bi_sla_breach bi_sla_breach_notified"
+          },
+          {
+            "field": "group_id",
+            "operator": "is",
+            "value": "1900001030305"
+          },
+          {
+            "field": "ticket_form_id",
+            "operator": "is",
+            "value": "21798545497239"
+          }
+        ],
+        "any": []
+      },
+      "position": 36,
+      "raw_title": "Business Insights SLA Breach Notification"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/20507598108695.json",
+      "id": 20507598108695,
+      "title": "Request customer satisfaction rating (system automation)",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2024-01-11T20:18:24Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_user",
+          "value": [
+            "requester_id",
+            "Request [{{ticket.title}}] Share your feedback with us",
+            "Hello {{ticket.requester.name}}, we’d love to hear how we did on your recent request {{ticket.title}}. \nPlease take a moment to answer a few questions to let us know how we did. \nThank you,\nDynatrace Support\n\n{{satisfaction.survey_section}}"
+          ]
+        },
+        {
+          "field": "satisfaction_score",
+          "value": "offered"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "SOLVED",
+            "operator": "greater_than",
+            "value": "0"
+          },
+          {
+            "field": "satisfaction_score",
+            "operator": "is",
+            "value": "unoffered"
+          },
+          {
+            "field": "ticket_is_public",
+            "operator": "is",
+            "value": "public"
+          }
+        ],
+        "any": []
+      },
+      "position": 37,
+      "raw_title": "Request customer satisfaction rating (system automation)"
+    },
+    {
+      "url": "https://dynatrace1633106639.zendesk.com/api/v2/automations/22564864534423.json",
+      "id": 22564864534423,
+      "title": "Remap Environment Alias to Real Name",
+      "active": true,
+      "updated_at": "2024-04-26T17:17:57Z",
+      "created_at": "2024-04-04T16:12:39Z",
+      "default": false,
+      "actions": [
+        {
+          "field": "notification_webhook",
+          "value": [
+            "01HTGFSG9QQWT717F2M9QDQR8N",
+            "{\n    \"ticketId\": {{ticket.id}},\n    \"basUuid\": \"{{ticket.organization.custom_fields.bas_uuid}}\",\n    \"environmentId\": {% if ticket.ticket_field_1500011047301 == blank %}\"\"{% else %}\"{{ticket.ticket_field_1500011047301}}\"{% endif %}\n}"
+          ]
+        },
+        {
+          "field": "current_tags",
+          "value": "alias_checked"
+        }
+      ],
+      "conditions": {
+        "all": [
+          {
+            "field": "NEW",
+            "operator": "greater_than",
+            "value": "1"
+          },
+          {
+            "field": "NEW",
+            "operator": "less_than",
+            "value": "24"
+          },
+          {
+            "field": "organization.custom_fields.account_type",
+            "operator": "is",
+            "value": "5454500172567"
+          },
+          {
+            "field": "organization.custom_fields.bas_uuid",
+            "operator": "present",
+            "value": null
+          },
+          {
+            "field": "status",
+            "operator": "less_than",
+            "value": "closed"
+          },
+          {
+            "field": "current_tags",
+            "operator": "not_includes",
+            "value": "alias_checked"
+          }
+        ],
+        "any": []
+      },
+      "position": 38,
+      "raw_title": "Remap Environment Alias to Real Name"
+    }
+  ],
+  "next_page": null,
+  "previous_page": null,
+  "count": 38
+}

@@ -1,0 +1,1 @@
+resource "zendesk_ticket_field" "affected_dynatrace_component" {}
