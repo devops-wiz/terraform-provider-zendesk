@@ -15,9 +15,12 @@ import (
 var dummyGroupResourceName = "zendesk_group.test"
 
 func TestAccGroup(t *testing.T) {
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	t.Parallel()
 
 	t.Run("basic_group", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -40,6 +43,9 @@ func TestAccGroup(t *testing.T) {
 	})
 
 	t.Run("change group is_public", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

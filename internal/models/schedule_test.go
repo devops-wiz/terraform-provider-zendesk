@@ -189,7 +189,7 @@ func TestScheduleResourceModel_GetApiModelFromTfModel(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.testName, func(t *testing.T) {
-			out, diags := tc.input.GetApiModelFromTfModel(context.Background())
+			out, diags := tc.input.GetApiModelFromTfModel(t.Context())
 			if diags.HasError() {
 				t.Fatalf("GetApiModelFromTfModel() got error: %v", diags.Errors())
 			}
@@ -223,7 +223,7 @@ func TestScheduleResourceModel_GetTfModelFromApiModel(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.testName, func(t *testing.T) {
-			diags := tc.target.GetTfModelFromApiModel(context.Background(), tc.input)
+			diags := tc.target.GetTfModelFromApiModel(t.Context(), tc.input)
 			if diags.HasError() {
 				t.Fatalf("GetTfModelFromApiModel() got error: %v", diags.Errors())
 			}

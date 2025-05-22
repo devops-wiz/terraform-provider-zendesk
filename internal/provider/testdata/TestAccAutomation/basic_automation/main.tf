@@ -1,16 +1,16 @@
 resource "zendesk_ticket_field" "test" {
-  title             = "test_acc_custom_field_automation_${var.title}"
+  title             = "test_acc_custom_field_automation_${var.test_id}"
   type              = "tagger"
   agent_description = "test2"
 
   custom_field_options = [
     {
       name  = "Test update 2"
-      value = "test_tag_automation"
+      value = "test_tag_automation_${var.test_id}"
     },
     {
       name  = "Test 2"
-      value = "test_tag_automation_2"
+      value = "test_tag_automation_2_${var.test_id}"
     }
   ]
 }
@@ -43,7 +43,7 @@ resource "zendesk_automation" "test" {
     },
     {
       field           = "custom_field",
-      value           = "test_tag_automation"
+      value           = "test_tag_automation_${var.test_id}"
       custom_field_id = zendesk_ticket_field.test.id
     }
   ]
@@ -66,7 +66,7 @@ resource "zendesk_automation" "test" {
       },
       {
         field           = "custom_field",
-        value           = "test_tag_automation"
+        value           = "test_tag_automation_${var.test_id}"
         operator        = "is_not"
         custom_field_id = zendesk_ticket_field.test.id
       }
@@ -79,3 +79,10 @@ variable "title" {
   type     = string
   nullable = false
 }
+
+variable "test_id" {
+  type     = string
+  nullable = false
+}
+
+

@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	"testing"
 
@@ -17,9 +16,11 @@ import (
 const dummyWebhookResourceName = "zendesk_webhook.test"
 
 func TestAccWebhook(t *testing.T) {
+	t.Parallel()
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic webhook", func(t *testing.T) {
+		t.Parallel()
 		var webhook zendesk.Webhook
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -40,6 +41,7 @@ func TestAccWebhook(t *testing.T) {
 	})
 
 	t.Run("webhook with auth basic auth", func(t *testing.T) {
+		t.Parallel()
 		var webhook zendesk.Webhook
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -74,7 +76,7 @@ func testAccCheckWebhookResourceExists(resourceName string, webhook *zendesk.Web
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		tflog.SetField(ctx, "test_id", rs.Primary.ID)
 
@@ -94,7 +96,7 @@ func testAccCheckWebhookResourceExists(resourceName string, webhook *zendesk.Web
 func TestWebhookResourceSchema(t *testing.T) {
 	t.Parallel()
 
-	ctx := context.Background()
+	ctx := t.Context()
 	schemaRequest := fwresource.SchemaRequest{}
 	schemaResponse := &fwresource.SchemaResponse{}
 

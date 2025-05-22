@@ -20,10 +20,12 @@ import (
 const dummyMacroResourceName = "zendesk_macro.test"
 
 func TestAccMacro(t *testing.T) {
+	t.Parallel()
 	var macro zendesk.Macro
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic macro", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -119,6 +121,7 @@ func TestAccMacro(t *testing.T) {
 	})
 
 	t.Run("side conversation", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -168,7 +171,7 @@ func testAccCheckMacroResourceExists(resourceName string, macro *zendesk.Macro, 
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 

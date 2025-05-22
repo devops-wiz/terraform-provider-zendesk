@@ -22,9 +22,12 @@ import (
 const dummyTicketFieldResourceName = "zendesk_ticket_field.test"
 
 func TestAccTicketField(t *testing.T) {
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	t.Parallel()
 
 	t.Run("basic ticket field", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		var ticketField zendesk.TicketField
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -62,6 +65,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("visible in portal and required in portal invalid", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -78,6 +84,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("editable in portal invalid", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -94,6 +103,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("should fail invalid field", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -110,6 +122,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("should destroy then create when type changed", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		var ticketField zendesk.TicketField
 		type1 := "tagger"
 		type2 := "multiselect"
@@ -173,6 +188,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("change description", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -194,6 +212,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("change required option", func(t *testing.T) {
+		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -229,7 +250,7 @@ func testAccCheckTicketFieldResourceExists(resourceName string, ticketField *zen
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 

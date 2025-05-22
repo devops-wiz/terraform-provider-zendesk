@@ -2,24 +2,6 @@
 
 version: '3'
 
-vars:
-  # Use gotestdox for gotestsum format if available, otherwise, use default
-  TEST_SUM_FORMAT:
-    sh: |
-      if command -v "gotestdox" &> /dev/null; then
-        echo "testdox"
-      else
-        echo "testname"
-      fi
-  # Uses `gotestsum` tool if installed https://github.com/gotestyourself/gotestsum
-  TEST_CMD:
-    sh: |
-      if command -v "gotestsum" &> /dev/null; then
-        echo "gotestsum --rerun-fails --packages="./..." --format {{.TEST_SUM_FORMAT}}"
-      else
-        echo "go test -v"
-      fi
-
 tasks:
   delve:
     aliases:
@@ -65,62 +47,46 @@ tasks:
     cmd: go install .
 
 
-  acctest:
-    aliases:
-      - acc
-      - at
-
-    desc: Acceptance/Integration testing using live Zendesk Resources.
-
+  test:
+    desc: For running go tests, both unit and acceptance tests
     vars:
-      TARGET_SUITE:
-        ref: .TARGET_SUITE | default "none"
-    requires:
-      vars:
-        - name: TARGET_SUITE
-          enum:
-            - Automation
-            - Brand
-            - DynamicContent
-            - Group
-            - Locale
-            - Macro
-            - OrgField
-            - Schedule
-            - Search
-            - SlaPolicy
-            - TicketField
-            - TicketForm
-            - UserField
-            - View
-            - Webhook
-            - none
+      VRBS:
+        ref: .VRBS  | default "false" | regexMatch "^(?i)(true|t)$"
+      FORMAT: '{{if .VRBS}}testname{{else}}pkgname{{end}} '
+      CTC:
+        ref: .CTC | default "false" | regexMatch "^(?i)(true|t)$"
+      TEST_CMD:
+        #   TODO: format pkgname is default, look into using gotestdox for gotestsum format
+        sh: |
+          if command -v "gotestsum" &> /dev/null; then
+            echo "gotestsum --rerun-fails --packages="./..." --format {{.FORMAT}} --hide-summary=skipped"
+          else
+            echo "go test{{if .VRBS}} -v{{end}}"
+          fi
+      RUN_PATTERN:
+        ref: .RUN_PATTERN | default "none"
+      ACC_ONLY:
+        ref: .ACC_ONLY | default "false" | regexMatch "^(?i)(true|t)$"
+      ACC:
+        ref: .ACC | default "false" | regexMatch "^(?i)(true|t)$" | or .ACC_ONLY
+
+
 
     dotenv:
       - .env
     env:
-      TF_ACC: 1
-    cmd: |
-      {{.TEST_CMD}} ./... -run
-      {{- if ne .TARGET_SUITE "none"}} TestAcc{{.TARGET_SUITE}}{{else}} TestAcc*{{end}}
+      TF_ACC: '{{if .ACC}}1{{end}}'
 
-  unit-test:
-    vars:
-      CLEAR_CACHE:
-        ref: .CLEAR_CACHE | default "false" | eq "true"
-    aliases:
-      - ut
-      - t
-      - test
-    desc: Basic Unit testing
-    cmd: |
-      {{.TEST_CMD}} ./... -skip TestAcc*
-
-  clear-test-cache:
-    aliases:
-      - ctc
-
-    cmd: go clean -testcache
+    cmds:
+      - cmd: |
+          {{if .CTC}}go clean -testcache{{end}}
+        silent: true
+      - cmd: echo "ACC set to {{.ACC}}, {{if .ACC}}running{{else}}skipping{{end}} acceptance tests."
+        silent: true
+      - |
+        {{.TEST_CMD}} ./...
+        {{- if ne .RUN_PATTERN "none"}} -run ".RUN_PATTERN"{{end -}}
+        {{- if .ACC_ONLY}} -run TestAcc*{{end -}}
+      
 
 
-  etest: echo {{.TEST_CMD}}

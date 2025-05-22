@@ -7,7 +7,7 @@ import (
 )
 
 func TestGetApiModelFromTfModelMacro(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName string
 		input    MacroResourceModel
@@ -48,7 +48,7 @@ func TestGetApiModelFromTfModelMacro(t *testing.T) {
 // TODO: Finish this test when test revamp is done
 func TestGetTfModelFromApiModelMacro(t *testing.T) {
 	t.Skip()
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName   string
 		existingTf MacroResourceModel

@@ -9,7 +9,7 @@ import (
 )
 
 func TestGetApiModelFromTfModelTicket(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName string
 		input    TicketFieldResourceModel
@@ -34,7 +34,7 @@ func TestGetApiModelFromTfModelTicket(t *testing.T) {
 }
 
 func TestGetTfModelFromApiModelTicket(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName   string
 		existingTf TicketFieldResourceModel

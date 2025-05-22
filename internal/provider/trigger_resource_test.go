@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	fwresource "github.com/hashicorp/terraform-plugin-framework/resource"
 
@@ -19,28 +18,21 @@ import (
 const dummyTriggerResourceName = "zendesk_trigger.test"
 
 func TestAccTrigger(t *testing.T) {
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
-
+	t.Parallel()
 	t.Run("basic trigger", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		var trigger zendesk.Trigger
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 			Steps: []resource.TestStep{
 				{
-					ConfigFile: config.TestStepFile("main.tf"),
+					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
-					},
-					Check: resource.ComposeTestCheckFunc(
-						resource.TestCheckResourceAttr(dummyTriggerResourceName, "title", fullResourceName),
-						testAccCheckTriggerResourceExists(dummyTriggerResourceName, &trigger, t),
-					),
-				},
-				{
-					ConfigFile: config.TestStepFile("main.tf"),
-					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					Check: resource.ComposeTestCheckFunc(
 						resource.TestCheckResourceAttr(dummyTriggerResourceName, "title", fullResourceName),
@@ -52,6 +44,9 @@ func TestAccTrigger(t *testing.T) {
 	})
 
 	t.Run("trigger notification user", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -70,6 +65,9 @@ func TestAccTrigger(t *testing.T) {
 	})
 
 	t.Run("auto reply", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -102,7 +100,7 @@ func testAccCheckTriggerResourceExists(resourceName string, trigger *zendesk.Tri
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 
@@ -129,7 +127,7 @@ func testAccCheckTriggerResourceExists(resourceName string, trigger *zendesk.Tri
 func TestTriggerSchema(t *testing.T) {
 	t.Parallel()
 
-	ctx := context.Background()
+	ctx := t.Context()
 	schemaRequest := fwresource.SchemaRequest{}
 	schemaResponse := &fwresource.SchemaResponse{}
 

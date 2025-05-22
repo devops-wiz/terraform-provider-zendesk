@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"reflect"
 	"testing"
@@ -22,7 +21,7 @@ func TestSLAPolicyResourceModel_GetApiModelFromTfModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, _ := c.input.GetApiModelFromTfModel(context.Background())
+			out, _ := c.input.GetApiModelFromTfModel(t.Context())
 			if !reflect.DeepEqual(out, c.expected) {
 				t.Fatalf(errorOutputMismatch, c.testName, out, c.expected)
 			}
@@ -47,7 +46,7 @@ func TestSLAPolicyResourceModel_GetTfModelFromApiModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			diags := c.target.GetTfModelFromApiModel(context.Background(), c.input)
+			diags := c.target.GetTfModelFromApiModel(t.Context(), c.input)
 			if diags.HasError() {
 				t.Fatalf("errors: %s", diags)
 			}

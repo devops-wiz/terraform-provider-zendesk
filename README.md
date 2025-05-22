@@ -1,4 +1,4 @@
-# Zendesk Terraform Provider
+# Terraform Provider: Zendesk
 
 > [!IMPORTANT]  
 > Read the contribution guideline before adding a pull request.
@@ -45,9 +45,18 @@ In either case, commit the changes to `go.mod` and `go.sum`.
 
 > [!IMPORTANT]
 > This is required when making any schema changes, as the pipeline will fail if docs are not updated in PR
-> To generate or update documentation, run `go generate`.
+> To generate or update documentation, run `go generate ./...`.
 
 ### Testing
+
+This project contains both unit and acceptance tests. See below on running.
+
+#### Unit Testing
+
+To run unit tests, run:
+```shell
+  task test
+```
 
 #### Acceptance Testing
 
@@ -63,7 +72,13 @@ In either case, commit the changes to `go.mod` and `go.sum`.
 Once these variables are set, please run following command:
 
 ```shell
-  task acctest
+  task test ACC=true
+```
+
+This will run all tests including acceptance tests. To run acceptance tests only, run:
+
+```shell
+  task test ACC_ONLY=true 
 ```
 
 

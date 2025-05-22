@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -56,7 +55,7 @@ func TestWebhookResourceModel_GetApiModelFromTfModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, _ := c.input.GetApiModelFromTfModel(context.Background())
+			out, _ := c.input.GetApiModelFromTfModel(t.Context())
 			if !reflect.DeepEqual(out, c.expected) {
 				t.Fatalf(errorOutputMismatch, c.testName, out, c.expected)
 			}
@@ -109,7 +108,7 @@ func TestGetApiWebhookAuthenticationFromTf(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, diags := GetApiWebhookAuthenticationFromTf(context.Background(), c.input)
+			out, diags := GetApiWebhookAuthenticationFromTf(t.Context(), c.input)
 			if diags.HasError() {
 				t.Fatalf("unexpected error: %s", diags.Errors())
 			}
@@ -180,7 +179,7 @@ func TestWebhookResourceModel_GetTfModelFromApiModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			_ = c.target.GetTfModelFromApiModel(context.Background(), c.input)
+			_ = c.target.GetTfModelFromApiModel(t.Context(), c.input)
 			if !reflect.DeepEqual(c.target, c.expected) {
 				t.Fatalf(errorOutputMismatch, c.testName, c.target, c.expected)
 			}
@@ -234,7 +233,7 @@ func TestGetTfWebhookAuthenticationFromApi(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, diags := getTfWebhookAuthenticationFromApi(context.Background(), c.input)
+			out, diags := getTfWebhookAuthenticationFromApi(t.Context(), c.input)
 			if diags.HasError() {
 				t.Fatalf("unexpected error: %s", diags.Errors())
 			}

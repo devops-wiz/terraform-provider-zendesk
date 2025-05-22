@@ -25,7 +25,7 @@ resource "zendesk_trigger" "test" {
 }
 
 resource "zendesk_trigger_category" "test" {
-  name = "test_acc_${var.title}_category"
+  name = "${var.title}_category"
 }
 
 

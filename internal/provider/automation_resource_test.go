@@ -17,28 +17,22 @@ import (
 const dummyAutomationResourceName = "zendesk_automation.test"
 
 func TestAccAutomation(t *testing.T) {
+	t.Parallel()
 	var automation zendesk.Automation
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+	fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 
 	t.Run("basic automation", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
 			Steps: []resource.TestStep{
 				{
-					ConfigFile: config.TestStepFile("main.tf"),
+					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
-					},
-					Check: resource.ComposeTestCheckFunc(
-						resource.TestCheckResourceAttr(dummyAutomationResourceName, "title", fullResourceName),
-						testAccCheckAutomationResourceExists(dummyAutomationResourceName, &automation, t),
-					),
-				},
-				{
-					ConfigFile: config.TestStepFile("main.tf"),
-					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					Check: resource.ComposeTestCheckFunc(
 						resource.TestCheckResourceAttr(dummyAutomationResourceName, "title", fullResourceName),
@@ -51,6 +45,7 @@ func TestAccAutomation(t *testing.T) {
 	})
 
 	t.Run("should fail empty field", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -65,6 +60,7 @@ func TestAccAutomation(t *testing.T) {
 	})
 
 	t.Run("should fail invalid all condition", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -79,6 +75,7 @@ func TestAccAutomation(t *testing.T) {
 	})
 
 	t.Run("should fail invalid condition field", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -107,7 +104,7 @@ func testAccCheckAutomationResourceExists(resourceName string, automation *zende
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 

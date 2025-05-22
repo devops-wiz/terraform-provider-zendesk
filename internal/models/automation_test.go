@@ -8,7 +8,7 @@ import (
 )
 
 func TestAutomationResourceModel_GetApiModelFromTfModel(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName string
 		input    AutomationResourceModel
@@ -37,7 +37,7 @@ func TestAutomationResourceModel_GetApiModelFromTfModel(t *testing.T) {
 
 func TestAutomationResourceModel_GetTfModelFromApiModel(t *testing.T) {
 
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName   string
 		existingTf AutomationResourceModel

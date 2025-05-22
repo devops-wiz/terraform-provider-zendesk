@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -44,7 +43,7 @@ func TestBrandResource_GetApiModelFromTfModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, diags := c.input.GetApiModelFromTfModel(context.Background())
+			out, diags := c.input.GetApiModelFromTfModel(t.Context())
 			if diags.HasError() {
 				t.Errorf("%s: got error %s", c.testName, diags.Errors())
 			}
@@ -102,7 +101,7 @@ func TestBrandResource_GetTfModelFromApiModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			diags := c.target.GetTfModelFromApiModel(context.Background(), c.input)
+			diags := c.target.GetTfModelFromApiModel(t.Context(), c.input)
 			if diags.HasError() {
 				t.Errorf("%s: got error %s", c.testName, diags.Errors())
 			}

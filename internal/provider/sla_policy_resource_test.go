@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	fwresource "github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-testing/config"
@@ -16,9 +15,11 @@ import (
 const dummySLAPolicyResourceName = "zendesk_sla_policy.test"
 
 func TestAccSlaPolicy(t *testing.T) {
+	t.Parallel()
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic sla resource", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck: func() {
 				testAccPreCheck(t)
@@ -43,6 +44,7 @@ func TestAccSlaPolicy(t *testing.T) {
 	})
 
 	t.Run("sla resource with settings", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck: func() {
 				testAccPreCheck(t)
@@ -69,6 +71,7 @@ func TestAccSlaPolicy(t *testing.T) {
 	})
 
 	t.Run("sla resource with position", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck: func() {
 				testAccPreCheck(t)
@@ -113,7 +116,7 @@ func TestAccSlaPolicy(t *testing.T) {
 func TestSlaResourceSchema(t *testing.T) {
 	t.Parallel()
 
-	ctx := context.Background()
+	ctx := t.Context()
 	schemaRequest := fwresource.SchemaRequest{}
 	schemaResponse := &fwresource.SchemaResponse{}
 

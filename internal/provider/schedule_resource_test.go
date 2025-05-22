@@ -14,9 +14,11 @@ import (
 var dummyScheduleResourceName = "zendesk_schedule.test"
 
 func TestAccSchedule(t *testing.T) {
+	t.Parallel()
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic schedule one day", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -44,6 +46,7 @@ func TestAccSchedule(t *testing.T) {
 	})
 
 	t.Run("basic schedule all days", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -71,6 +74,7 @@ func TestAccSchedule(t *testing.T) {
 	})
 
 	t.Run("update schedule", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

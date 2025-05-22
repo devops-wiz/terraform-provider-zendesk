@@ -26,7 +26,7 @@ var (
 )
 
 func TestGetApiModelFromTfModelTrigger(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName string
 		input    TriggerResourceModel
@@ -98,7 +98,7 @@ func TestGetApiModelFromTfModelTrigger(t *testing.T) {
 }
 
 func TestGetTfModelFromApiModelTrigger(t *testing.T) {
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName   string
 		existingTf TriggerResourceModel

@@ -221,7 +221,8 @@ func (w *WebhookResourceModel) GetTfModelFromApiModel(ctx context.Context, apiWe
 func getTfWebhookAuthenticationFromApi(ctx context.Context, authentication *zendesk.WebhookAuthentication) (newTfAuthObject types.Object, diags diag.Diagnostics) {
 	newTfCredentials := CredentialsResourceModel{}
 
-	if authentication.Type == "api_key" {
+	switch authentication.Type {
+	case "api_key":
 		newTfCredentials = CredentialsResourceModel{
 			HeaderName:  types.StringValue(authentication.Data.HeaderName),
 			HeaderValue: types.StringValue(authentication.Data.HeaderValue),
@@ -229,7 +230,7 @@ func getTfWebhookAuthenticationFromApi(ctx context.Context, authentication *zend
 			Password:    types.StringNull(),
 			Token:       types.StringNull(),
 		}
-	} else if authentication.Type == "basic_auth" {
+	case "basic_auth":
 		newTfCredentials = CredentialsResourceModel{
 			HeaderName:  types.StringNull(),
 			HeaderValue: types.StringNull(),
@@ -237,7 +238,7 @@ func getTfWebhookAuthenticationFromApi(ctx context.Context, authentication *zend
 			Password:    types.StringValue(authentication.Data.Password),
 			Token:       types.StringNull(),
 		}
-	} else if authentication.Type == "bearer_token" {
+	case "bearer_token":
 		newTfCredentials = CredentialsResourceModel{
 			HeaderName:  types.StringNull(),
 			HeaderValue: types.StringNull(),

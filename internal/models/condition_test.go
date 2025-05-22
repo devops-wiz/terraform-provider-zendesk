@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"reflect"
@@ -40,7 +39,7 @@ func TestGetApiConditionsFromTf(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		out, _ := getApiConditionsFromTf(context.Background(), c.input)
+		out, _ := getApiConditionsFromTf(t.Context(), c.input)
 		if !reflect.DeepEqual(out, c.expected) {
 			t.Fatalf(errorOutputMismatch, c.testName, out, c.expected)
 		}

@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"github.com/devops-wiz/terraform-provider-zendesk/internal/models"
 	"github.com/google/go-cmp/cmp"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -48,7 +47,7 @@ func TestSortCustomFieldOptionsRun(t *testing.T) {
 			}
 
 			options := SortCustomFieldOptions{}
-			options.Run(context.Background(), testCase.request, &got)
+			options.Run(t.Context(), testCase.request, &got)
 
 			if diff := cmp.Diff(got, testCase.expected); diff != "" {
 				t.Errorf("unexpected difference: %s", diff)

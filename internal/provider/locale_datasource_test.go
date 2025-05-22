@@ -10,7 +10,9 @@ import (
 )
 
 func TestAccLocale(t *testing.T) {
+	t.Parallel()
 	t.Run("should return locale from code", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

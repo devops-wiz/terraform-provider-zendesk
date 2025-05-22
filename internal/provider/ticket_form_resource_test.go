@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	fwresource "github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-testing/config"
@@ -16,8 +15,9 @@ import (
 var dummyTicketFormResourceName = "zendesk_ticket_form.test"
 
 func TestAccTicketForm(t *testing.T) {
-
+	t.Parallel()
 	t.Run("basic ticket form", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -45,6 +45,7 @@ func TestAccTicketForm(t *testing.T) {
 	})
 
 	t.Run("basic ticket form change display name", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -89,6 +90,7 @@ func TestAccTicketForm(t *testing.T) {
 	})
 
 	t.Run("basic ticket form change ticket fields", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -123,6 +125,7 @@ func TestAccTicketForm(t *testing.T) {
 	})
 
 	t.Run("ticket form with agent conditions", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -145,6 +148,7 @@ func TestAccTicketForm(t *testing.T) {
 	})
 
 	t.Run("ticket form with agent and end user conditions", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -167,6 +171,7 @@ func TestAccTicketForm(t *testing.T) {
 	})
 
 	t.Run("ticket form with agent and end user conditions changed", func(t *testing.T) {
+		t.Parallel()
 		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -204,18 +209,17 @@ func TestAccTicketForm(t *testing.T) {
 func TestTicketFormSchema(t *testing.T) {
 	t.Parallel()
 
-	ctx := context.Background()
 	schemaRequest := fwresource.SchemaRequest{}
 	schemaResponse := &fwresource.SchemaResponse{}
 
-	NewTicketFormResource().Schema(ctx, schemaRequest, schemaResponse)
+	NewTicketFormResource().Schema(t.Context(), schemaRequest, schemaResponse)
 
 	if schemaResponse.Diagnostics.HasError() {
 		t.Fatalf("Schema method diagnostics: %+v", schemaResponse.Diagnostics)
 	}
 
 	// Validate the schema
-	diagnostics := schemaResponse.Schema.ValidateImplementation(ctx)
+	diagnostics := schemaResponse.Schema.ValidateImplementation(t.Context())
 
 	if diagnostics.HasError() {
 		t.Fatalf("Schema validation diagnostics: %+v", diagnostics)

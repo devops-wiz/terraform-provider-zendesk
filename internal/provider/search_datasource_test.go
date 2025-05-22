@@ -11,7 +11,9 @@ import (
 )
 
 func TestAccSearch(t *testing.T) {
+	t.Parallel()
 	t.Run("user_search", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -31,6 +33,7 @@ func TestAccSearch(t *testing.T) {
 		})
 	})
 	t.Run("org_search", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -50,6 +53,7 @@ func TestAccSearch(t *testing.T) {
 		})
 	})
 	t.Run("other_search", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

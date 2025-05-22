@@ -21,13 +21,14 @@ import (
 const dummyViewResourceName = "zendesk_view.test"
 
 func TestAccView(t *testing.T) {
-
+	t.Parallel()
 	fullResourceName := fmt.Sprintf(
 		"test_acc_%s",
 		acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum),
 	)
 
 	t.Run("basic_view", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -43,6 +44,7 @@ func TestAccView(t *testing.T) {
 	})
 
 	t.Run("basic_view_with_any", func(t *testing.T) {
+		t.Parallel()
 		var view zendesk.View
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -92,6 +94,7 @@ func TestAccView(t *testing.T) {
 	})
 
 	t.Run("should fail invalid columns", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -119,7 +122,7 @@ func testAccCheckViewResourceExists(resourceName string, view *zendesk.View, t *
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 

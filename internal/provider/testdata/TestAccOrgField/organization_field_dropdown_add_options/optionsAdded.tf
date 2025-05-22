@@ -1,20 +1,25 @@
 resource "zendesk_organization_field" "test" {
   type = "dropdown"
   name = var.title
-  key  = "test_dropdown_2"
+  key  = "test_dropdown_${var.test_id}"
   custom_field_options = [
     {
       name  = "Test"
-      value = "${var.title}_test_tag_original"
+      value = "test_tag_original_${var.test_id}"
     },
     {
       name  = "Test 2"
-      value = "${var.title}_test_tag2_changed"
+      value = "test_tag_added_${var.test_id}"
     }
   ]
 }
 
 variable "title" {
+  type     = string
+  nullable = false
+}
+
+variable "test_id" {
   type     = string
   nullable = false
 }

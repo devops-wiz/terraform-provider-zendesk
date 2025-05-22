@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"context"
 	"fmt"
 	fwresource "github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-testing/config"
@@ -17,9 +16,11 @@ import (
 var dummyOrganizationFieldResourceName = "zendesk_organization_field.test"
 
 func TestAccOrgField(t *testing.T) {
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
-
+	t.Parallel()
 	t.Run("basic organization field", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -27,7 +28,8 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
@@ -41,6 +43,9 @@ func TestAccOrgField(t *testing.T) {
 		})
 	})
 	t.Run("organization field dropdown", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -48,7 +53,8 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
@@ -62,6 +68,9 @@ func TestAccOrgField(t *testing.T) {
 		})
 	})
 	t.Run("organization field dropdown add options", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -69,7 +78,8 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
@@ -82,7 +92,8 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("optionsAdded.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
@@ -96,6 +107,9 @@ func TestAccOrgField(t *testing.T) {
 		})
 	})
 	t.Run("organization field dropdown missing", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -103,7 +117,8 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 					ExpectError: regexp.MustCompile(`.*Could not create Organization Field, unexpected error: 422*`),
 				},
@@ -112,6 +127,9 @@ func TestAccOrgField(t *testing.T) {
 	})
 
 	t.Run("should disable field", func(t *testing.T) {
+		t.Parallel()
+		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
+		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -119,13 +137,15 @@ func TestAccOrgField(t *testing.T) {
 				{
 					ConfigFile: config.TestNameFile("main.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 				},
 				{
 					ConfigFile: config.TestNameFile("disabled.tf"),
 					ConfigVariables: config.Variables{
-						"title": config.StringVariable(fullResourceName),
+						"title":   config.StringVariable(fullResourceName),
+						"test_id": config.StringVariable(testId),
 					},
 				},
 			},
@@ -136,7 +156,7 @@ func TestAccOrgField(t *testing.T) {
 func TestOrganizationFieldSchema(t *testing.T) {
 	t.Parallel()
 
-	ctx := context.Background()
+	ctx := t.Context()
 	schemaRequest := fwresource.SchemaRequest{}
 	schemaResponse := &fwresource.SchemaResponse{}
 

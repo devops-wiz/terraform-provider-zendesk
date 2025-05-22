@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"reflect"
@@ -31,7 +30,7 @@ func TestGroupResourceModel_GetApiModelFromTfModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			out, _ := c.input.GetApiModelFromTfModel(context.Background())
+			out, _ := c.input.GetApiModelFromTfModel(t.Context())
 			if !reflect.DeepEqual(out, c.expected) {
 				t.Fatalf(errorOutputMismatch, c.testName, out, c.expected)
 			}
@@ -76,7 +75,7 @@ func TestGroupResourceModel_GetTfModelFromApiModel(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.testName, func(t *testing.T) {
-			c.target.GetTfModelFromApiModel(context.Background(), c.input)
+			c.target.GetTfModelFromApiModel(t.Context(), c.input)
 			if !reflect.DeepEqual(c.target, c.expected) {
 				t.Fatalf(errorOutputMismatch, c.testName, c.target, c.expected)
 			}

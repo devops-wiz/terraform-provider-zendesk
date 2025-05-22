@@ -18,7 +18,7 @@ import (
 const dummyTriggerCatgegoryResourceName = "zendesk_trigger_category.test"
 
 func TestAccTriggerCategoryBasic(t *testing.T) {
-
+	t.Parallel()
 	var triggerCategory zendesk.TriggerCategory
 
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
@@ -51,7 +51,7 @@ func testAccCheckTriggerCategoryResourceExists(resourceName string, triggerCat *
 		}
 
 		client := getZdTestClient()
-		ctx := getTestContext(t)
+		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
 

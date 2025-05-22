@@ -9,9 +9,11 @@ import (
 )
 
 func TestAccDynamicContent(t *testing.T) {
+	t.Parallel()
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("should create basic dynamic content", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

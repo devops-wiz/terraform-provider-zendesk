@@ -4,7 +4,6 @@
 package provider
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/credentialtypes"
 	"os"
 	"testing"
@@ -12,9 +11,6 @@ import (
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
-	"github.com/hashicorp/terraform-plugin-log/tfsdklog"
-	helperLogging "github.com/hashicorp/terraform-plugin-testing/helper/logging"
 )
 
 // testAccProtoV6ProviderFactories are used to instantiate a provider during
@@ -55,36 +51,4 @@ func getZdTestClient() *zendesk.Client {
 
 	return client
 
-}
-
-func getTestContext(t *testing.T) context.Context {
-	t.Helper()
-
-	helperLogging.SetOutput(t)
-
-	ctx := context.Background()
-	ctx = tfsdklog.RegisterTestSink(ctx, t)
-	ctx = logger(ctx, t, "acctest")
-
-	return ctx
-}
-
-func logger(ctx context.Context, t *testing.T, name string) context.Context {
-	t.Helper()
-
-	ctx = tfsdklog.NewRootProviderLogger(ctx,
-		tfsdklog.WithLevelFromEnv("TF_LOG"),
-		tfsdklog.WithLogName(name),
-		tfsdklog.WithoutLocation(),
-	)
-	ctx = testNameContext(ctx, t.Name())
-
-	return ctx
-}
-
-// testNameContext adds the current test name to loggers.
-func testNameContext(ctx context.Context, testName string) context.Context {
-	ctx = tflog.SetField(ctx, "test_name", testName)
-
-	return ctx
 }

@@ -14,10 +14,12 @@ import (
 var dummyBrandResourceName = "zendesk_brand.test"
 
 func TestAccBrand(t *testing.T) {
+	t.Parallel()
 	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 	testSubDomain := fmt.Sprintf("testsubdomain%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic_brand", func(t *testing.T) {
+		t.Parallel()
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

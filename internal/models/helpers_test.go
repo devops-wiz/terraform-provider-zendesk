@@ -1,18 +1,9 @@
 package models
 
 import (
-	"context"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"testing"
 )
-
-func getTestContext(t *testing.T) context.Context {
-	t.Helper()
-
-	ctx := context.Background()
-
-	return ctx
-}
 
 func diagnosticErrorHelper(t *testing.T, diags diag.Diagnostics, errorMsgHeader string) {
 	t.Helper()

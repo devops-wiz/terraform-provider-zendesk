@@ -11,7 +11,7 @@ import (
 
 func TestGetApiModelFromTfModelView(t *testing.T) {
 
-	ctx := getTestContext(t)
+	ctx := t.Context()
 
 	testTitle := "Test View"
 	testDesc := "Test View Desc"
@@ -147,7 +147,7 @@ func TestGetApiModelFromTfModelView(t *testing.T) {
 
 func TestGetTfModelFromApiModelView(t *testing.T) {
 
-	ctx := getTestContext(t)
+	ctx := t.Context()
 	cases := []struct {
 		testName   string
 		existingTf ViewResourceModel

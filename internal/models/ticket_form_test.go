@@ -1,7 +1,6 @@
 package models
 
 import (
-	"context"
 	"github.com/JacobPotter/go-zendesk/zendesk"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
@@ -15,7 +14,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 	var (
 		diags = diag.Diagnostics{}
 
-		ctx = getTestContext(t)
+		ctx = t.Context()
 
 		testTicketFormResourceModelSimpleInput = TicketFormResourceModel{
 			Name: types.StringValue(testTitle),
@@ -41,7 +40,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 		}
 	)
 
-	testRequiredOnStatusObj, diag1 := types.ObjectValueFrom(context.Background(), testRequiredOnStatusResourceModel.AttributeTypes(), testRequiredOnStatusResourceModel)
+	testRequiredOnStatusObj, diag1 := types.ObjectValueFrom(t.Context(), testRequiredOnStatusResourceModel.AttributeTypes(), testRequiredOnStatusResourceModel)
 
 	diags.Append(diag1...)
 
@@ -57,7 +56,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 		},
 	}
 
-	testChildFieldSet, diag2 := types.SetValueFrom(context.Background(), types.ObjectType{AttrTypes: FormChildFieldConditions{}.AttributeTypes()}, testChildFieldsModel)
+	testChildFieldSet, diag2 := types.SetValueFrom(t.Context(), types.ObjectType{AttrTypes: FormChildFieldConditions{}.AttributeTypes()}, testChildFieldsModel)
 
 	diags.Append(diag2...)
 
@@ -85,7 +84,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 		},
 	}
 
-	testAgentConditions, diag4 := types.MapValueFrom(context.Background(),
+	testAgentConditions, diag4 := types.MapValueFrom(t.Context(),
 		types.ObjectType{AttrTypes: FormConditionsSet{}.AttributeTypes()},
 		testAgentConditionObject,
 	)
@@ -234,7 +233,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 
 		for _, c := range cases {
 			t.Run(c.testName, func(t *testing.T) {
-				out, diagTest := c.input.GetApiModelFromTfModel(context.Background())
+				out, diagTest := c.input.GetApiModelFromTfModel(t.Context())
 
 				diags.Append(diagTest...)
 
@@ -272,7 +271,7 @@ func TestTicketFormResourceModel(t *testing.T) {
 
 		for _, c := range cases {
 			t.Run(c.testName, func(t *testing.T) {
-				diags.Append(c.target.GetTfModelFromApiModel(context.Background(), c.input)...)
+				diags.Append(c.target.GetTfModelFromApiModel(t.Context(), c.input)...)
 				if diags.HasError() {
 					diagnosticErrorHelper(t, diags, "Diagnostic Error found running 'GetTfModelFromApiModel'")
 				} else {
