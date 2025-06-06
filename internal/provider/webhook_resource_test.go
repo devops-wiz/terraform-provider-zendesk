@@ -16,7 +16,7 @@ const dummyWebhookResourceName = "zendesk_webhook.test"
 
 func TestAccWebhook(t *testing.T) {
 	t.Parallel()
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic webhook", func(t *testing.T) {
 		t.Parallel()
@@ -74,7 +74,10 @@ func testAccCheckWebhookResourceExists(resourceName string, webhook *zendesk.Web
 			return fmt.Errorf("webhook ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		tflog.SetField(ctx, "test_id", rs.Primary.ID)

@@ -1,14 +1,17 @@
 package provider
 
 import (
+	"bytes"
+	"context"
 	"fmt"
-	"github.com/hashicorp/terraform-plugin-testing/plancheck"
-	"regexp"
-	"strconv"
-	"testing"
-
 	"github.com/JacobPotter/go-zendesk/zendesk"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/hashicorp/terraform-plugin-testing/plancheck"
+	"log"
+	"regexp"
+	"strings"
+	"testing"
+	"text/template"
+
 	"github.com/hashicorp/terraform-plugin-testing/config"
 	"github.com/hashicorp/terraform-plugin-testing/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-testing/knownvalue"
@@ -16,19 +19,57 @@ import (
 	"github.com/hashicorp/terraform-plugin-testing/tfjsonpath"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
-	"github.com/hashicorp/terraform-plugin-testing/terraform"
 )
 
-const dummyTicketFieldResourceName = "zendesk_ticket_field.test"
+const resourceType = "zendesk_ticket_field"
 
-func TestAccTicketField(t *testing.T) {
+var rName = fmt.Sprintf("%s.test", resourceType)
+
+var baseTestField = zendesk.TicketField{
+	Type: "text",
+}
+
+func init() {
+	resource.AddTestSweepers(resourceType, &resource.Sweeper{
+		Name: resourceType,
+		F: func(_ string) error {
+			client, err := getZdTestClient()
+			if err != nil {
+				return err
+			}
+
+			fields, _, err := client.GetTicketFieldsOBP(context.Background(), &zendesk.OBPOptions{
+				PageOptions: zendesk.PageOptions{
+					PerPage: 100,
+				},
+			})
+
+			if err != nil {
+				return err
+			}
+
+			for _, field := range fields {
+				if strings.HasPrefix(field.Title, "tf_acc_") {
+					err = client.DeleteTicketField(context.Background(), field.ID)
+					if err != nil {
+						return err
+					}
+					log.Printf("Deleted ticket field %s", field.Title)
+				}
+			}
+
+			return nil
+		},
+	})
+}
+
+func TestAccTicketField_basic(t *testing.T) {
 	t.Parallel()
 
 	t.Run("basic ticket field", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
-		var ticketField zendesk.TicketField
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -38,23 +79,19 @@ func TestAccTicketField(t *testing.T) {
 					ConfigVariables: config.Variables{
 						"title": config.StringVariable(fullResourceName),
 					},
-					Check: resource.ComposeTestCheckFunc(
-						testAccCheckTicketFieldResourceExists(dummyTicketFieldResourceName, &ticketField, t),
-						testAccCheckTicketFieldAttributes(&ticketField),
-					),
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
-							dummyTicketFieldResourceName,
+							rName,
 							tfjsonpath.New("custom_field_options"),
 							knownvalue.ListSizeExact(2),
 						),
 						statecheck.ExpectKnownValue(
-							dummyTicketFieldResourceName,
+							rName,
 							tfjsonpath.New("title"),
 							knownvalue.StringExact(fullResourceName),
 						),
 						statecheck.ExpectKnownValue(
-							dummyTicketFieldResourceName,
+							rName,
 							tfjsonpath.New("required"),
 							knownvalue.Bool(false),
 						),
@@ -65,7 +102,7 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("visible in portal and required in portal invalid", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -84,7 +121,7 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("editable in portal invalid", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -103,7 +140,7 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("should fail invalid field", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -122,10 +159,9 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("should destroy then create when type changed", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
-		var ticketField zendesk.TicketField
 		type1 := "tagger"
 		type2 := "multiselect"
 
@@ -139,14 +175,9 @@ func TestAccTicketField(t *testing.T) {
 						"title":     config.StringVariable(fullResourceName),
 						"fieldType": config.StringVariable(type1),
 					},
-					Check: resource.ComposeTestCheckFunc(
-						resource.TestCheckResourceAttr(dummyTicketFieldResourceName, "title", fullResourceName),
-						testAccCheckTicketFieldResourceExists(dummyTicketFieldResourceName, &ticketField, t),
-						testAccCheckTicketFieldAttributes(&ticketField),
-					),
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
-							dummyTicketFieldResourceName,
+							rName,
 							tfjsonpath.New("custom_field_options"),
 							knownvalue.ListSizeExact(2),
 						),
@@ -154,7 +185,7 @@ func TestAccTicketField(t *testing.T) {
 					ConfigPlanChecks: resource.ConfigPlanChecks{
 						PreApply: []plancheck.PlanCheck{
 							plancheck.ExpectNonEmptyPlan(),
-							plancheck.ExpectResourceAction(dummyTicketFieldResourceName, plancheck.ResourceActionCreate),
+							plancheck.ExpectResourceAction(rName, plancheck.ResourceActionCreate),
 						},
 					},
 				},
@@ -164,14 +195,9 @@ func TestAccTicketField(t *testing.T) {
 						"title":     config.StringVariable(fullResourceName),
 						"fieldType": config.StringVariable(type2),
 					},
-					Check: resource.ComposeTestCheckFunc(
-						resource.TestCheckResourceAttr(dummyTicketFieldResourceName, "title", fullResourceName),
-						testAccCheckTicketFieldResourceExists(dummyTicketFieldResourceName, &ticketField, t),
-						testAccCheckTicketFieldAttributes(&ticketField),
-					),
 					ConfigStateChecks: []statecheck.StateCheck{
 						statecheck.ExpectKnownValue(
-							dummyTicketFieldResourceName,
+							rName,
 							tfjsonpath.New("custom_field_options"),
 							knownvalue.ListSizeExact(2),
 						),
@@ -179,7 +205,7 @@ func TestAccTicketField(t *testing.T) {
 					ConfigPlanChecks: resource.ConfigPlanChecks{
 						PreApply: []plancheck.PlanCheck{
 							plancheck.ExpectNonEmptyPlan(),
-							plancheck.ExpectResourceAction(dummyTicketFieldResourceName, plancheck.ResourceActionDestroyBeforeCreate),
+							plancheck.ExpectResourceAction(rName, plancheck.ResourceActionDestroyBeforeCreate),
 						},
 					},
 				},
@@ -188,7 +214,7 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("change description", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -212,7 +238,7 @@ func TestAccTicketField(t *testing.T) {
 	})
 
 	t.Run("change required option", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -237,48 +263,122 @@ func TestAccTicketField(t *testing.T) {
 
 }
 
-func testAccCheckTicketFieldResourceExists(resourceName string, ticketField *zendesk.TicketField, t *testing.T) resource.TestCheckFunc {
-	return func(s *terraform.State) error {
-		rs, ok := s.RootModule().Resources[resourceName]
+func TestAccTicketField_update(t *testing.T) {
+	t.Parallel()
 
-		if !ok {
-			return fmt.Errorf("not found: %s", resourceName)
-		}
+	t.Run("ticket field basic", func(t *testing.T) {
+		resourceName := acctest.RandomWithPrefix("tf_acc_ticket_field")
+		t.Parallel()
+		testField := baseTestField
+		testField.Title = resourceName
+		testFieldChanged := testField
+		testFieldChanged.Description = "changed"
+		resource.Test(t, resource.TestCase{
+			PreCheck:                 func() { testAccPreCheck(t) },
+			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
+			Steps: []resource.TestStep{
+				{
+					Config: testAccTicketField(t, testField),
+				},
+				{
+					Config: testAccTicketField(t, testFieldChanged),
+				},
+				{
+					ImportState:     true,
+					ImportStateKind: resource.ImportBlockWithID,
+					ResourceName:    rName,
+				},
+			},
+		})
+	})
 
-		if rs.Primary.ID == "" {
-			return fmt.Errorf("ticket field ID is not set")
-		}
-
-		client := getZdTestClient()
-		ctx := t.Context()
-
-		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
-
-		if err != nil {
-
-			return fmt.Errorf("error converting")
-		}
-
-		tflog.SetField(ctx, "test_id", rs.Primary.ID)
-
-		resp, err := client.GetTicketField(ctx, convertedId)
-
-		if err != nil {
-			return err
-		}
-
-		*ticketField = resp
-
-		return nil
-
-	}
 }
 
-func testAccCheckTicketFieldAttributes(ticketField *zendesk.TicketField) resource.TestCheckFunc {
-	return func(s *terraform.State) error {
-		if ticketField.Active != true {
-			return fmt.Errorf("ticket field is not active")
+func TestAccTicketField_expectError(t *testing.T) {
+	t.Parallel()
+
+	t.Run("ticket field invalid attribute combo", func(t *testing.T) {
+		t.Parallel()
+		resourceName := acctest.RandomWithPrefix("tf_acc_ticket_field")
+		randomTag := acctest.RandomWithPrefix("tf_acc_tag")
+		testField := baseTestField
+		testField.Type = "tagger"
+		testField.CustomFieldOptions = []zendesk.CustomFieldOption{
+			{
+				Name:  "test",
+				Value: randomTag,
+			},
 		}
-		return nil
+		testField.Title = resourceName
+		testField.VisibleInPortal = false
+		testField.EditableInPortal = true
+		resource.Test(t, resource.TestCase{
+			PreCheck:                 func() { testAccPreCheck(t) },
+			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
+			Steps: []resource.TestStep{
+
+				{
+					Config:      testAccTicketField(t, testField),
+					ExpectError: regexp.MustCompile(`.*Invalid attribute combination.*`),
+				},
+			},
+		})
+	})
+	t.Run("ticket field change editable in portal", func(t *testing.T) {
+		t.Parallel()
+		resourceName := acctest.RandomWithPrefix("tf_acc_ticket_field")
+		randomTag := acctest.RandomWithPrefix("tf_acc_tag")
+		testField := baseTestField
+		testField.Type = "tagger"
+		testField.CustomFieldOptions = []zendesk.CustomFieldOption{
+			{
+				Name:  "test",
+				Value: randomTag,
+			},
+		}
+		testField.Title = resourceName
+		testField.VisibleInPortal = true
+		testField.EditableInPortal = true
+		testFieldChanged := testField
+		testFieldChanged.VisibleInPortal = false
+		resource.Test(t, resource.TestCase{
+			PreCheck:                 func() { testAccPreCheck(t) },
+			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
+			Steps: []resource.TestStep{
+				{
+					Config: testAccTicketField(t, testField),
+				},
+				{
+					Config:      testAccTicketField(t, testFieldChanged),
+					ExpectError: regexp.MustCompile(`.*Invalid attribute combination.*`),
+				},
+				{
+					Config: testAccTicketField(t, testField),
+				},
+			},
+		})
+	})
+}
+
+func testAccTicketField(t *testing.T, field zendesk.TicketField) string {
+	t.Helper()
+
+	if field.Type == "" || field.Title == "" {
+		t.Fatal("type and title must be set")
 	}
+
+	tmpl, err := template.New(ticketFieldTmpl).ParseFiles(ticketFieldTmplPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var tfFile bytes.Buffer
+
+	err = tmpl.Execute(&tfFile, field)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	return tfFile.String()
 }

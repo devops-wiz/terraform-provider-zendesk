@@ -15,7 +15,7 @@ var dummyBrandResourceName = "zendesk_brand.test"
 
 func TestAccBrand(t *testing.T) {
 	t.Parallel()
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 	testSubDomain := fmt.Sprintf("testsubdomain%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic_brand", func(t *testing.T) {

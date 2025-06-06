@@ -20,7 +20,7 @@ func TestAccAutomation(t *testing.T) {
 	t.Parallel()
 	var automation zendesk.Automation
 	testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-	fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+	fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 
 	t.Run("basic automation", func(t *testing.T) {
 		t.Parallel()
@@ -103,7 +103,10 @@ func testAccCheckAutomationResourceExists(resourceName string, automation *zende
 			return fmt.Errorf("ticket field ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)

@@ -19,7 +19,7 @@ func TestAccOrgField(t *testing.T) {
 	t.Run("basic organization field", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -44,7 +44,7 @@ func TestAccOrgField(t *testing.T) {
 	t.Run("organization field dropdown", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -69,7 +69,7 @@ func TestAccOrgField(t *testing.T) {
 	t.Run("organization field dropdown add options", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -108,7 +108,7 @@ func TestAccOrgField(t *testing.T) {
 	t.Run("organization field dropdown missing", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -128,7 +128,7 @@ func TestAccOrgField(t *testing.T) {
 	t.Run("should disable field", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,

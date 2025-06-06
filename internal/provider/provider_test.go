@@ -40,15 +40,21 @@ func testAccPreCheck(t *testing.T) {
 
 }
 
-func getZdTestClient() *zendesk.Client {
+func getZdTestClient() (*zendesk.Client, error) {
 	var subdomain = os.Getenv("ZENDESK_SUBDOMAIN")
 	var username = os.Getenv("ZENDESK_USERNAME")
 	var apiToken = os.Getenv("ZENDESK_API_TOKEN")
 
-	client, _ := zendesk.NewClient(nil)
-	_ = client.SetSubdomain(subdomain)
+	client, err := zendesk.NewClient(nil)
+	if err != nil {
+		return nil, err
+	}
+	err = client.SetSubdomain(subdomain)
+	if err != nil {
+		return nil, err
+	}
 	client.SetCredential(credentialtypes.NewAPITokenCredential(username, apiToken))
 
-	return client
+	return client, nil
 
 }

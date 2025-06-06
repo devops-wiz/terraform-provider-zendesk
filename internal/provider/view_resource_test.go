@@ -23,7 +23,7 @@ const dummyViewResourceName = "zendesk_view.test"
 func TestAccView(t *testing.T) {
 	t.Parallel()
 	fullResourceName := fmt.Sprintf(
-		"test_acc_%s",
+		"tf_acc_%s",
 		acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum),
 	)
 
@@ -121,7 +121,10 @@ func testAccCheckViewResourceExists(resourceName string, view *zendesk.View, t *
 			return fmt.Errorf("ticket field ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)

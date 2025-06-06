@@ -10,7 +10,7 @@ import (
 
 func TestAccDynamicContent(t *testing.T) {
 	t.Parallel()
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("should create basic dynamic content", func(t *testing.T) {
 		t.Parallel()

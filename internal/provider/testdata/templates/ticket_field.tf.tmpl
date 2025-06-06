@@ -1,0 +1,62 @@
+resource "zendesk_ticket_field" "test" {
+    title = "{{.Title}}"
+    type  = "{{.Type}}"
+    {{- if .EditableInPortal}}
+    editable_in_portal = tobool("{{.EditableInPortal}}")
+    {{- end}}
+    {{- if .Required}}
+    required = tobool("{{.Required}}")
+    {{- end}}
+    {{- if .RequiredInPortal}}
+    required_in_portal = tobool("{{.RequiredInPortal}}")
+    {{- end}}
+    {{- if .VisibleInPortal}}
+    visible_in_portal = tobool("{{.VisibleInPortal}}")
+    {{- end}}
+    {{- if .Active}}
+    active = tobool("{{.Active}}")
+    {{- end}}
+    {{- if .Description}}
+    portal_description           = "{{.Description}}"
+    {{- end}}
+    {{- if .RawDescription}}
+    raw_description       = "{{.RawDescription}}"
+    {{- end}}
+    {{- if .Position}}
+    position              = "{{.Position}}"
+    {{- end}}
+    {{- if .SubTypeID}}
+    sub_type_id           = "{{.SubTypeID}}"
+    {{- end}}
+    {{- if .CollapsedForAgents}}
+    collapsed_for_agents = tobool("{{.CollapsedForAgents}}")
+    {{- end}}
+    {{- if .RegexpForValidation}}
+    regexp_for_validation = "{{.RegexpForValidation}}"
+    {{- end}}
+    {{- if .TitleInPortal}}
+    title_in_portal       = "{{.TitleInPortal}}"
+    {{- end}}
+    {{- if .RawTitleInPortal}}
+    raw_title_in_portal   = "{{.RawTitleInPortal}}"
+    {{- end}}
+    {{- if .Tag}}
+    tag                   = "{{.Tag}}"
+    {{- end}}
+    {{- if .Removable}}
+    removable = tobool("{{.Removable}}")
+    {{- end}}
+    {{- if .AgentDescription}}
+    agent_description     = "{{.AgentDescription}}"
+    {{- end}}
+    {{- if .CustomFieldOptions}}
+    custom_field_options = [
+        {{- range .CustomFieldOptions}}
+        {
+            name  = "{{.Name}}"
+            value = "{{.Value}}"
+        },
+        {{- end}}
+    ]
+    {{- end}}
+}

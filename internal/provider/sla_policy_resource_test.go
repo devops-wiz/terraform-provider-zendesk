@@ -15,7 +15,7 @@ const dummySLAPolicyResourceName = "zendesk_sla_policy.test"
 
 func TestAccSlaPolicy(t *testing.T) {
 	t.Parallel()
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic sla resource", func(t *testing.T) {
 		t.Parallel()

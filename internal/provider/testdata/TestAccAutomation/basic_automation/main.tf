@@ -1,5 +1,5 @@
 resource "zendesk_ticket_field" "test" {
-  title             = "test_acc_custom_field_automation_${var.test_id}"
+  title             = "tf_acc_custom_field_automation_${var.test_id}"
   type              = "tagger"
   agent_description = "test2"
 

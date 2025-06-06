@@ -21,7 +21,7 @@ func TestAccTriggerCategoryBasic(t *testing.T) {
 	t.Parallel()
 	var triggerCategory zendesk.TriggerCategory
 
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:                 func() { testAccPreCheck(t) },
@@ -50,7 +50,10 @@ func testAccCheckTriggerCategoryResourceExists(resourceName string, triggerCat *
 			return fmt.Errorf("Ticket field ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)

@@ -22,7 +22,7 @@ const dummyMacroResourceName = "zendesk_macro.test"
 func TestAccMacro(t *testing.T) {
 	t.Parallel()
 	var macro zendesk.Macro
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic macro", func(t *testing.T) {
 		t.Parallel()
@@ -170,7 +170,10 @@ func testAccCheckMacroResourceExists(resourceName string, macro *zendesk.Macro, 
 			return fmt.Errorf("ticket field ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)
