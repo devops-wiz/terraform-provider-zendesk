@@ -15,7 +15,7 @@ var dummyScheduleResourceName = "zendesk_schedule.test"
 
 func TestAccSchedule(t *testing.T) {
 	t.Parallel()
-	fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+	fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 	t.Run("basic schedule one day", func(t *testing.T) {
 		t.Parallel()

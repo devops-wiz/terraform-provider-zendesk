@@ -18,7 +18,7 @@ func TestAccGroup(t *testing.T) {
 	t.Parallel()
 
 	t.Run("basic_group", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{
@@ -43,7 +43,7 @@ func TestAccGroup(t *testing.T) {
 	})
 
 	t.Run("change group is_public", func(t *testing.T) {
-		fullResourceName := fmt.Sprintf("test_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
+		fullResourceName := fmt.Sprintf("tf_acc_%s", acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum))
 
 		t.Parallel()
 		resource.Test(t, resource.TestCase{

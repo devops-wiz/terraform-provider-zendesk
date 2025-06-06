@@ -1,5 +1,5 @@
 resource "zendesk_automation" "test" {
-  title = "test_acc_bad_config"
+  title = "tf_acc_bad_config"
   actions = [
     {
       field = "status"

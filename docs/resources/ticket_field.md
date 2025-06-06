@@ -3,12 +3,12 @@
 page_title: "zendesk_ticket_field Resource - zendesk"
 subcategory: ""
 description: |-
-  
+  Manages a Zendesk ticket field. A ticket field provides a field in your Zendesk tickets that can store custom data. The field can be visible and editable by both agents and end-users depending on the configuration.
 ---
 
 # zendesk_ticket_field (Resource)
 
-
+Manages a Zendesk ticket field. A ticket field provides a field in your Zendesk tickets that can store custom data. The field can be visible and editable by both agents and end-users depending on the configuration.
 
 ## Example Usage
 

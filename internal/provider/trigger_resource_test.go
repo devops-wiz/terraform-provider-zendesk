@@ -20,7 +20,7 @@ func TestAccTrigger(t *testing.T) {
 	t.Run("basic trigger", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		var trigger zendesk.Trigger
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
@@ -44,7 +44,7 @@ func TestAccTrigger(t *testing.T) {
 	t.Run("trigger notification user", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -65,7 +65,7 @@ func TestAccTrigger(t *testing.T) {
 	t.Run("auto reply", func(t *testing.T) {
 		t.Parallel()
 		testId := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
-		fullResourceName := fmt.Sprintf("test_acc_%s", testId)
+		fullResourceName := fmt.Sprintf("tf_acc_%s", testId)
 		resource.Test(t, resource.TestCase{
 			PreCheck:                 func() { testAccPreCheck(t) },
 			ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
@@ -97,7 +97,10 @@ func testAccCheckTriggerResourceExists(resourceName string, trigger *zendesk.Tri
 			return fmt.Errorf("ticket field ID is not set")
 		}
 
-		client := getZdTestClient()
+		client, err := getZdTestClient()
+		if err != nil {
+			t.Fatal(err)
+		}
 		ctx := t.Context()
 
 		convertedId, err := strconv.ParseInt(rs.Primary.ID, 10, 64)

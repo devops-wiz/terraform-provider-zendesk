@@ -5,7 +5,6 @@ package provider
 
 import (
 	"context"
-	"github.com/hashicorp/terraform-plugin-framework/function"
 	"os"
 
 	"github.com/JacobPotter/go-zendesk/credentialtypes"
@@ -22,7 +21,6 @@ import (
 
 // Ensure ScaffoldingProvider satisfies various provider interfaces.
 var _ provider.Provider = &ZendeskProvider{}
-var _ provider.ProviderWithFunctions = &ZendeskProvider{}
 
 // ZendeskProvider defines the provider implementation.
 type ZendeskProvider struct {
@@ -235,12 +233,6 @@ func (p *ZendeskProvider) DataSources(ctx context.Context) []func() datasource.D
 	return []func() datasource.DataSource{
 		NewSearchDatasource,
 		NewLocaleDatasource,
-	}
-}
-
-func (p *ZendeskProvider) Functions(ctx context.Context) []func() function.Function {
-	return []func() function.Function{
-		NewSortCustomFieldOptions,
 	}
 }
 

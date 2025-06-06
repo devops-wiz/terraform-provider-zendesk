@@ -92,11 +92,11 @@ func (r *TicketFieldResource) ValidateConfig(ctx context.Context, request resour
 		return
 	}
 
-	if data.VisibleInPortal.IsNull() && (!data.EditableInPortal.IsNull() || !data.RequiredInPortal.IsNull()) {
+	if (data.VisibleInPortal.IsNull() || !data.VisibleInPortal.ValueBool()) && (data.EditableInPortal.ValueBool() || data.RequiredInPortal.ValueBool()) {
 		response.Diagnostics.AddAttributeError(
 			path.Root("visible_in_portal"),
 			"Invalid attribute combination",
-			"For a ticket field to be Editable or Required in portal, visible_in_portal must be set to true",
+			"For a ticket field to be hidden in portal, editable_in_portal and required_in_portal must either be false or null",
 		)
 		return
 	}
@@ -109,4 +109,5 @@ func (r *TicketFieldResource) ValidateConfig(ctx context.Context, request resour
 		)
 		return
 	}
+
 }

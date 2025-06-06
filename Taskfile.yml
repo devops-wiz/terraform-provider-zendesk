@@ -59,7 +59,7 @@ tasks:
         #   TODO: format pkgname is default, look into using gotestdox for gotestsum format
         sh: |
           if command -v "gotestsum" &> /dev/null; then
-            echo "gotestsum --rerun-fails --packages="./..." --format {{.FORMAT}} --hide-summary=skipped"
+            echo "gotestsum --packages="./..." --format {{.FORMAT}} --hide-summary=skipped"
           else
             echo "go test{{if .VRBS}} -v{{end}}"
           fi
@@ -68,25 +68,28 @@ tasks:
       ACC_ONLY:
         ref: .ACC_ONLY | default "false" | regexMatch "^(?i)(true|t)$"
       ACC:
-        ref: .ACC | default "false" | regexMatch "^(?i)(true|t)$" | or .ACC_ONLY
+        ref: .ACC | default "false" | regexMatch "^(?i)(true|t)$"
+      SWEEP:
+        ref: .SWEEP | default "false" | regexMatch "^(?i)(true|t)$"
 
 
 
     dotenv:
       - .env
     env:
-      TF_ACC: '{{if .ACC}}1{{end}}'
+      TF_ACC: '{{if or .ACC .ACC_ONLY}}1{{end}}'
 
     cmds:
       - cmd: |
           {{if .CTC}}go clean -testcache{{end}}
         silent: true
-      - cmd: echo "ACC set to {{.ACC}}, {{if .ACC}}running{{else}}skipping{{end}} acceptance tests."
+      - cmd: echo "ACC set to {{or .ACC .ACC_ONLY}}, {{if or .ACC .ACC_ONLY}}running{{else}}skipping{{end}} acceptance tests."
         silent: true
       - |
         {{.TEST_CMD}} ./...
         {{- if ne .RUN_PATTERN "none"}} -run ".RUN_PATTERN"{{end -}}
         {{- if .ACC_ONLY}} -run TestAcc*{{end -}}
-      
 
-
+  sweep:
+    dotenv: [.env]
+    cmd: go test ./internal/provider -test.v -args -sweep all

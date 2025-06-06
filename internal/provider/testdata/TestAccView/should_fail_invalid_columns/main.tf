@@ -1,5 +1,5 @@
 resource "zendesk_view" "test" {
-  title = "test_acc_invalid"
+  title = "tf_acc_invalid"
 
   conditions = {
     all = [
